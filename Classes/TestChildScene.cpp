@@ -1,5 +1,5 @@
 #include "TestChildScene.h"
-#include "common/EnterFrame.h"
+#include "utils/EnterFrame.h"
 
 TestChildScene::TestChildScene(void)
 {
