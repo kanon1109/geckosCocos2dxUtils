@@ -3,8 +3,11 @@
 #include <algorithm>
 using namespace std;
 using std::vector;
+//创建计时器的节点
 static Node* node = NULL;
+//帧频
 static float fps = 0.0;
+//保存函数指针的vecotr
 static vector<SEL_CallFunc> funcVect;
 EnterFrame::EnterFrame(void)
 {
