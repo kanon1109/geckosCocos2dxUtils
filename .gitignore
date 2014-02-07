@@ -1,0 +1,13 @@
+# Build and Release Folders
+/proj.win32/Debug.win32/
+/proj.win32/Release.win32/
+/Resources/*.db
+.svn
+proj.linux/*
+proj.ios/*
+proj.blackberry/*
+proj.mac/*
+proj.linux/*
+proj.marmalade/*
+proj.android/*
+proj.win32/*
