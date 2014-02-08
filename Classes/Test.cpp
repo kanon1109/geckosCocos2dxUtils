@@ -46,10 +46,10 @@ bool Test::init()
 	EnterFrame::push(callfunc_selector(Test::runFun));*/
 
 	string email = "kanontang@gmail.com";
-	bool isEmail;
-	isEmail		= StringUtil::isEmail(&email);
+	bool isEmail = StringUtil::isEmail(&email);
 	CCLOG("%d", isEmail);
 	//CCLOG("bool", StringUtil::isEmail(&email));
+	CCLOG("email= %s", email.c_str());
 
 	TestChildScene* cs = TestChildScene::create();
 	this->addChild(cs);

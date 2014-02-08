@@ -108,18 +108,13 @@ bool StringUtil::isEmail( string* email )
 {
 	StringUtil::trim(email);
 	string regStr = "([0-9A-Za-z\\-_\\.]+)@([0-9a-z]+\\.[a-z]{2,3}(\\.[a-z]{2})?)";
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_IOS)  
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
 	char ss[100] = {};  
 	sprintf(ss,"%s", email->c_str());  
 	regmatch_t pmatch[4];  
 	regex_t match_regex;  
-	regcomp( &match_regex,  
-		regStr,  
-		REG_EXTENDED );  
-	if (regexec( &match_regex, ss, 4, pmatch, 0 ) != 0 )  
-	{  
-		return false;
-	}  
+	regcomp( &match_regex,  regStr, REG_EXTENDED );  
+	if (regexec( &match_regex, ss, 4, pmatch, 0 ) != 0 )  return false;
 	regfree( &match_regex );  
 	return true;
 #endif
