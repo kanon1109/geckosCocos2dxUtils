@@ -55,5 +55,11 @@ public:
      *              如果str.length >= width，将不做任何处理直接返回原始的str。
      */
 	static void zfill(string* str, unsigned int width = 2);
+
+	/**
+	 * 翻转字符串
+	 * @param	str 字符串
+	 */
+	static void reverse(string* str);
 };
 #endif

@@ -64,14 +64,16 @@ void StringUtil::zfill( string* str, unsigned int width /*= 2*/ )
 		negative = true;
 		str->replace(0, 1, "");
 	}
-
 	int len = width - slen;
 	for( int i = 0; i < len; i+=1 )
 	{
 		*str = '0' + *str;
 	}
+	if( negative ) 	*str = '-' + *str;
+}
 
-	if( negative ) {
-		*str = '-' + *str;
-	}
+void StringUtil::reverse( string* str )
+{
+	if(str->length() == 1) return;
+	std::reverse(str->begin(), str->end());
 }

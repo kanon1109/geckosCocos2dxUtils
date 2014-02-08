@@ -31,7 +31,9 @@ bool Test::init()
 	CCLOG("1 str%s", str.c_str());
 	StringUtil::zfill(&str, 9);
 	CCLOG("zfill%s", str.c_str());
-
+	str = "1234";
+	StringUtil::reverse(&str);
+	CCLOG("reverse= %s", str.c_str());
 	/*EnterFrame::init(this);
 	EnterFrame::push(callfunc_selector(Test::runFun));
 	EnterFrame::push(callfunc_selector(Test::runFun2));
