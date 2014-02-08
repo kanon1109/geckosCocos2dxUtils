@@ -1,4 +1,6 @@
 #pragma once
+#ifndef _RANDOM_INIT_
+#define _RANDOM_INIT_
 #include "cocos2d.h"
 USING_NS_CC;
 class Random
@@ -42,4 +44,4 @@ public:
 	 */
 	static bool boolean(float chance=.5f);
 };
-
+#endif
