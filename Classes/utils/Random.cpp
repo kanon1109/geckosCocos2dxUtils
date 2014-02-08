@@ -29,3 +29,8 @@ int Random::randrange( int start, int stop, int step/*=1*/ )
 	int n = (int)((width + step - 1) / step);
 	return (int)(CCRANDOM_0_1() * n) * step + min(start, stop);
 }
+
+bool Random::boolean( float chance/*=.5f*/ )
+{
+	return (CCRANDOM_0_1() < chance) ? true : false;
+}

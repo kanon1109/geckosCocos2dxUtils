@@ -34,5 +34,12 @@ public:
      * @return 假设 start < stop,  [start, stop) 区间内的随机整数
      */
 	static int randrange(int start, int stop, int step=1);
+
+	/**
+	 * 计算概率
+	 * @param	chance 概率
+	 * @return	概率是否中
+	 */
+	static bool boolean(float chance=.5f);
 };
 
