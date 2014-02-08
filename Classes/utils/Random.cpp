@@ -20,9 +20,9 @@ int Random::randomInt( int a, int b )
 	return Random::randrange(a, b);
 }
 
-int Random::randrange( int start, int stop, int step/*=1*/ )
+int Random::randrange( int start, int stop, unsigned int step/*=1*/ )
 {
-	if (step <= 0) step = 1;
+	if (step == 0) step = 1;
 	int width = stop - start;
 	if (width == 0) return start;
 	if (width < 0) width = start - stop;

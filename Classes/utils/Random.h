@@ -35,7 +35,7 @@ public:
      * @param step
      * @return 假设 start < stop,  [start, stop) 区间内的随机整数
      */
-	static int randrange(int start, int stop, int step=1);
+	static int randrange(int start, int stop, unsigned int step=1);
 
 	/**
 	 * 计算概率
