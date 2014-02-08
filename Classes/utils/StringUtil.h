@@ -33,5 +33,27 @@ public:
      * @param    target		目标字符串
      */
 	static void trim(string* target);
+
+	/**
+     * 给数字字符前面添 "0"
+     * 
+     * <pre> 
+     * 
+     * CClog( StringFormat::zfill('1') );
+     * // 01
+     * 
+     * CClog( StringFormat::zfill('16', 5) );
+     * // 00016
+     * 
+     * CClog( StringFormat::zfill('-3', 3) );
+     * // -03
+     * 
+     * </pre>
+     * 
+     * @param str 要进行处理的字符串
+     * @param width 处理后字符串的长度，
+     *              如果str.length >= width，将不做任何处理直接返回原始的str。
+     */
+	static void zfill(string* str, unsigned int width = 2);
 };
 #endif

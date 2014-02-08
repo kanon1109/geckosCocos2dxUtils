@@ -29,6 +29,8 @@ bool Test::init()
 	//str.replace(0, 2, "");
 	StringUtil::trim(&str);
 	CCLOG("1 str%s", str.c_str());
+	StringUtil::zfill(&str, 9);
+	CCLOG("zfill%s", str.c_str());
 
 	/*EnterFrame::init(this);
 	EnterFrame::push(callfunc_selector(Test::runFun));
