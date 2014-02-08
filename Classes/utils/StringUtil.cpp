@@ -1,6 +1,12 @@
 #include "StringUtil.h"
 #include "cocos2d.h"
 #include <stdio.h>
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)  
+#include <regex>  
+#endif
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID||CC_TARGET_PLATFORM == CC_PLATFORM_IOS)  
+#include <regex.h>
+#endif
 using namespace std;
 StringUtil::StringUtil(void)
 {
@@ -11,10 +17,10 @@ StringUtil::~StringUtil(void)
 {
 }
 
-bool StringUtil::isWhiteSpace( string* str )
+bool StringUtil::isWhiteSpace( string str )
 {
-	if (*str == " " || *str == "\t" || 
-		*str == "\r" || *str == "\n") return true;
+	if (str == " " || str == "\t" || 
+		str == "\r" || str == "\n") return true;
 	return false;
 }
 
@@ -23,7 +29,7 @@ void StringUtil::lTrim( string* target )
 	int length = 0;
 	//创建一个元素的string
 	string str = string(1, target->at(length));
-	while(StringUtil::isWhiteSpace(&str))
+	while(StringUtil::isWhiteSpace(str))
 	{
 		length++;
 		str = string(1, target->at(length));
@@ -35,7 +41,7 @@ void StringUtil::rTrim( string* target )
 {
 	int length = target->length() - 1;
 	string str = string(1, target->at(length));
-	while(StringUtil::isWhiteSpace(&str))
+	while(StringUtil::isWhiteSpace(str))
 	{
 		length--;
 		str = string(1, target->at(length));
@@ -96,4 +102,33 @@ void StringUtil::cutOff( string* str, unsigned int start, unsigned int len, bool
 		newStr = str->substr(0, s + 1) + str->substr(e + 1 , length);
 	}
 	*str = newStr;
+}
+
+bool StringUtil::isEmail( string* email )
+{
+	StringUtil::trim(email);
+	string regStr = "([0-9A-Za-z\\-_\\.]+)@([0-9a-z]+\\.[a-z]{2,3}(\\.[a-z]{2})?)";
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_IOS)  
+	char ss[100] = {};  
+	sprintf(ss,"%s", email->c_str());  
+	regmatch_t pmatch[4];  
+	regex_t match_regex;  
+	regcomp( &match_regex,  
+		regStr,  
+		REG_EXTENDED );  
+	if (regexec( &match_regex, ss, 4, pmatch, 0 ) != 0 )  
+	{  
+		return false;
+	}  
+	regfree( &match_regex );  
+	return true;
+#endif
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)  
+	regex pattern(regStr);  
+	if (!regex_match(*email, pattern ))  
+		return false;
+	return true;
+#endif
+	//其他平台暂时不能验证
+	return false;
 }

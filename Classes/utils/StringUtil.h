@@ -14,7 +14,7 @@ public:
      * @param    str
      * @return  返回该字符是否为空白字符
      */
-	static bool isWhiteSpace(string* str);
+	static bool isWhiteSpace(string str);
 
 	 /**
      * 去除字符串左端的空白字符
@@ -70,5 +70,12 @@ public:
 	 * @param	order	顺序，true从字符串头部开始计算，false从字符串尾巴开始结算。
 	 */
 	static void cutOff(string* str, unsigned int start, unsigned int len, bool order=true);
+
+	 /**
+     * 是否为Email地址
+     * @param    char 字符串
+     * @return  是否为Email地址
+     */
+	static bool isEmail(string* email);
 };
 #endif

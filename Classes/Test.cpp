@@ -21,9 +21,9 @@ bool Test::init()
 	//ary->
 	CCLOG("r=%f", Random::randomFloat(-2.4f, 6.6f));
 
-	/*std::string s = " ";
+	std::string s = " ";
 	CCLOG("rfind = %i\n", s.rfind("\t"));
-	CCLOG("is WhiteSpace: %i\n", StringUtil::isWhiteSpace(&s));*/
+	CCLOG("is WhiteSpace: %i\n", StringUtil::isWhiteSpace(s));
 
 	std::string str = "  111111  ";
 	//str.replace(0, 2, "");
@@ -44,6 +44,13 @@ bool Test::init()
 	EnterFrame::pop(callfunc_selector(Test::runFun2));
 	EnterFrame::pop(callfunc_selector(Test::runFun));
 	EnterFrame::push(callfunc_selector(Test::runFun));*/
+
+	string email = "kanontang@gmail.com";
+	bool isEmail;
+	isEmail		= StringUtil::isEmail(&email);
+	CCLOG("%d", isEmail);
+	//CCLOG("bool", StringUtil::isEmail(&email));
+
 	TestChildScene* cs = TestChildScene::create();
 	this->addChild(cs);
 
