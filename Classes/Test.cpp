@@ -34,6 +34,8 @@ bool Test::init()
 	str = "1234";
 	StringUtil::reverse(&str);
 	CCLOG("reverse= %s", str.c_str());
+	StringUtil::cutOff(&str, 1, 1);
+	CCLOG("cutOff= %s", str.c_str());
 	/*EnterFrame::init(this);
 	EnterFrame::push(callfunc_selector(Test::runFun));
 	EnterFrame::push(callfunc_selector(Test::runFun2));

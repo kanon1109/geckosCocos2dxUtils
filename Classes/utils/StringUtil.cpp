@@ -77,3 +77,23 @@ void StringUtil::reverse( string* str )
 	if(str->length() == 1) return;
 	std::reverse(str->begin(), str->end());
 }
+
+void StringUtil::cutOff( string* str, unsigned int start, unsigned int len, bool order )
+{
+	unsigned int length = str->length();
+	if (start > length) start = length;
+	int s = start;
+	int e = start + len;
+	string newStr;
+	if (order)
+	{
+		newStr = str->substr(0, s) + str->substr(e, length);
+	}
+	else 
+	{
+		s = length - 1 - start - len;
+		e = s + len;
+		newStr = str->substr(0, s + 1) + str->substr(e + 1 , length);
+	}
+	*str = newStr;
+}

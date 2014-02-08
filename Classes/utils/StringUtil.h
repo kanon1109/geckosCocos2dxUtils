@@ -61,5 +61,14 @@ public:
 	 * @param	str 字符串
 	 */
 	static void reverse(string* str);
+
+	/**
+	 * 截断某段字符串
+	 * @param	str		目标字符串
+	 * @param	start	需要截断的起始索引
+	 * @param	len		截断长度
+	 * @param	order	顺序，true从字符串头部开始计算，false从字符串尾巴开始结算。
+	 */
+	static void cutOff(string* str, unsigned int start, unsigned int len, bool order=true);
 };
 #endif
