@@ -39,14 +39,16 @@ void StringUtil::lTrim( string* target )
 
 void StringUtil::rTrim( string* target )
 {
-	int length = target->length() - 1;
-	string str = string(1, target->at(length));
+	int length = target->length();
+	string str = string(1, target->at(length - 1));
 	while(StringUtil::isWhiteSpace(str))
 	{
 		length--;
-		str = string(1, target->at(length));
+		str = string(1, target->at(length - 1));
 	}
-	target->replace(length, target->length() - 1, "");
+	CCLOG("length %i", length);
+	CCLOG("target->length()%i", target->length());
+	target->replace(length, target->length(), "");
 }
 
 void StringUtil::trim( string* target )
