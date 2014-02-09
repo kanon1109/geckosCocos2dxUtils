@@ -1,6 +1,7 @@
 #include "StringUtil.h"
 #include "cocos2d.h"
 #include <stdio.h>
+#include <algorithm>
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)  
 #include <regex>  
 #endif
@@ -8,6 +9,7 @@
 #include <regex.h>
 #endif
 using namespace std;
+using std::vector;
 StringUtil::StringUtil(void)
 {
 }
@@ -126,4 +128,24 @@ bool StringUtil::isEmail( string* email )
 #endif
 	//其他平台暂时不能验证
 	return false;
+}
+
+void StringUtil::split(vector<string> &result, string str, char delim )
+{
+	string tmp;
+	string::iterator i;
+	result.clear();
+	//循环字符串当遇到 delim值相同则将tmp临时变量存入result，tmp清空。
+	for(i = str.begin(); i < str.end(); i++) 
+	{
+		if((const char)*i != delim)
+		{
+			tmp += *i;
+		}
+		else 
+		{
+			result.push_back(tmp);
+			tmp = "";
+		}
+	}
 }

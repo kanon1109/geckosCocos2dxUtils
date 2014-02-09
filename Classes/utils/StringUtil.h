@@ -2,6 +2,8 @@
 #ifndef _STRING_UTIL_INIT_
 #define _STRING_UTIL_INIT_
 #include <iostream>
+#include <algorithm>
+#include <vector>
 using namespace std;
 class StringUtil
 {
@@ -73,9 +75,18 @@ public:
 
 	 /**
      * 是否为Email地址
-     * @param    char 字符串
+     * @param   email 字符串
      * @return  是否为Email地址
      */
 	static bool isEmail(string* email);
+
+	 /**
+     * 分割字符串
+	 * @param   result		分割后的vector
+	 * @param   str			待分割的字符串
+	 * @param   delim		分割符
+     */
+	static void split(vector<string> &result, string str, char delim);
 };
+
 #endif

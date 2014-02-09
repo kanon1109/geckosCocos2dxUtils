@@ -6,7 +6,11 @@
 #include "utils/TimeFormat.h"
 #include <iostream>
 #include <string>
+#include <vector>
+#include <iterator>   
+#include <algorithm>  
 using namespace std;
+using std::vector;
 Test::Test(void)
 {
 	
@@ -40,6 +44,7 @@ bool Test::init()
 	TimeFormat::secondToTime(&time, 7735);
 	CCLOG("secondToTime= %s", time.c_str());
 
+
 	/*EnterFrame::init(this);
 	EnterFrame::push(callfunc_selector(Test::runFun));
 	EnterFrame::push(callfunc_selector(Test::runFun2));
@@ -56,6 +61,12 @@ bool Test::init()
 	CCLOG("%d", isEmail);
 	//CCLOG("bool", StringUtil::isEmail(&email));
 	//CCLOG("email= %s", email.c_str());
+	vector<string> v;
+	StringUtil::split(v, "one:two:three", ':');
+	for (unsigned int i = 0; i < v.size(); i++)
+	{
+		CCLOG("v[i]%s", v[i].c_str());
+	}
 
 	TestChildScene* cs = TestChildScene::create();
 	this->addChild(cs);

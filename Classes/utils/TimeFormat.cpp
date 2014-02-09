@@ -36,3 +36,8 @@ void TimeFormat::secondToTime(string* targetStr, int second /*= 0*/, string part
 	else
 		*targetStr = mStr + partition + sStr;
 }
+
+void TimeFormat::timeToMillisecond( string* targetStr, string time, string partition /*= ":"*/ )
+{
+
+}
