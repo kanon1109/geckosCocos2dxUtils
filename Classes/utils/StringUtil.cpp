@@ -46,8 +46,6 @@ void StringUtil::rTrim( string* target )
 		length--;
 		str = string(1, target->at(length - 1));
 	}
-	CCLOG("length %i", length);
-	CCLOG("target->length()%i", target->length());
 	target->replace(length, target->length(), "");
 }
 
