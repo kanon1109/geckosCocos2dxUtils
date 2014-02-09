@@ -62,7 +62,7 @@ bool Test::init()
 	//CCLOG("bool", StringUtil::isEmail(&email));
 	//CCLOG("email= %s", email.c_str());
 	vector<string> v;
-	StringUtil::split(v, "one:two:three", ':');
+	StringUtil::split(v, "1", ':');
 	for (unsigned int i = 0; i < v.size(); i++)
 	{
 		CCLOG("v[i]%s", v[i].c_str());

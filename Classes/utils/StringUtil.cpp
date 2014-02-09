@@ -148,4 +148,5 @@ void StringUtil::split(vector<string> &result, string str, char delim )
 			tmp = "";
 		}
 	}
+	result.push_back(tmp);
 }
