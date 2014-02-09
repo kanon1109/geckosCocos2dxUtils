@@ -3,6 +3,7 @@
 #include "TestChildScene.h"
 #include "utils/Random.h"
 #include "utils/StringUtil.h"
+#include "utils/TimeFormat.h"
 #include <iostream>
 #include <string>
 using namespace std;
@@ -17,8 +18,6 @@ Test::~Test(void)
 
 bool Test::init()
 {
-	//CCArray* ary = CCArray::create();
-	//ary->
 	CCLOG("r=%f", Random::randomFloat(-2.4f, 6.6f));
 
 	std::string s = " ";
@@ -36,6 +35,11 @@ bool Test::init()
 	CCLOG("reverse= %s", str.c_str());
 	StringUtil::cutOff(&str, 1, 1);
 	CCLOG("cutOff= %s", str.c_str());
+
+	string time;
+	TimeFormat::secondToTime(&time, 7735);
+	CCLOG("secondToTime= %s", time.c_str());
+
 	/*EnterFrame::init(this);
 	EnterFrame::push(callfunc_selector(Test::runFun));
 	EnterFrame::push(callfunc_selector(Test::runFun2));
@@ -46,10 +50,12 @@ bool Test::init()
 	EnterFrame::push(callfunc_selector(Test::runFun));*/
 
 	string email = "kanontang@gmail.com";
+	StringUtil::trim(&email);
+	CCLOG("email= %s", email.c_str());
 	bool isEmail = StringUtil::isEmail(&email);
 	CCLOG("%d", isEmail);
 	//CCLOG("bool", StringUtil::isEmail(&email));
-	CCLOG("email= %s", email.c_str());
+	//CCLOG("email= %s", email.c_str());
 
 	TestChildScene* cs = TestChildScene::create();
 	this->addChild(cs);
