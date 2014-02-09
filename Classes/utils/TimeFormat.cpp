@@ -1,6 +1,12 @@
 #include "TimeFormat.h"
 #include <string>
 #include <stdio.h>
+#include <vector>
+#include <cstdlib>
+#include <algorithm>
+#include "utils/StringUtil.h"
+using namespace std;
+using std::vector;
 TimeFormat::TimeFormat(void)
 {
 }
@@ -37,7 +43,18 @@ void TimeFormat::secondToTime(string* targetStr, int second /*= 0*/, string part
 		*targetStr = mStr + partition + sStr;
 }
 
-void TimeFormat::timeToMillisecond( string* targetStr, string time, string partition /*= ":"*/ )
+void TimeFormat::timeToSecond( string* targetStr, string timeStr, string partition /*= ":"*/ )
 {
-
+	vector<string> v;
+	StringUtil::split(v, timeStr, *partition.c_str());
+	int time = 0;
+	unsigned int size = v.size();
+	for (unsigned int i = 0; i < size; i++)
+	{
+		string str = v[i];
+		//stringתint
+		int n = atoi(str.c_str());
+		time += n * pow(60, (size - 1 - i));
+	}
+	sprintf((char* )targetStr->c_str(), "%d", time);
 }

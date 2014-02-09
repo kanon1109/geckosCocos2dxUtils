@@ -31,6 +31,6 @@ public:
      * ÓÃ·¨2 trace(MillisecondTransform.timeToMillisecond("00.60.00","."))
      * Êä³ö   3600000
      */
-	static void timeToMillisecond(string* targetStr, string time, string partition = ":");
+	static void timeToSecond(string* targetStr, string time, string partition = ":");
 };
 #endif
