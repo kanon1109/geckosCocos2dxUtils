@@ -1,0 +1,641 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<language>
+	<!-- 系统提示 -->
+	<welcome>歡迎來到掌三國</welcome>
+	<alert_netClose>主公，您的網路斷線啦，請點擊確定重返三國</alert_netClose>
+	<alert_levelShort>主公，您的等級不足####級</alert_levelShort>
+	<alert_fomation_levelMax>主公，該陣型等級已達上限</alert_fomation_levelMax>
+	<recover_hp>恢復####點體力</recover_hp>
+	<recover_mp>恢復####點精力</recover_mp>
+	<lack_hp>主公，您的體力不足了！</lack_hp>
+	<lack_mp>主公，您的精力不足了！</lack_mp>
+	<lack_vip>主公,您的vip等級不夠!</lack_vip>
+	<lack_lv>主公，####級才開放哦！</lack_lv>
+	<lack_coin>主公，您的銀兩不足了！</lack_coin>
+	<lack_cash>主公，您的元寶不足了！</lack_cash>
+	<confirm_exit>主公，確定要退出遊戲嗎？</confirm_exit>
+	<net_error>主公，您的網路斷線啦，請點擊確定重返三國</net_error>
+	<net_connect_error>網路異常，連接失敗</net_connect_error>
+	<get_newItem>恭喜主公獲得了：</get_newItem>
+	<new_version>主公，有新版本，我們快去更新！</new_version>
+	<recharge_done>恭喜主公，元寶送達啦！</recharge_done>
+	<coming_soon>暫未開放,敬請期待!</coming_soon>
+	<month>月</month>
+	<day>日</day>
+	<paying>正在付款</paying>
+	<not_open>暫未開放</not_open>
+	
+	<!-- 时间转换 -->
+	<time_day>天</time_day>
+	<time_hour>小時</time_hour>
+	<time_minute>分</time_minute>
+	<time_second>秒</time_second>
+	<!-- 量词 -->
+	<measure_word_number>個</measure_word_number>
+	<!-- Loading -->
+	<loading_connect>正在連接伺服器,請耐心等待…</loading_connect>
+	<loading_resource>資源載入中,請耐心等待…</loading_resource>
+	
+	<!-- 按钮 -->
+	<btn_close>關閉</btn_close>
+	<btn_back>返回</btn_back>
+	<btn_skip>跳過</btn_skip>
+	<btn_yes>確定</btn_yes>
+	<btn_no>取消</btn_no>
+	<btn_recharge>儲值</btn_recharge>
+	<btn_view_vip>查看特權</btn_view_vip>
+	<btn_fight>闖</btn_fight>
+	<btn_view_team>查看陣容</btn_view_team>
+	<btn_replay>重播</btn_replay>
+	<btn_goto_strengthen>前往強化</btn_goto_strengthen>
+	<btn_view>查看</btn_view>
+	<btn_get_bonus>領取</btn_get_bonus>
+	<btn_feedback>回饋</btn_feedback>
+	<btn_enter>進入</btn_enter>
+	<btn_get_login_bonus>乖,我這就收著</btn_get_login_bonus>
+	<btn_train>培養</btn_train>
+	<btn_pass_on>傳授</btn_pass_on>
+	<btn_levelup>升級</btn_levelup>
+	<btn_refresh>刷新</btn_refresh>
+	<btn_beat_back>反擊</btn_beat_back>
+	<btn_search>搜索</btn_search>
+	<btn_accept>接受</btn_accept>
+	<btn_give_up>放棄</btn_give_up>
+	<btn_agree>同意</btn_agree>
+	<btn_reject>拒絕</btn_reject>
+	<btn_change>更換</btn_change>
+	<btn_goto>點擊前往</btn_goto>
+	<btn_interact>交流</btn_interact>
+	<btn_make_friend>結交</btn_make_friend>
+	<btn_get_pve_bonus>領取獎勵</btn_get_pve_bonus>
+	<btn_mail>郵件</btn_mail>
+	<btn_hero_list>武將列表</btn_hero_list>
+	<btn_exit_union>退出聯盟</btn_exit_union>
+	<btn_exit>退出</btn_exit>
+	<btn_challenge>挑戰</btn_challenge>
+	<btn_exchange>兌換</btn_exchange>
+	<btn_buy>購買</btn_buy>
+	<btn_create>創建</btn_create>
+	<btn_signup>報名</btn_signup>
+	<evolutionBtn>突破</evolutionBtn>
+	<speek>發言</speek>
+	<btn_logout>登出</btn_logout>
+	
+	<!--text-->
+	<text_ago>前</text_ago>
+	<text_strengthenLevel>級别</text_strengthenLevel>
+	
+	<text_tips>強化裝備、提供武將血量、攻、防</text_tips>
+	<text_titleBattleArray>武將陣容</text_titleBattleArray>
+	<text_titleHeroDetail>武將資訊</text_titleHeroDetail>
+	<text_myHeros>我的武將：</text_myHeros>
+	<text_myBattleArray>我的陣容：</text_myBattleArray>
+	<text_restOfHeros>未上陣武將：</text_restOfHeros>
+	<text_moveExpHeros>可傳授武將：</text_moveExpHeros>
+	<text_noHero>沒有可以上陣的武將</text_noHero>
+	<p_info_worth>戰力:</p_info_worth>
+	<p_info_level>等級:</p_info_level>
+	<p_info_exp>经验:</p_info_exp>
+	<text_level>等級</text_level>
+	<text_or>或</text_or>
+	<text_n>次</text_n>
+	<title_getHero>獲得武將</title_getHero>
+	<title_atlas>圖鑒</title_atlas>
+	<title_MoveExpSuccess>傳授成功</title_MoveExpSuccess>
+	<title_previewGoods>商品預覽</title_previewGoods>
+	<p_info_coin>銀兩</p_info_coin>
+	<p_info_cash>元寶</p_info_cash>
+	
+	<!--武功系统-->
+	<text_skillHurtAdd>威</text_skillHurtAdd>
+	<text_skillAtkAdd>武</text_skillAtkAdd>
+	<text_skillDefAdd>統</text_skillDefAdd>
+	<text_skillWitAdd>智</text_skillWitAdd>
+	<text_skillHpAdd>兵</text_skillHpAdd>
+	<text_singleFight>單體攻擊</text_singleFight>
+	<text_groupFight>群體攻擊</text_groupFight>
+	<text_force>武力</text_force>
+	<text_force2>武力：</text_force2>
+	<text_defense>統帥</text_defense>
+	<text_defense2>統帥：</text_defense2>
+	<text_hp>兵力</text_hp>
+	<text_hp2>兵力：</text_hp2>
+	<text_wit>智力</text_wit>
+	<text_wit2>智力：</text_wit2>
+	<text_ptt>潛力：</text_ptt>
+	<text_onwer>裝備於</text_onwer>
+	
+	<!--装备系统-->
+	<text_quality>品質</text_quality>
+	<text_zero>零</text_zero>
+	<text_one>一</text_one>
+	<text_two>二</text_two>
+	<text_three>三</text_three>
+	<text_four>四</text_four>
+	<text_five>五</text_five>
+	<text_six>六</text_six>
+	<text_seven>七</text_seven>
+	<text_eight>八</text_eight>
+	<text_nine>九</text_nine>
+	<text_ten>十</text_ten>
+	<text_eleven>十一</text_eleven>
+	<text_twelve>十二</text_twelve>
+	<text_thirteen>十三</text_thirteen>
+	<text_fourteen>十四</text_fourteen>
+	<text_fifteen>十五</text_fifteen>
+	<text_sixteen>十六</text_sixteen>
+	<text_seventeen>十七</text_seventeen>
+	<text_eighteen>十八</text_eighteen>
+	<text_mineteen>十九</text_mineteen>
+	<text_twenty>二十</text_twenty>
+	<text_confirmSell>確認售出3星以上的裝備嗎？</text_confirmSell>
+	<text_confirmBreak>確認分解3星以上的裝備嗎？?</text_confirmBreak>
+	
+	
+	<!--title-->
+	<title_descriptTitle>簡介：</title_descriptTitle>
+	<!--阵型界面-->
+	<formations_info>通過消耗武將或魂魄提升陣型等級</formations_info>
+	<formations_current>當前：</formations_current>
+	<formations_afterLevelUp>升級後：</formations_afterLevelUp>
+	<formations_addExp>可增加陣型經驗：</formations_addExp>
+	<formations_level_up_success>陣型升級成功</formations_level_up_success>
+	<formations_put_hero_or_soul>請放入武將或魂魄</formations_put_hero_or_soul>
+	<formations_consume_good_tip>主公，您將消耗四星以上的武將或魂魄，確定要升級嗎</formations_consume_good_tip>
+	<!--图鉴界面-->
+	<atlas_typeHero>將領圖鑒</atlas_typeHero>
+	<atlas_typeEQ>裝備圖鑒</atlas_typeEQ>
+	<atlas_typeSkill>戰法圖鑒</atlas_typeSkill>
+	<atlas_progress>完成度：</atlas_progress>
+	<!--郵件界面-->
+	<email_disagreed>已拒絕對方的結交請求</email_disagreed>
+	<email_agreed>已同意對方的結交請求</email_agreed>
+	<email_my_friends_full>主公您的好友已滿</email_my_friends_full>
+	<email_target_friends_full>對方好友已滿</email_target_friends_full>
+	<email_sent>發送郵件成功</email_sent>
+	<!--恩怨界面-->
+	<relations_search_fail>沒有符合條件的玩家</relations_search_fail>
+	<relations_invited>已發出邀請</relations_invited>
+	<relations_deleted>已成功刪除該好友</relations_deleted>
+	<relations_del_confirm>確定要刪除好友嗎？</relations_del_confirm>
+	
+	<relations_btnAddFriend>加好友</relations_btnAddFriend>
+	<btnMail>郵件</btnMail>
+	<btnPK>切磋</btnPK>
+	<btnBattleArray>陣容</btnBattleArray>
+	<btnDel>刪除</btnDel>
+	
+	<!--聊天界面-->
+	<chat_consume>消耗：</chat_consume>
+	<chat_input_none>請輸入內容！</chat_input_none>
+	<chat_fast>主公，您發言速度太快了，請稍等片刻</chat_fast>
+	<chat_no_item_or_cash>主公，您的千里傳音或元寶不足</chat_no_item_or_cash>
+	<!-- 武將列表 -->
+	<hero_list_on_battle>已上陣</hero_list_on_battle>
+	<hero_list_evolution>可突破</hero_list_evolution>
+	<!-- 武將阵容 -->
+	<hero_battle_array_unlock>需要達到####才能解鎖</hero_battle_array_unlock>
+	<!-- 武將信息 -->
+	<heroInfo_initialSkill>天賦戰法</heroInfo_initialSkill>
+	<heroInfo_skill>戰法</heroInfo_skill>
+	<heroInfo_weapon>武器</heroInfo_weapon>
+	<heroInfo_armor>防具</heroInfo_armor>
+	<heroInfo_horse>坐騎</heroInfo_horse>
+	<hero_info_level_max>武將等級已達上限！</hero_info_level_max>
+	<!-- 传授 -->
+	<trans_exp_no_hero>請選擇一名武將進行傳授</trans_exp_no_hero>
+	<trans_exp_no_type>請選擇傳授類型</trans_exp_no_type>
+	<!-- 創建角色界面 -->
+	<error_chinese_name>主公，名字必須是中文的!</error_chinese_name>
+	<error_2_words>主公，名字起碼要兩個字!</error_2_words>
+	<error_5_words>主公，名字最多5個字!</error_5_words>
+	<error_illegal_words>主公，名字中包含敏感字!</error_illegal_words>
+	<error_exist>主公，這個名字已經有人用了!</error_exist>
+	<!-- 集市界面 -->
+	<market_topUp>儲值</market_topUp>
+	<market_rest>剩餘：</market_rest>
+	<market_price>價格：</market_price>
+	<market_restTime>還有####下架</market_restTime>
+	<market_stopSale>已下架</market_stopSale>
+	<!-- 招募界面 -->
+	<recruit_qualityTitle>可招募武將品質</recruit_qualityTitle>
+	<recruit_noFree>免費次數已用完</recruit_noFree>
+	<recruit_inCD>後免費</recruit_inCD>
+	<recruit_restOfFress>今日####次免費機會</recruit_restOfFress>
+	<recruit_recruitComplete>恭喜主公得到####，讓主公如虎添翼</recruit_recruitComplete>
+	<!-- 商城列表界面 -->
+	<market_btnBuy>購買</market_btnBuy>
+	<market_buySuccess>成功購買</market_buySuccess>
+	<market_previewInfo>禮包包含以下物品：</market_previewInfo>
+	<!--傳授界面-->
+	<moveExp_title>把某武將的經驗傳授給另一武將，使其快速升級</moveExp_title>
+	<moveExp_choose>選擇傳授者</moveExp_choose>
+	<moveExp_consume>武將傳授後會消失</moveExp_consume>
+	<moveExp_moveNormal>普通傳授</moveExp_moveNormal>
+	<moveExp_moveMax>傾囊相授</moveExp_moveMax>
+	<moveExp_passOnExpTitle>傳授經驗：</moveExp_passOnExpTitle>
+	<moveExp_levelUpTitle>等級提升：</moveExp_levelUpTitle>
+	<!--培養界面-->
+	<train_no_item>主公，您沒有足夠的培養丹！</train_no_item>
+	<train_select_type>主公，請選擇培養類型！</train_select_type>
+	<train_set_info>每次用5顆培養丹調整弟子屬性，還能把潛力變成屬性。</train_set_info>
+	<train_result_info>培養後的新屬性需要接受後才能生效</train_result_info>
+	<train_set_way>培養方式</train_set_way>
+	<train_btnAgree>接受</train_btnAgree>
+	<train_btnCancel>放棄</train_btnCancel>
+	<train_oldAttribute>舊屬性</train_oldAttribute>
+	<train_newAttribute>新屬性</train_newAttribute>
+	<!--竞技界面-->
+	<pvp_pvpTitle>戰勝所有對手成為競技之王！排名越高獎勵越豐厚！</pvp_pvpTitle>
+	<pvp_pvpInfo1>保持此排名</pvp_pvpInfo1>
+	<pvp_pvpInfo2>分鐘</pvp_pvpInfo2>
+	<pvp_pvpInfo3>可獲得榮譽</pvp_pvpInfo3>
+	<pvp_fightTipInfo1>您今天競技挑戰已經達到次數上限，是否需要消耗</pvp_fightTipInfo1>
+	<pvp_fightTipInfo2>或者花費</pvp_fightTipInfo2>
+	<pvp_fightTipInfo3>元寶恢復挑戰次數？</pvp_fightTipInfo3>
+	<pvp_pvpCurrentRank>當前排名：</pvp_pvpCurrentRank>
+	<pvp_pvpFightNum>今日剩餘挑戰次數：</pvp_pvpFightNum>
+	<pvp_rewardCurrentHonor>當前榮譽：</pvp_rewardCurrentHonor>
+	<pvp_rewardHonorCost>消耗榮譽：</pvp_rewardHonorCost>
+	<pvp_rewardBestRank>達到排名：</pvp_rewardBestRank>
+	<pvp_btnFight>挑戰</pvp_btnFight>
+	<pvp_btnRevenge>反擊</pvp_btnRevenge>
+	<pvp_btnRefresh>刷新</pvp_btnRefresh>
+	<pvp_btnView>陣容</pvp_btnView>
+	<pvp_btnGet>領取</pvp_btnGet>
+	<!--EquipmentInfoPanel装备信息界面-->
+	<text_forgeLevel>階</text_forgeLevel>
+	
+	<!--背包界面-->
+	 <!--4.消耗品 8.宝箱 9.材料-->
+	<text_canNotUseReason1>需要到####等級，才能使用。</text_canNotUseReason1>
+	<text_canNotUseReason2>需要到vip####等級，才能使用。</text_canNotUseReason2>
+	<text_canNotUseReason3>需要配合####才能使用。</text_canNotUseReason3>
+	<text_use_item_tips1>恢復了####體力</text_use_item_tips1>
+	<text_use_item_tips2>恢復了####精力</text_use_item_tips2>
+	<text_use_item_tips3>增加了####元寶</text_use_item_tips3>
+	<text_use_item_tips4>增加了####銀兩</text_use_item_tips4>
+	<text_use_item_tips7>所有上陣武將經驗增加####</text_use_item_tips7>
+	<useBtn>使用</useBtn>
+	
+	<!--装备列表-->
+	<text_equipmentLevelMax>主公，該裝備等級已達到上限</text_equipmentLevelMax>
+	<text_equipmentforgeLevelMax>主公，該裝備已精煉到上限</text_equipmentforgeLevelMax>
+	<text_sellSuccessTips>售出成功，獲得####銀兩</text_sellSuccessTips>
+	<sellBtn>售出</sellBtn>
+	<strengthenBtn>強化</strengthenBtn>
+	<refineBtn>精煉</refineBtn>
+	<changeBtn>更換</changeBtn>
+	<unloadBtn>卸下</unloadBtn>
+	<backBtn>返回</backBtn>
+	<exchangeCountNotEnough>####數量不足</exchangeCountNotEnough>
+	
+	<!--武功列表-->
+	<text_skillLevelMax>主公，該戰法等級已達到上限</text_skillLevelMax>
+	<text_need_skill>還需</text_need_skill>
+	<text_can_composite>可合成</text_can_composite>
+	<researchBtn>參悟</researchBtn>
+	<compositeBtn>合成</compositeBtn>
+	<fightBtn>爭奪</fightBtn>
+	
+	
+	<!--参悟界面-->
+	<text_canConsumeSkill>一次最多只能選擇五個戰法</text_canConsumeSkill>
+	<text_canAddExp>可增加戰法經驗：</text_canAddExp>
+	<text_researchSuccess>參悟成功</text_researchSuccess>
+	<text_levelStr>級</text_levelStr>
+	<text_levelFull>(已滿級)</text_levelFull>
+	<text_addSkillTips>請先添加戰法</text_addSkillTips>
+	<text_noMoreSkillTips>沒有更多的1-2星戰法可添加</text_noMoreSkillTips>
+	
+	<!--装备强化-->
+	<text_levelUpPreview>升級預覽</text_levelUpPreview>
+	<text_strengthenSuccess>強化成功</text_strengthenSuccess>
+	<text_strengthenCrit>強化暴擊</text_strengthenCrit>
+	<text_price>價格：</text_price>
+	<text_coinNotEnough>銀兩不足</text_coinNotEnough>
+	<text_strengthenLevelAdd>裝備等級加####</text_strengthenLevelAdd>
+	
+	<!--装备精炼-->
+	<text_canAddEquipmentExp>可增加裝備經驗：</text_canAddEquipmentExp>
+	<text_canRefineEquipmentExpTips>道具品質必須大於三星</text_canRefineEquipmentExpTips>
+	<text_addForgeTips>請先添加精煉材料</text_addForgeTips>
+	<forgeBtn>精煉</forgeBtn>
+	
+	<!--合成界面-->
+	<text_fightWinTips>主公，恭喜您搶到了：</text_fightWinTips>
+	<text_fightWinNotSeizeTips>主公，雖然您戰勝了對手，但遺憾沒有搶到任何東西。</text_fightWinNotSeizeTips>
+	<text_fightFailTips>主公，您戰敗了，沒有搶到任何東西。</text_fightFailTips>
+	<text_composite_count>還需####可合成</text_composite_count>
+	<text_evolution_count>還需####可突破</text_evolution_count>
+	<text_residual_chapter_tips>針對同一個玩家，同一種殘章每天只能搶奪一次。</text_residual_chapter_tips>
+	<text_residual_win_not_seize_tips>繼續搶奪</text_residual_win_not_seize_tips>
+	
+	<changeEqualBtn>換一批對手</changeEqualBtn>
+	<goOnBtn>繼續爭奪</goOnBtn>
+	
+	<!--战斗结算界面-->
+	<text_watchTeam>查看陣容</text_watchTeam>
+	<text_replay>重播</text_replay>
+	<failed_1>首輪落敗</failed_1>
+	<failed_2>次輪落敗</failed_2>
+	<failed_3>混戰落敗</failed_3>
+	
+	<!--战魂界面-->
+	<text_need>所需:</text_need>
+	<text_addSoul>添加戰魂</text_addSoul>
+	<text_wakenCoinNotEnough>覺醒所需銀兩不足</text_wakenCoinNotEnough>
+	<text_soulNotEnough>兌換所需的元神不足</text_soulNotEnough>
+	<text_breakSoulTips>分解戰魂將使當前戰魂消失，同時能獲得元神####個。是否確定要分解？</text_breakSoulTips>
+    <text_breakSoulTips2>裝備在武將身上的戰魂不能分解。</text_breakSoulTips2>
+	<text_canAddSoulExp>可增加戰魂經驗：</text_canAddSoulExp>
+	<text_soulBlockTips>武將####級解鎖</text_soulBlockTips>
+	<text_cancelAutoWakeSoul>取消覺醒</text_cancelAutoWakeSoul>
+	<text_soulLevelMax>主公，該戰魂等級已達到上限</text_soulLevelMax>
+	<text_addSoulTips>請先添加戰魂</text_addSoulTips>
+	<text_noMoreSoulTips>沒有更多1-2星戰魂可添加</text_noMoreSoulTips>
+	<text_soullevelUpTips>材料中有3星或以上品質的戰魂，確定消耗？</text_soullevelUpTips>
+	<text_fight_soul_noneProp>無屬性</text_fight_soul_noneProp>
+	<text_fight_soul_hpProp>兵力</text_fight_soul_hpProp>
+	<text_fight_soul_atkProp>攻擊</text_fight_soul_atkProp>
+	<text_fight_soul_defenseProp>統率</text_fight_soul_defenseProp>
+	<text_fight_soul_witProp>智力</text_fight_soul_witProp>
+	<text_fight_soul_missProp>躲閃</text_fight_soul_missProp>
+	<text_fight_soul_hitProp>命中</text_fight_soul_hitProp>
+	<text_fight_soul_critProp>爆擊</text_fight_soul_critProp>
+	<text_fight_soul_toughnessProp>韌性</text_fight_soul_toughnessProp>
+	<text_fight_soul_blockProp>格擋</text_fight_soul_blockProp>
+	<text_fight_soul_brokenProp>破招</text_fight_soul_brokenProp>
+	<eatBtn>一鍵吞噬</eatBtn>
+	<eatWhiteBtn>一鍵吞噬白色戰魂</eatWhiteBtn>
+	<eatGreenBtn>一鍵吞噬綠色戰魂</eatGreenBtn>
+	<eatGreenTips>沒有綠色戰魂可吞噬</eatGreenTips>
+	<eatWhiteTips>沒有白色戰魂可吞噬</eatWhiteTips>
+	<eatTips>没有1-2星的戰魂可吞噬</eatTips>
+	<text_confirmEatWhite>確定要吞噬所有白色戰魂嗎？</text_confirmEatWhite>
+	<text_confirmEatGreen>確定要吞噬所有綠色戰魂嗎？</text_confirmEatGreen>
+	<eatCdTips>慢一點，點太快屏幕會爆哦！</eatCdTips>
+	<eatTipsTxt>隨機吞吃20個1-2星戰魂</eatTipsTxt>
+	
+	<gotoHeroSoulBtn>武將戰魂</gotoHeroSoulBtn>
+	<autoWakeSoulBtn>覺醒百次</autoWakeSoulBtn>
+	<wakeSoulBtn>覺醒</wakeSoulBtn>
+	<cashWakeSoulBtn>元寶覺醒</cashWakeSoulBtn>
+	<addSoulBtn>添加覺醒</addSoulBtn>
+	<autoAddSoulBtn>自動添加</autoAddSoulBtn>
+	<exChangeBtn>兌換</exChangeBtn>
+	<breakBtn>分解</breakBtn>
+	<cancelAutoWakeSoulBtn>取消覺醒</cancelAutoWakeSoulBtn>
+	<startFightBtn>開始戰鬥</startFightBtn>
+	<rebirthBtn>雙倍武力</rebirthBtn>
+	<revivalBtn>立即復活</revivalBtn>
+	<wakeSoulTips>您的戰魂過多，請處理後再來覺醒吧！</wakeSoulTips>
+	
+	<!--闖关界面-->
+	<alert_reset_times>您今天已經達到挑戰次數上限，是否花費####元寶把次數重置？</alert_reset_times>
+	<alert_lack_hero>主公,我軍尚有空位可以上陣武將,請主公調兵遣將後再來挑戰吧。</alert_lack_hero>
+	<!--用餐-->
+	<eat_tip>沒到用餐時間或已經用過餐了</eat_tip>
+	<eat_get_hp>獲得####點體力</eat_get_hp>
+	<eat_am>正午</eat_am>
+	<eat_pm>黃昏</eat_pm>
+	<eat_clock>點</eat_clock>
+	<activity_btnEat>飽餐一頓</activity_btnEat>
+	
+	<!--成就-->
+	<text_momentum>氣勢：</text_momentum>
+	<text_upLevelConditionTitle>升級條件：</text_upLevelConditionTitle>
+	<text_getConditionTitle>獲得條件：</text_getConditionTitle>
+	<text_upLevelConditionMomentum>升級後氣勢：</text_upLevelConditionMomentum>
+	
+	<!--參拜-->
+	<text_hasVisitTips>今天已經參拜過了，等明天再來吧。</text_hasVisitTips>
+	<text_isVisitTips>連續參拜關公會獲得寶物哦。</text_isVisitTips>
+	
+	<visitBtn>參拜</visitBtn>
+	
+	<!--领奖-->
+	<text_progressTxt>進度：</text_progressTxt>
+	<text_notReswardTips>條件還未到達</text_notReswardTips>
+	<text_getReswardTips>恭喜你領取獎勵</text_getReswardTips>
+	
+	<!--大赏天下-->
+	<goldenNotEnoughTips>元寶數量不足，無法抽獎。</goldenNotEnoughTips>
+	<goldenIsFullTips>賞賜次數已滿。</goldenIsFullTips>
+	
+	<!--招财进宝-->
+	<getBtn>招財</getBtn>
+	<getMoneyTimsLimit>招財次數已用完，請明日再來。</getMoneyTimsLimit>
+	<critGetMoneyTips>暴擊，獲得####銀兩！</critGetMoneyTips>
+	<getMoneyTips>獲得####銀兩！</getMoneyTips>
+	<getMoneyTips2>暴擊將獲得雙倍銀兩獎勵！\n主公等級越高，招財所得銀兩越多。</getMoneyTips2>
+    
+    
+    <!--扭蛋-->
+	<getGatshaBtn>扭轉</getGatshaBtn>
+    <gatshaTips>大獎抽中後所有獎品重置</gatshaTips>
+    <gatshaTips2>剩餘數量越低,抽中大獎概率越高</gatshaTips2>
+    
+    <!--拜访土豪-->
+	<visitTyrantBtn>拜訪</visitTyrantBtn>
+    <visitTyrantTimesLimit>今天的拜訪次數已用完，明天再來哦！</visitTyrantTimesLimit>
+    
+    <!--万圣节活动-->
+    <halloweenBuyBtn>快速購買</halloweenBuyBtn>
+	
+	<!--签到领奖-->
+	<clickGetRewardTips>（點擊領取）</clickGetRewardTips>
+	<notClickGetRewardTips>（不可領取）</notClickGetRewardTips>
+	<progressTxtTips>進度</progressTxtTips>
+    
+    <!--月卡活動-->
+    <monthCardTips>月卡剩餘時間：  天  小時  分</monthCardTips>
+    <monthCardTips2>只有VIP5及以上玩家才能購買哦！</monthCardTips2>
+    <monthCardTips3>您的月卡尚未到期，請到期後再購買！</monthCardTips3>
+    <monthCardVipTips>VIP####及以上玩家可購買</monthCardVipTips>
+    
+    <!--累計充值返利-->
+    <AddUpRechargeRewardTips>獎勵以郵件形式發送</AddUpRechargeRewardTips>
+    <rechargeTipsTxt>您已累計儲值：    元</rechargeTipsTxt>
+    
+    <!--累計消費返利-->
+    <AddUpConsumeTips>您已累計消費：    元寶</AddUpConsumeTips>
+    
+    
+    <!--每日充值返利-->
+    <everyDayRechargeTipsTxt>上述返利每檔每日限領一次，次日重置</everyDayRechargeTipsTxt>
+    
+    <!--人品活動-->
+    <competitionBtn>比拚</competitionBtn>
+	
+    <!--神秘商店-->
+    <secretShopTips>後刷新</secretShopTips>
+    
+    <!--比大小-->
+    <dubleBtn>翻倍加注</dubleBtn>
+    <bigBtn>押大</bigBtn>
+    <smallBtn>押小</smallBtn>
+    <consumeText>消耗</consumeText>
+    <recordBtn>記錄</recordBtn>
+    <gambleTips>系統開出####，</gambleTips>
+    <gambleWinTips>系統開出[{0}]點{1},恭喜主公押中！</gambleWinTips>
+    <gambleFailTips>系統開出[{0}]點{1},主公未押中。</gambleFailTips>
+    <gamblePowerTips>恭喜主公開出豹子,獲得巨額獎勵！</gamblePowerTips>
+    <gambleHistoryWinTips>您押[{0}],開出{1}點,勝出！</gambleHistoryWinTips>
+    <gambleHistoryFailTips>您押[{0}],開出{1}點,失敗！</gambleHistoryFailTips>
+    <gambleHistoryPowerTips>您押[{0}],開出豹子,贏得巨額獎勵！</gambleHistoryPowerTips>
+    <gambleHistory>押注記錄</gambleHistory>
+    <big>大</big>
+    <small>小</small>
+    <addBetLimit>已達上限，不能翻倍了哦！</addBetLimit>
+    <winWillGet>押中將獲得：</winWillGet>
+    <failWillLose>未押中將扣除：</failWillLose>
+    <powerWillGet>開出豹子將獲得：</powerWillGet>
+    <tenThousand>萬</tenThousand>
+    
+	<!--试炼-->
+	<text_unRank>未進榜</text_unRank>
+	<text_trialFull>今日試煉次數已滿</text_trialFull>
+	<text_starNumNoEnough>剩餘的星數不夠</text_starNumNoEnough>
+	<text_layer>第####層</text_layer>
+	
+	<trialRankBtn>查看排行</trialRankBtn>
+	<intoTrialBtn>進入试炼</intoTrialBtn>
+	<startChallengeBtn>开始挑戰</startChallengeBtn>
+	<trialGetRewardBtn>領取獎勵</trialGetRewardBtn>
+	<challengeBtn>挑戰</challengeBtn>
+	<selectedBtn>選擇</selectedBtn>
+	<rankBeelzebubBtn>上次戰況</rankBeelzebubBtn>
+	<rewardRankBeelzebubBtn>獎品一覽</rewardRankBeelzebubBtn>
+	<intoBeelzebubBtn>進入挑戰</intoBeelzebubBtn>
+	<text_layer>第####層</text_layer>
+    <layerDesTxt>層数</layerDesTxt>
+	<starDesTxt>得星</starDesTxt>
+	
+	<!--恢复-->
+	<recover_max>主公，不能再恢復了!</recover_max>
+	
+	<!-- 设置界面 -->
+	<music_switch>音樂</music_switch>
+	<sound_switch>音效</sound_switch>
+	<notice_board>公告板</notice_board>
+	<strategy>攻略</strategy>
+	<faq>常見問題</faq>
+	<cdkey_bonus>啟動碼領獎</cdkey_bonus>
+	<enter_community>進入社區</enter_community>
+	<enter_ofc_web>進入官網</enter_ofc_web>
+	<enter_pp_center>PP中心</enter_pp_center>
+	<enter_bbs>進入論壇</enter_bbs>
+	<feedback>用戶回饋</feedback>
+	<no_bulletin>沒有公告</no_bulletin>
+	<cdkey_used>啟動碼已被使用</cdkey_used>
+	<cdkey_inexisted>啟動碼不存在</cdkey_inexisted>
+	<cdkey_get_bonus>領取成功</cdkey_get_bonus>
+	<beanfun>beanfun!活動</beanfun>
+	<shareBtn>分享</shareBtn>
+	
+	<!--战斗界面-->
+	<unskipable>主公，您必須先闖過本關！</unskipable>
+	
+	<!--开场-->
+	<camp1>孫劉聯軍</camp1>
+	<camp2>曹操軍</camp2>
+	
+	<!--选区-->
+	<selectServer>點擊選區</selectServer>
+	<server_state_0>維護</server_state_0>
+	<server_state_1>流暢</server_state_1>
+	<server_state_2>火爆</server_state_2>
+	<server_state_3>新區</server_state_3>
+	
+	<!--回饋-->
+	<feedBack_tips>發送成功，感謝您的回饋！</feedBack_tips>
+	<commitBtn>提交</commitBtn>
+	
+	<!--魔王界面视图-->
+	<beelzebub_timeOut_tips>魔王現世已經結束。</beelzebub_timeOut_tips>
+	<beelzebub_specialTxt>特別獎勵：</beelzebub_specialTxt>
+	<beelzebub_countsTxt>數量</beelzebub_countsTxt>
+	<beelzebub_goodsTxt>培養丹</beelzebub_goodsTxt>
+	
+	<!-- 联盟 -->
+	<union_effect_tips>增加出戰武將的</union_effect_tips>
+	<union_block_tips>尚未解鎖，請升級聯盟至####級。</union_block_tips>
+	<union_5_words>聯盟名稱最多五個中文字喔！</union_5_words>
+	<union_chinese_name>聯盟名稱只能是中文字喔！</union_chinese_name>
+	<union_illegal_words>聯盟名稱含有禁用字喔，換個名稱吧。</union_illegal_words>
+	<union_fire_confirm>確定要開除這個成員嗎?</union_fire_confirm>
+	<union_apply>您已提交申請</union_apply>
+	<union_text_contribution>總貢獻</union_text_contribution>
+	<union_lack_coin>主公的銀兩不足，無法捐贈喔。</union_lack_coin>
+	<union_lack_cash>主公的元寶不足哦，請去儲值。</union_lack_cash>
+	<union_lack_money>主公您的軍資不足哦。</union_lack_money>
+	<union_magic_level_up_tips>奇術####成功升至</union_magic_level_up_tips>
+	<union_donate_success_tips>捐贈軍資成功</union_donate_success_tips>
+	<union_error_tips>幫會還未創建無法捐獻!</union_error_tips>
+	<union_donate_limit_tips>幫會每天只能捐獻一次</union_donate_limit_tips>
+	<union_donate_history_tips>捐贈</union_donate_history_tips>
+	<union_donate_exp_tips>繁榮</union_donate_exp_tips>
+	<union_donate_money_tips>軍資</union_donate_money_tips>
+	<union_donate_donation_tips>貢獻</union_donate_donation_tips>
+	<union_money_type1>初級軍資</union_money_type1>
+	<union_money_type2>中級軍資</union_money_type2>
+	<union_money_type3>高級軍資</union_money_type3>
+	<union_member_full>成員已滿</union_member_full>
+	<union_has_member>對方已有幫會</union_has_member>
+	<union_notice_40_words>最多只能輸入40個中文字喔!</union_notice_40_words>
+	<union_no_name>請為聯盟起個名字</union_no_name>
+	<union_confirm_exit>主公真的要退出聯盟嗎?您以前付出的心血會成過眼雲煙哦!</union_confirm_exit>
+	<union_exit>您已退出當前聯盟。</union_exit>
+	<union_purview_tips>只有幫主和副幫主才能開除</union_purview_tips>
+	<union_magic_purview_tips>只有幫主才能升級</union_magic_purview_tips>
+	<union_apply_approve>恭喜,您的申請已被對方批准。</union_apply_approve>
+	<union_alert_disband>主公可是盟主啊!您退出會解散聯盟的,請三思!</union_alert_disband>
+	<union_disband>您的幫會已解散!</union_disband>
+	
+	<btn_union_create>創建联盟</btn_union_create>
+	<btn_union_join>加入联盟</btn_union_join>
+	<btn_union_normal_create>银两創建</btn_union_normal_create>
+	<union_btn_accept>同意</union_btn_accept>
+	<union_btn_reject>拒絕</union_btn_reject>
+	<union_btn_view>查看</union_btn_view>
+	<union_btn_manage>操作</union_btn_manage>
+	<unionViewBtn>查看陣容</unionViewBtn>
+	<addFrdBtn>添加好友</addFrdBtn>
+    <addFrdBtnTips>你們已經是好友了！</addFrdBtnTips>
+	<fireBtn>開除</fireBtn>
+	<applicationBtn>申请</applicationBtn>
+    <post1>盟主</post1>
+	<post2>副盟主</post2>
+    <memberUp>升職</memberUp>
+	<memberDown>降職</memberDown>
+	<memberUpTips>您成功任命其為####！</memberUpTips>
+	<memberDownTips>您成功罷免其####職位。</memberDownTips>
+    <memberUpTips2>主主公，您確定要將####升為副盟主嗎。</memberUpTips2>
+	<memberDownTips2>主公，您確定要將####降職為普通成員嗎。</memberDownTips2>
+	<!-- 官网账号系统 -->
+	<error_201>帳號已存在</error_201>
+	<error_202>註冊失敗</error_202>
+	<error_203>帳號必須由4位元以上字母或數位組成</error_203>
+	<error_204>密碼需由6-20位元數位或字母組成</error_204>
+	<error_205>帳號未註冊</error_205>
+	<error_206>登入失敗</error_206>
+	<error_207>登入帳號不存在</error_207>
+	<error_208>密碼錯誤</error_208>
+	<error_209>綁定帳號失敗</error_209>
+	<error_210>APP ID錯誤</error_210>
+	<error_211>SID錯誤</error_211>
+	<error_212>MAC位址錯誤</error_212>
+	<error_213>找回密碼失敗</error_213>
+	<error_300>sig校驗失敗</error_300>
+	<error_301>該設備已綁定過其它帳號</error_301>
+	<error_302>您沒有帳號需要綁定</error_302>
+	<error_diff_psd>兩次輸入的密碼不一致</error_diff_psd>
+	<register_done>註冊成功</register_done>
+	<bind_done>綁定成功</bind_done>
+	<bind_alert>您有快速開始的帳號未綁定,建議您先綁定此帳號,若繼續註冊,將可能無法找回快速登錄帳號，您確定要繼續註冊嗎？</bind_alert>
+	
+	<!-- 其他 -->
+	<alert_hp_item>主公,您的體力不足,吃個烤豬腿就能快速恢復體力哦!</alert_hp_item>
+	<alert_mp_item>主公,您的精力不足,吃個叉燒包就能快速恢復體力哦!</alert_mp_item>
+</language>

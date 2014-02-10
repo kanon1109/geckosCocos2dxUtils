@@ -4,6 +4,7 @@
 #include "utils/Random.h"
 #include "utils/StringUtil.h"
 #include "utils/TimeFormat.h"
+#include "utils/Language.h"
 #include <iostream>
 #include <string>
 #include <vector>
@@ -40,15 +41,6 @@ bool Test::init()
 	StringUtil::cutOff(&str, 1, 1);
 	CCLOG("cutOff= %s", str.c_str());
 
-	/*EnterFrame::init(this);
-	EnterFrame::push(callfunc_selector(Test::runFun));
-	EnterFrame::push(callfunc_selector(Test::runFun2));
-	EnterFrame::push(callfunc_selector(Test::runFun));
-
-	EnterFrame::pop(callfunc_selector(Test::runFun2));
-	EnterFrame::pop(callfunc_selector(Test::runFun));
-	EnterFrame::push(callfunc_selector(Test::runFun));*/
-
 	string email = "kanontang@gmail.com";
 	StringUtil::trim(&email);
 	CCLOG("email= %s", email.c_str());
@@ -57,7 +49,7 @@ bool Test::init()
 	//CCLOG("bool", StringUtil::isEmail(&email));
 	//CCLOG("email= %s", email.c_str());
 	vector<string> v;
-	StringUtil::split(v, "00:60:00", ':');
+	StringUtil::split(v, "00:06:11", ":");
 	for (unsigned int i = 0; i < v.size(); i++)
 	{
 		CCLOG("v[i]%s", v[i].c_str());
@@ -69,6 +61,25 @@ bool Test::init()
 
 	TimeFormat::timeToSecond(&time, "00:60:00");
 	CCLOG("timeToSecond= %s", time.c_str());
+
+	Language::init("language.xml");
+
+	v.clear();
+	v.push_back("3");
+	v.push_back("4");
+	v.push_back("5");
+	//恢复####点体力######## 恢复3点体力45
+	CCLOG("test= %s", Language::get("test", &v)->getCString());
+
+	/*EnterFrame::init(this);
+	EnterFrame::push(callfunc_selector(Test::runFun));
+	EnterFrame::push(callfunc_selector(Test::runFun2));
+	EnterFrame::push(callfunc_selector(Test::runFun));
+
+	EnterFrame::pop(callfunc_selector(Test::runFun2));
+	EnterFrame::pop(callfunc_selector(Test::runFun));
+	EnterFrame::push(callfunc_selector(Test::runFun));*/
+
 
 	TestChildScene* cs = TestChildScene::create();
 	this->addChild(cs);

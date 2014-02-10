@@ -86,7 +86,7 @@ public:
 	 * @param   str			´ý·Ö¸îµÄ×Ö·û´®
 	 * @param   delim		·Ö¸î·û
      */
-	static void split(vector<string> &result, string str, char delim);
+	static void split(vector<string> &result, string str, string delim);
 };
 
 #endif

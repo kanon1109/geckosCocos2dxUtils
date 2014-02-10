@@ -130,23 +130,19 @@ bool StringUtil::isEmail( string* email )
 	return false;
 }
 
-void StringUtil::split(vector<string> &result, string str, char delim )
+void StringUtil::split(vector<string> &result, string str, string delim )
 {
-	string tmp;
-	string::iterator i;
+	string cpStr = str;
 	result.clear();
-	//循环字符串当遇到 delim值相同则将tmp临时变量存入result，tmp清空。
-	for(i = str.begin(); i < str.end(); i++) 
+	size_t found = cpStr.find(delim);
+	//拷贝字符串 如果找到delim 进行迭代
+	while(found != string::npos)
 	{
-		if((const char)*i != delim)
-		{
-			tmp += *i;
-		}
-		else 
-		{
-			result.push_back(tmp);
-			tmp = "";
-		}
+		result.push_back(cpStr.substr(0, found));
+		//将查找到的 位置 + delim 前的字符串全部删除。
+		cpStr.replace(0, found + delim.length(), "");
+		//继续搜索 直到found = -1
+		found = cpStr.find(delim);
 	}
-	result.push_back(tmp);
+	result.push_back(cpStr);
 }

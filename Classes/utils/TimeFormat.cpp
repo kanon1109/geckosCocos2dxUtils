@@ -46,7 +46,7 @@ void TimeFormat::secondToTime(string* targetStr, int second /*= 0*/, string part
 void TimeFormat::timeToSecond( string* targetStr, string timeStr, string partition /*= ":"*/ )
 {
 	vector<string> v;
-	StringUtil::split(v, timeStr, *partition.c_str());
+	StringUtil::split(v, timeStr, partition);
 	int time = 0;
 	unsigned int size = v.size();
 	for (unsigned int i = 0; i < size; i++)
@@ -54,7 +54,7 @@ void TimeFormat::timeToSecond( string* targetStr, string timeStr, string partiti
 		string str = v[i];
 		//stringתint
 		int n = atoi(str.c_str());
-		time += n * pow(60, (size - 1 - i));
+		time += n * pow(60.0f, (int)(size - 1 - i));
 	}
 	sprintf((char* )targetStr->c_str(), "%d", time);
 }
