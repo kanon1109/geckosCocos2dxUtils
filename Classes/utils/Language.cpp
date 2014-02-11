@@ -23,6 +23,7 @@ void Language::init(string name)
 	if(!isInit)
 	{
 		dict = CCDictionary::create();
+		dict->retain();
 		doc = new tinyxml2::XMLDocument();
 		doc->LoadFile(name.c_str());
 		rootElement = doc->RootElement();
@@ -48,18 +49,14 @@ CCString* Language::get( string name, vector<string> *v/*=NULL*/ )
 		unsigned int size = tranVector.size();
 		unsigned int vsize = v->size();
 		if(vsize > size) vsize = size;
-		CCLOG("size = %i", size);
 		for (unsigned int i = 0; i < size; i++)
 		{
 			//被分割后字符串后的字典
 			string str = tranVector[i];
 			newStr += str;
-			CCLOG("str%s", str.c_str());
-			CCLOG("newStr%s", newStr.c_str());
 			//如果待替换字典长度小于当前索引
 			if(i < vsize)
 			{
-				CCLOG("v[i]%s", (*v)[i].c_str());
 				newStr += (*v)[i];
 			}
 		}

@@ -81,6 +81,7 @@ bool Test::init()
 	EnterFrame::pop(callfunc_selector(Test::runFun));
 	EnterFrame::push(callfunc_selector(Test::runFun));*/
 
+
 	FloatTips::init(this);
 
 	TestChildScene* cs = TestChildScene::create();
@@ -98,7 +99,12 @@ bool Test::ccTouchBegan(CCTouch* touch, CCEvent* event)
 	CCLOG("boolean=%i", Random::boolean(.2f));
 	EnterFrame::clear();
 
-	FloatTips::show("Test");
+	vector<string> v;
+	v.push_back("3");
+	v.push_back("4");
+	v.push_back("5");
+	
+	FloatTips::show(Language::get("test", &v)->getCString());
 
 	return true;
 }
