@@ -5,6 +5,7 @@
 #include "utils/StringUtil.h"
 #include "utils/TimeFormat.h"
 #include "utils/Language.h"
+#include "component/FloatTips.h"
 #include <iostream>
 #include <string>
 #include <vector>
@@ -80,6 +81,7 @@ bool Test::init()
 	EnterFrame::pop(callfunc_selector(Test::runFun));
 	EnterFrame::push(callfunc_selector(Test::runFun));*/
 
+	FloatTips::init(this);
 
 	TestChildScene* cs = TestChildScene::create();
 	this->addChild(cs);
@@ -95,6 +97,9 @@ bool Test::ccTouchBegan(CCTouch* touch, CCEvent* event)
 	CCLOG("randrange r =%i", Random::randrange(1, 10, 2));
 	CCLOG("boolean=%i", Random::boolean(.2f));
 	EnterFrame::clear();
+
+	FloatTips::show("Test");
+
 	return true;
 }
 
@@ -106,4 +111,9 @@ void Test::runFun()
 void Test::runFun2()
 {
 	CCLOG("run2");
+}
+
+void Test::onEnter()
+{
+	CCScene::onEnter();
 }

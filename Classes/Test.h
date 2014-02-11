@@ -7,6 +7,7 @@ public:
 	Test(void);
 	~Test(void);
 	virtual bool init();
+	virtual void onEnter();
 	virtual bool ccTouchBegan(CCTouch* touch, CCEvent* event);
 	void runFun();
 	void runFun2();

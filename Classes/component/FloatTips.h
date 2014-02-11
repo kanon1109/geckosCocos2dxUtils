@@ -3,6 +3,20 @@
 #define _FLOAT_TIPS_
 #include "cocos2d.h"
 USING_NS_CC;
+
+class FloatTip:public CCNodeRGBA
+{
+public:
+	FloatTip();
+	~FloatTip();
+	void setText(const char* str);
+private:
+	//背景图片
+	CCSprite* bg;
+	//文本框
+	CCLabelTTF* contentTf;
+};
+
 class FloatTips
 {
 public:
@@ -12,7 +26,7 @@ public:
 	/**
 	 * 初始化，设置父容器
 	 */
-	static void init(CCNode* parent);
+	static void init(CCNode* parent, CCPoint p=ccp(320, 760));
 
 	/**
 	 * 显示漂浮文字
@@ -25,18 +39,12 @@ public:
 	 */
 	static FloatTip* getAFloatTip();
 
-};
+	/**
+	 * 清空池
+	 */
+	static void clear();
 
-class FloatTip:public CCSprite
-{
-public:
-	FloatTip();
-	~FloatTip();
-	void setText(const char* str);
-private:
-	//背景图片
-	CCSprite* bg;
-	//文本框
-	CCLabelTTF* contentTf;
+	//动作结束后回调
+	void actionCompleteCallBackFunc(CCNode* ft);
 };
 #endif
