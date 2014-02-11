@@ -23,10 +23,10 @@ void FloatTips::show(const char* content)
 FloatTip* FloatTips::getAFloatTip()
 {
 	FloatTip* ft;
-	CCLOG("池的大小%i", ftPool->count());
+	//CCLOG("池的大小%i", ftPool->count());
 	if(ftPool->count() == 0)
 	{
-		CCLOG("new");
+		//CCLOG("new");
 		//如果池中没有对象则新建对象
 		ft = new FloatTip();
 		//父sprite执行颜色变化的时候，子sprite也可以执行到这个变化
@@ -34,7 +34,7 @@ FloatTip* FloatTips::getAFloatTip()
 	}
 	else
 	{
-		CCLOG("pool");
+		//CCLOG("pool");
 		ft = (FloatTip *)ftPool->lastObject();
 		//设置透明度
 		ft->setOpacity(0xFF);

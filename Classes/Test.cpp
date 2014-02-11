@@ -11,6 +11,8 @@
 #include <vector>
 #include <iterator>   
 #include <algorithm>  
+#include "cocos-ext.h"
+using namespace extension;
 using namespace std;
 using std::vector;
 Test::Test(void)
@@ -81,6 +83,15 @@ bool Test::init()
 	EnterFrame::pop(callfunc_selector(Test::runFun));
 	EnterFrame::push(callfunc_selector(Test::runFun));*/
 
+
+	CCScale9Sprite *psc9Selected = CCScale9Sprite::create("ftips_bg.png");  
+	CCLabelTTF *label = CCLabelTTF::create("My Button", "Arial", 30);
+	CCControlButton * button = CCControlButton ::create(label, psc9Selected);
+	/* 强制设置按钮大小,如果按钮标题大小超过这个范围，则会自动扩大 */  
+	button->setPreferredSize(CCSize(300, 50)); 
+	this->addChild(button);
+
+	button->setPosition(ccp(300, 500));
 
 	FloatTips::init(this);
 
