@@ -1,6 +1,8 @@
 #pragma once
 #include "cocos2d.h"
+#include "cocos-ext.h"
 USING_NS_CC;
+using namespace extension;
 class Test:public CCScene, public CCTargetedTouchDelegate
 {
 public:
@@ -12,5 +14,9 @@ public:
 	void runFun();
 	void runFun2();
 	CREATE_FUNC(Test);
+private:
+	//clickÊÂ¼þ
+	void btnClickHandler(CCObject* pSender, CCControlEvent event);
+	void btn2ClickHandler(CCObject* pSender, CCControlEvent event);
 };
 

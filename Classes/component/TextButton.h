@@ -20,11 +20,13 @@ public:
 	 */
 	TextButton(int type, string str, float width = 0);
 	~TextButton(void);
-private:
 	//按钮
-	CCControlButton* button;
+	CCControlButton* coreTarget;
+	//设置按钮标签
+	virtual void setTag(int nTag);
+private:
 	//9宫格
-	CCScale9Sprite* psc9Selected;
+	CCScale9Sprite* upSpt;
 	//文本
 	CCLabelTTF* label;
 };

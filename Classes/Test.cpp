@@ -100,19 +100,30 @@ bool Test::init()
 	TextButton* btn = new TextButton(1, Language::get("union_btn_view")->getCString(), 0);
 	this->addChild(btn);
 	btn->setPosition(ccp(200, 500));
+	btn->setTag(11);
+	btn->coreTarget->addTargetWithActionForControlEvents(this, cccontrol_selector(Test::btnClickHandler), CCControlEventTouchUpInside);  
 	//FloatTips::init(this);
 
 	btn = new TextButton(5, "button", 0);
 	this->addChild(btn);
 	btn->setPosition(ccp(300, 700));
-
-
+	btn->setTag(22);
+	/* 当鼠标处于按下并曾经点中按钮的状态下，鼠标松开且在按钮范围内，则触发一次 */  
+	btn->coreTarget->addTargetWithActionForControlEvents(this, cccontrol_selector(Test::btnClickHandler), CCControlEventTouchUpInside);  
+	
 	TestChildScene* cs = TestChildScene::create();
 	this->addChild(cs);
 
-	CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
+	//CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
 	return true;
 }
+
+void Test::btnClickHandler( CCObject* pSender, CCControlEvent event )
+{
+	CCControlButton* btn = (CCControlButton*) pSender;
+	CCLOG("click btn%i", btn->getTag());
+}
+
 
 bool Test::ccTouchBegan(CCTouch* touch, CCEvent* event)
 {
@@ -145,4 +156,9 @@ void Test::runFun2()
 void Test::onEnter()
 {
 	CCScene::onEnter();
+}
+
+void Test::btn2ClickHandler( CCObject* pSender, CCControlEvent event )
+{
+	CCLOG("click2");
 }

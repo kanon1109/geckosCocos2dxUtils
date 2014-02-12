@@ -16,37 +16,44 @@ TextButton::TextButton(int type, string str, float width)
 	char num[2] = "";
 	sprintf(num, "%i", type);
 	string name = nameStr + num + tailStr;
-	this->psc9Selected = CCScale9Sprite::create(name.c_str());  
+	this->upSpt = CCScale9Sprite::create(name.c_str());  
 
 	this->label = CCLabelTTF::create(str.c_str(), "Arial", 30);
-	this->button = CCControlButton ::create(label, psc9Selected);
+	this->coreTarget = CCControlButton ::create(label, upSpt);
 	switch(type)
 	{
-	case TYPE_RECT_BLUE:
-	case TYPE_RECT_GRAY:
-	case TYPE_RECT_GREEN:
-	case TYPE_RECT_RED:
-		this->button->setPreferredSize(CCSize(137, 67)); 
-		break;
-	case TYPE_2CORNER_GREEN	:
-	case TYPE_2CORNER_RED	:
-	case TYPE_2CORNER_GRAY	:
-		this->button->setPreferredSize(CCSize(209, 63)); 
-		break;
-	case TYPE_1CORNER_GREEN	:
-	case TYPE_1CORNER_RED	:
-		this->button->setPreferredSize(CCSize(177, 63)); 
-		break;
+		case TYPE_RECT_BLUE:
+		case TYPE_RECT_GRAY:
+		case TYPE_RECT_GREEN:
+		case TYPE_RECT_RED:
+			this->coreTarget->setPreferredSize(CCSize(137, 67)); 
+			break;
+		case TYPE_2CORNER_GREEN	:
+		case TYPE_2CORNER_RED	:
+		case TYPE_2CORNER_GRAY	:
+			this->coreTarget->setPreferredSize(CCSize(209, 63)); 
+			break;
+		case TYPE_1CORNER_GREEN	:
+		case TYPE_1CORNER_RED	:
+			this->coreTarget->setPreferredSize(CCSize(177, 63)); 
+			break;
 	}
-	this->addChild(this->button);
+	this->addChild(this->coreTarget);
 }
 
 TextButton::~TextButton(void)
 {
 	this->label->removeFromParent();
-	this->button->removeFromParent();
-	this->psc9Selected->removeFromParent();
-	CC_SAFE_RELEASE(this->psc9Selected);
+	this->coreTarget->removeFromParent();
+	this->upSpt->removeFromParent();
+	CC_SAFE_RELEASE(this->upSpt);
 	CC_SAFE_RELEASE(this->label);
-	CC_SAFE_RELEASE(this->button);
+	CC_SAFE_RELEASE(this->coreTarget);
+	CCLOG("remove");
+}
+
+void TextButton::setTag( int nTag )
+{
+	CCNodeRGBA::setTag(nTag);
+	this->coreTarget->setTag(nTag);
 }
