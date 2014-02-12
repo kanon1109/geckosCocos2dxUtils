@@ -3,6 +3,7 @@ USING_NS_CC;
 static CCNode* mParent;
 static CCArray* ftPool;
 static CCPoint startPos;
+static CCTexture2D* shareTexture2D;
 FloatTips::FloatTips(void)
 {
 }
@@ -29,6 +30,17 @@ FloatTip* FloatTips::getAFloatTip()
 		//CCLOG("new");
 		//如果池中没有对象则新建对象
 		ft = new FloatTip();
+		//判断共享纹理是否存在
+		if(!shareTexture2D) 
+		{
+			CCLOG("new textrue");
+			ft->createWithImage("ftips_bg.png");
+		}
+		else
+		{
+			CCLOG("cache textrue");
+			ft->createWithTexture(shareTexture2D);
+		}
 		//父sprite执行颜色变化的时候，子sprite也可以执行到这个变化
 		ft->setCascadeOpacityEnabled(true);
 	}
@@ -63,10 +75,11 @@ void FloatTips::actionCompleteCallBackFunc(CCNode* ft)
 	ftPool->addObject(ft);
 }
 
-void FloatTips::init( CCNode* parent, CCPoint p/*=ccp(320, 760)*/ )
+void FloatTips::init( CCNode* parent, CCPoint p/*=ccp(320, 760)*/, CCTexture2D *pTexture/*=NULL*/ )
 {
 	startPos = p;
 	mParent = parent;
+	shareTexture2D = pTexture;
 	if(!ftPool)
 	{
 		ftPool = CCArray::create();
@@ -80,28 +93,44 @@ void FloatTips::clear()
 		ftPool->removeAllObjects();
 }
 
-
 FloatTip::FloatTip()
 {
-	this->bg = CCSprite::create("ftips_bg.png");
-	this->bg->setAnchorPoint(ccp(.5, .5));
-	this->addChild(this->bg);
-
-	this->contentTf = CCLabelTTF::create("", "Arial", 40);
-	this->contentTf->setAnchorPoint(ccp(.5, .5));
-	this->addChild(this->contentTf);
+	
 }
 
 FloatTip::~FloatTip()
 {
-	this->bg->removeFromParent();
+	if(this->bg) this->bg->removeFromParent();
 	CC_SAFE_RELEASE(this->bg);
 
-	this->contentTf->removeFromParent();
+	if(this->contentTf) this->contentTf->removeFromParent();
 	CC_SAFE_RELEASE(this->contentTf);
 }
 
 void FloatTip::setText(const char* str)
 {
 	this->contentTf->setString(str);
+}
+
+void FloatTip::createWithImage( const char *pszFileName )
+{
+	this->bg = CCSprite::create(pszFileName);
+	this->bg->setAnchorPoint(ccp(.5, .5));
+	this->addChild(this->bg);
+	this->createContentText();
+}
+
+void FloatTip::createWithTexture( CCTexture2D *pTexture )
+{
+	this->bg = CCSprite::createWithTexture(pTexture);
+	this->bg->setAnchorPoint(ccp(.5, .5));
+	this->addChild(this->bg);
+	this->createContentText();
+}
+
+void FloatTip::createContentText()
+{
+	this->contentTf = CCLabelTTF::create("", "Arial", 40);
+	this->contentTf->setAnchorPoint(ccp(.5, .5));
+	this->addChild(this->contentTf);
 }

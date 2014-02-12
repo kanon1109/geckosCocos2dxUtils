@@ -9,12 +9,19 @@ class FloatTip:public CCNodeRGBA
 public:
 	FloatTip();
 	~FloatTip();
+	//设置文字内容
 	void setText(const char* str);
+	//根据文件名称路径创建图片
+	void createWithImage(const char *pszFileName);
+	//根据纹理创建图片
+	void createWithTexture(CCTexture2D *pTexture);
 private:
 	//背景图片
 	CCSprite* bg;
 	//文本框
 	CCLabelTTF* contentTf;
+	//创建文本框
+	void createContentText();
 };
 
 class FloatTips
@@ -26,7 +33,7 @@ public:
 	/**
 	 * 初始化，设置父容器
 	 */
-	static void init(CCNode* parent, CCPoint p=ccp(320, 760));
+	static void init(CCNode* parent, CCPoint p=ccp(320, 760), CCTexture2D *pTexture=NULL);
 
 	/**
 	 * 显示漂浮文字

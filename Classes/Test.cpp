@@ -12,6 +12,7 @@
 #include <iterator>   
 #include <algorithm>  
 #include "cocos-ext.h"
+#include "component/TextButton.h"
 using namespace extension;
 using namespace std;
 using std::vector;
@@ -83,17 +84,28 @@ bool Test::init()
 	EnterFrame::pop(callfunc_selector(Test::runFun));
 	EnterFrame::push(callfunc_selector(Test::runFun));*/
 
-
-	CCScale9Sprite *psc9Selected = CCScale9Sprite::create("ftips_bg.png");  
+	/*CCScale9Sprite *psc9Selected = CCScale9Sprite::create("ftips_bg.png");  
 	CCLabelTTF *label = CCLabelTTF::create("My Button", "Arial", 30);
 	CCControlButton * button = CCControlButton ::create(label, psc9Selected);
-	/* 强制设置按钮大小,如果按钮标题大小超过这个范围，则会自动扩大 */  
+	/ * 强制设置按钮大小,如果按钮标题大小超过这个范围，则会自动扩大 * /  
 	button->setPreferredSize(CCSize(300, 50)); 
 	this->addChild(button);
+	button->setPosition(ccp(300, 500));*/
 
-	button->setPosition(ccp(300, 500));
 
-	FloatTips::init(this);
+	CCTexture2D *texture = CCTextureCache::sharedTextureCache()->addImage("ftips_bg.png");  
+
+	FloatTips::init(this, ccp(320, 760), texture);
+	
+	TextButton* btn = new TextButton(1, Language::get("union_btn_view")->getCString(), 0);
+	this->addChild(btn);
+	btn->setPosition(ccp(200, 500));
+	//FloatTips::init(this);
+
+	btn = new TextButton(5, "button", 0);
+	this->addChild(btn);
+	btn->setPosition(ccp(300, 700));
+
 
 	TestChildScene* cs = TestChildScene::create();
 	this->addChild(cs);
