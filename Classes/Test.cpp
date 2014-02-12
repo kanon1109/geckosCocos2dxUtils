@@ -122,6 +122,8 @@ void Test::btnClickHandler( CCObject* pSender, CCControlEvent event )
 {
 	CCControlButton* btn = (CCControlButton*) pSender;
 	CCLOG("click btn%i", btn->getTag());
+	TextButton* btn2 = (TextButton*) this->getChildByTag(btn->getTag());
+	btn2->removeFromParent();
 }
 
 

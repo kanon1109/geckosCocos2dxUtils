@@ -18,7 +18,8 @@ TextButton::TextButton(int type, string str, float width)
 	string name = nameStr + num + tailStr;
 	this->upSpt = CCScale9Sprite::create(name.c_str());  
 
-	this->label = CCLabelTTF::create(str.c_str(), "Arial", 30);
+	this->label = CCLabelTTF::create(str.c_str(), "Á¥Êé", 30);
+	
 	this->coreTarget = CCControlButton ::create(label, upSpt);
 	switch(type)
 	{
@@ -39,10 +40,16 @@ TextButton::TextButton(int type, string str, float width)
 			break;
 	}
 	this->addChild(this->coreTarget);
+	this->label->setPositionY(this->label->getPositionY() + 3);
+
+	this->coreTarget->addTargetWithActionForControlEvents(this, cccontrol_selector(TextButton::btnClickHandler), CCControlEventTouchDown);  
+	this->coreTarget->addTargetWithActionForControlEvents(this, cccontrol_selector(TextButton::btnClickHandler), CCControlEventTouchUpInside);  
 }
 
 TextButton::~TextButton(void)
 {
+	this->coreTarget->removeTargetWithActionForControlEvents(this, cccontrol_selector(TextButton::btnClickHandler), CCControlEventTouchDown);  
+	this->coreTarget->removeTargetWithActionForControlEvents(this, cccontrol_selector(TextButton::btnClickHandler), CCControlEventTouchUpInside);  
 	this->label->removeFromParent();
 	this->coreTarget->removeFromParent();
 	this->upSpt->removeFromParent();
@@ -56,4 +63,9 @@ void TextButton::setTag( int nTag )
 {
 	CCNodeRGBA::setTag(nTag);
 	this->coreTarget->setTag(nTag);
+}
+
+void TextButton::btnClickHandler( CCObject* pSender, CCControlEvent event )
+{  
+	this->label->setPositionY(this->label->getPositionY() + 3);
 }

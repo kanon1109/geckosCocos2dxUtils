@@ -29,5 +29,7 @@ private:
 	CCScale9Sprite* upSpt;
 	//нд╠╬
 	CCLabelTTF* label;
+
+	void btnClickHandler(CCObject* pSender, CCControlEvent event);
 };
 #endif
