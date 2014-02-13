@@ -27,33 +27,22 @@ FloatTip* FloatTips::getAFloatTip()
 	//CCLOG("池的大小%i", ftPool->count());
 	if(ftPool->count() == 0)
 	{
-		//CCLOG("new");
 		//如果池中没有对象则新建对象
-		ft = new FloatTip();
+		ft = FloatTip::create();
+		ft->retain();
 		//判断共享纹理是否存在
-		if(!shareTexture2D) 
-		{
-			CCLOG("new textrue");
-			ft->createWithImage("ftips_bg.png");
-		}
-		else
-		{
-			CCLOG("cache textrue");
-			ft->createWithTexture(shareTexture2D);
-		}
+		if(!shareTexture2D) ft->createWithImage("ftips_bg.png");
+		else ft->createWithTexture(shareTexture2D);
 		//父sprite执行颜色变化的时候，子sprite也可以执行到这个变化
 		ft->setCascadeOpacityEnabled(true);
 	}
 	else
 	{
-		//CCLOG("pool");
 		ft = (FloatTip *)ftPool->lastObject();
 		//设置透明度
 		ft->setOpacity(0xFF);
-		ft->stopAllActions();
 		ftPool->removeLastObject();
 	}
-
 	CCMoveTo* moveTo = CCMoveTo::create(.2f, ccp(startPos.x, startPos.y + 20));
 	CCDelayTime* delayTime = CCDelayTime::create(1.0f);
 	CCMoveTo* moveTo2 = CCMoveTo::create(.3f, ccp(startPos.x, startPos.y + 40));
@@ -64,14 +53,13 @@ FloatTip* FloatTips::getAFloatTip()
 	//创建回调方法。
 	CCCallFuncN * callBackFunc = CCCallFuncN::create(ft, callfuncN_selector(FloatTips::actionCompleteCallBackFunc));
 	CCFiniteTimeAction * seq = CCSequence::create(sequence, callBackFunc, NULL);
-
 	ft->runAction(seq);
 	return ft;
 }
 
 void FloatTips::actionCompleteCallBackFunc(CCNode* ft)
 {
-	ft->removeFromParent();
+	ft->removeFromParentAndCleanup(true);
 	ftPool->addObject(ft);
 }
 
@@ -90,7 +78,18 @@ void FloatTips::init( CCNode* parent, CCPoint p/*=ccp(320, 760)*/, CCTexture2D *
 void FloatTips::clear()
 {
 	if(ftPool)
+	{
+		CCObject* ft;
+		int count = ftPool->count();
+		for (int i = 0; i < count; i++)
+		{
+			ft = ftPool->objectAtIndex(i);
+			//谁retain谁就负责release
+			ft->release();
+			CCLOG("retainCount %i", ft->retainCount());
+		}
 		ftPool->removeAllObjects();
+	}
 }
 
 FloatTip::FloatTip()
@@ -100,11 +99,9 @@ FloatTip::FloatTip()
 
 FloatTip::~FloatTip()
 {
+	CCLOG("remove FloatTip");
 	if(this->bg) this->bg->removeFromParent();
-	CC_SAFE_RELEASE(this->bg);
-
 	if(this->contentTf) this->contentTf->removeFromParent();
-	CC_SAFE_RELEASE(this->contentTf);
 }
 
 void FloatTip::setText(const char* str)
@@ -133,4 +130,16 @@ void FloatTip::createContentText()
 	this->contentTf = CCLabelTTF::create("", "Arial", 40);
 	this->contentTf->setAnchorPoint(ccp(.5, .5));
 	this->addChild(this->contentTf);
+}
+
+FloatTip* FloatTip::create()
+{
+	FloatTip* floatTip = new FloatTip();
+	if (floatTip && floatTip->init())
+	{
+		floatTip->autorelease();
+		return floatTip;
+	}
+	CC_SAFE_DELETE(floatTip);
+	return NULL;
 }

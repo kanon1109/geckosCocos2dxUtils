@@ -9,6 +9,7 @@ class FloatTip:public CCNodeRGBA
 public:
 	FloatTip();
 	~FloatTip();
+	static FloatTip* create();
 	//设置文字内容
 	void setText(const char* str);
 	//根据文件名称路径创建图片

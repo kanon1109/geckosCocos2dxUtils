@@ -73,7 +73,7 @@ bool Test::init()
 	v.push_back("4");
 	v.push_back("5");
 	//恢复####点体力######## 恢复3点体力45
-	CCLOG("test= %s", Language::get("test", &v)->getCString());
+	CCLOG("test= %s", Language::get("test", &v));
 
 	/*EnterFrame::init(this);
 	EnterFrame::push(callfunc_selector(Test::runFun));
@@ -84,33 +84,30 @@ bool Test::init()
 	EnterFrame::pop(callfunc_selector(Test::runFun));
 	EnterFrame::push(callfunc_selector(Test::runFun));*/
 
-	/*CCScale9Sprite *psc9Selected = CCScale9Sprite::create("ftips_bg.png");  
-	CCLabelTTF *label = CCLabelTTF::create("My Button", "Arial", 30);
-	CCControlButton * button = CCControlButton ::create(label, psc9Selected);
-	/ * 强制设置按钮大小,如果按钮标题大小超过这个范围，则会自动扩大 * /  
-	button->setPreferredSize(CCSize(300, 50)); 
-	this->addChild(button);
-	button->setPosition(ccp(300, 500));*/
-
+	/*const char* cc = Language::get("union_btn_view");
+	
+	sprintf((char*)cc, "%i", 2);*/
 
 	CCTexture2D *texture = CCTextureCache::sharedTextureCache()->addImage("ftips_bg.png");  
 
 	FloatTips::init(this, ccp(320, 760), texture);
 	
-	TextButton* btn = new TextButton(1, Language::get("union_btn_view")->getCString(), 0);
+	this->btn = TextButton::create(1, Language::get("union_btn_view"), 0);
+	this->btn->retain();
 	this->addChild(btn);
 	btn->setPosition(ccp(200, 500));
 	btn->setTag(11);
 	btn->coreTarget->addTargetWithActionForControlEvents(this, cccontrol_selector(Test::btnClickHandler), CCControlEventTouchUpInside);  
 	//FloatTips::init(this);
 
-	btn = new TextButton(5, "button", 0);
-	this->addChild(btn);
-	btn->setPosition(ccp(300, 700));
-	btn->setTag(22);
+	this->btn2 = TextButton::create(5, "button", 0);
+	this->btn2->retain();
+	this->addChild(this->btn2);
+	this->btn2->setPosition(ccp(300, 700));
+	this->btn2->setTag(22);
 	/* 当鼠标处于按下并曾经点中按钮的状态下，鼠标松开且在按钮范围内，则触发一次 */  
-	btn->coreTarget->addTargetWithActionForControlEvents(this, cccontrol_selector(Test::btnClickHandler), CCControlEventTouchUpInside);  
-	
+	this->btn2->coreTarget->addTargetWithActionForControlEvents(this, cccontrol_selector(Test::btn2ClickHandler), CCControlEventTouchUpInside);  
+
 	TestChildScene* cs = TestChildScene::create();
 	this->addChild(cs);
 
@@ -120,15 +117,26 @@ bool Test::init()
 
 void Test::btnClickHandler( CCObject* pSender, CCControlEvent event )
 {
-	CCControlButton* btn = (CCControlButton*) pSender;
-	CCLOG("click btn%i", btn->getTag());
-	TextButton* btn2 = (TextButton*) this->getChildByTag(btn->getTag());
-	btn2->removeFromParent();
+	/*CCControlButton* btn = (CCControlButton*) pSender;
+	CCLOG("click btn%i", btn->getTag());*/
+
+	this->btn->removeFromParent();
+	CCLOG("retainCount btn%i", this->btn->retainCount());
+	this->btn->release();
+	
+	vector<string> v;
+	v.push_back("3");
+	v.push_back("4");
+	v.push_back("5");
+	FloatTips::show(Language::get("test", &v));
+	//CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
 }
 
 
 bool Test::ccTouchBegan(CCTouch* touch, CCEvent* event)
 {
+	//CCLOG("retainCount btn%i", this->btn->retainCount());
+	
 	CCLOG("randomFloat r=%f", Random::randomFloat(-2.4f, 6.6f));
 	CCLOG("randomInt r =%i", Random::randomInt(-6, 6));
 	CCLOG("randrange r =%i", Random::randrange(1, 10, 2));
@@ -140,7 +148,7 @@ bool Test::ccTouchBegan(CCTouch* touch, CCEvent* event)
 	v.push_back("4");
 	v.push_back("5");
 	
-	FloatTips::show(Language::get("test", &v)->getCString());
+	FloatTips::show(Language::get("test", &v));
 
 	return true;
 }
@@ -163,4 +171,5 @@ void Test::onEnter()
 void Test::btn2ClickHandler( CCObject* pSender, CCControlEvent event )
 {
 	CCLOG("click2");
+	FloatTips::clear();
 }

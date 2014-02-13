@@ -48,15 +48,12 @@ TextButton::TextButton(int type, string str, float width)
 
 TextButton::~TextButton(void)
 {
+	CCLOG("remove");
 	this->coreTarget->removeTargetWithActionForControlEvents(this, cccontrol_selector(TextButton::btnClickHandler), CCControlEventTouchDown);  
 	this->coreTarget->removeTargetWithActionForControlEvents(this, cccontrol_selector(TextButton::btnClickHandler), CCControlEventTouchUpInside);  
 	this->label->removeFromParent();
 	this->coreTarget->removeFromParent();
 	this->upSpt->removeFromParent();
-	CC_SAFE_RELEASE(this->upSpt);
-	CC_SAFE_RELEASE(this->label);
-	CC_SAFE_RELEASE(this->coreTarget);
-	CCLOG("remove");
 }
 
 void TextButton::setTag( int nTag )
@@ -68,4 +65,16 @@ void TextButton::setTag( int nTag )
 void TextButton::btnClickHandler( CCObject* pSender, CCControlEvent event )
 {  
 	this->label->setPositionY(this->label->getPositionY() + 3);
+}
+
+TextButton* TextButton::create(int type, string str, float width)
+{
+	TextButton* textButton = new TextButton(type, str, width);
+	if (textButton && textButton->init())
+	{
+		textButton->autorelease();
+		return textButton;
+	}
+	CC_SAFE_DELETE(textButton);
+	return NULL;
 }

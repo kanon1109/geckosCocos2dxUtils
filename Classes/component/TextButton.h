@@ -20,6 +20,7 @@ public:
 	 */
 	TextButton(int type, string str, float width = 0);
 	~TextButton(void);
+	static TextButton* create(int type, string str, float width = 0);
 	//按钮
 	CCControlButton* coreTarget;
 	//设置按钮标签

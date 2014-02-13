@@ -38,7 +38,7 @@ void Language::init(string name)
 	}
 }
 
-CCString* Language::get( string name, vector<string> *v/*=NULL*/ )
+const char* Language::get( string name, vector<string> *v/*=NULL*/ )
 {
 	CCString* translation = (CCString* )dict->objectForKey(name);
 	if(v && v->size() > 0)
@@ -61,6 +61,7 @@ CCString* Language::get( string name, vector<string> *v/*=NULL*/ )
 			}
 		}
 		translation = ccs(newStr);
+		tranVector.clear();
 	}
-	return translation;
+	return translation->getCString();
 }
