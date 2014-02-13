@@ -3,6 +3,7 @@
 /proj.win32/Release.win32/
 /Resources/*.db
 .svn
+*.db
 proj.linux/*
 proj.ios/*
 proj.blackberry/*
