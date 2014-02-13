@@ -98,7 +98,7 @@ bool Test::init()
 	btn->setPosition(ccp(200, 500));
 	btn->setTag(11);
 	btn->coreTarget->addTargetWithActionForControlEvents(this, cccontrol_selector(Test::btnClickHandler), CCControlEventTouchUpInside);  
-	//FloatTips::init(this);
+	this->btn->setEnabled(false);
 
 	this->btn2 = TextButton::create(5, "button", 0);
 	this->btn2->retain();
@@ -111,6 +111,15 @@ bool Test::init()
 	TestChildScene* cs = TestChildScene::create();
 	this->addChild(cs);
 
+	CCString* ccstr = CCString::create("images/tabBar/item/weapon.png");
+	CCArray* ary = CCArray::create();
+	ary->retain();
+	ary->addObject(ccstr);
+
+	this->tarBar = TabBar::create(ary, 0);
+	this->tarBar->retain();
+	this->addChild(this->tarBar);
+	this->tarBar->setPosition(ccp(100, 500));
 	//CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
 	return true;
 }

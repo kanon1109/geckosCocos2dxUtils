@@ -20,7 +20,7 @@ TextButton::TextButton(int type, string str, float width)
 
 	this->label = CCLabelTTF::create(str.c_str(), "Á¥Êé", 30);
 	
-	this->coreTarget = CCControlButton ::create(label, upSpt);
+	this->coreTarget = CCControlButton::create(this->label, this->upSpt);
 	switch(type)
 	{
 		case TYPE_RECT_BLUE:
@@ -77,4 +77,15 @@ TextButton* TextButton::create(int type, string str, float width)
 	}
 	CC_SAFE_DELETE(textButton);
 	return NULL;
+}
+
+void TextButton::setMouseEnabeld( bool flag )
+{
+	this->coreTarget->setEnabled(flag);
+	this->label->setPositionY(this->label->getPositionY() + 3);
+}
+
+void TextButton::setEnabled( bool flag )
+{
+	this->coreTarget->setZoomOnTouchDown(flag);
 }

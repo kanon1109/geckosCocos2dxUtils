@@ -25,6 +25,10 @@ public:
 	CCControlButton* coreTarget;
 	//设置按钮标签
 	virtual void setTag(int nTag);
+	//设置是否可以点击
+	void setMouseEnabeld(bool flag);
+	//设置是否按钮效果
+	void setEnabled(bool flag);
 private:
 	//9宫格
 	CCScale9Sprite* upSpt;
