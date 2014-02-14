@@ -52,8 +52,8 @@ TextButton::~TextButton(void)
 	this->coreTarget->removeTargetWithActionForControlEvents(this, cccontrol_selector(TextButton::btnClickHandler), CCControlEventTouchDown);  
 	this->coreTarget->removeTargetWithActionForControlEvents(this, cccontrol_selector(TextButton::btnClickHandler), CCControlEventTouchUpInside);  
 	this->label->removeFromParent();
-	this->coreTarget->removeFromParent();
 	this->upSpt->removeFromParent();
+	this->coreTarget->removeFromParent();
 }
 
 void TextButton::setTag( int nTag )

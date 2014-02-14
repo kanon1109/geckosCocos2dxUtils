@@ -21,5 +21,8 @@ private:
 	int gap;
 	CCArray* textureList;
 	void initUI();
+	//…Ë÷√—°‘Ò∞¥≈•
+	void setSelectedIndex(int index);
+	void btnClickHandler(CCObject* pSender, CCControlEvent event);
 };
 #endif

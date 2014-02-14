@@ -92,16 +92,16 @@ bool Test::init()
 
 	FloatTips::init(this, ccp(320, 760), texture);
 	
+	this->initTarBarList();
+
 	this->btn = TextButton::create(1, Language::get("union_btn_view"), 0);
-	this->btn->retain();
 	this->addChild(btn);
-	btn->setPosition(ccp(200, 500));
+	btn->setPosition(ccp(200, 800));
 	btn->setTag(11);
 	btn->coreTarget->addTargetWithActionForControlEvents(this, cccontrol_selector(Test::btnClickHandler), CCControlEventTouchUpInside);  
 	this->btn->setEnabled(false);
 
 	this->btn2 = TextButton::create(5, "button", 0);
-	this->btn2->retain();
 	this->addChild(this->btn2);
 	this->btn2->setPosition(ccp(300, 700));
 	this->btn2->setTag(22);
@@ -111,15 +111,8 @@ bool Test::init()
 	TestChildScene* cs = TestChildScene::create();
 	this->addChild(cs);
 
-	CCString* ccstr = CCString::create("images/tabBar/item/weapon.png");
-	CCArray* ary = CCArray::create();
-	ary->retain();
-	ary->addObject(ccstr);
-
-	this->tarBar = TabBar::create(ary, 0);
-	this->tarBar->retain();
-	this->addChild(this->tarBar);
-	this->tarBar->setPosition(ccp(100, 500));
+	
+	
 	//CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
 	return true;
 }
@@ -130,8 +123,8 @@ void Test::btnClickHandler( CCObject* pSender, CCControlEvent event )
 	CCLOG("click btn%i", btn->getTag());*/
 
 	this->btn->removeFromParent();
-	CCLOG("retainCount btn%i", this->btn->retainCount());
-	this->btn->release();
+	//CCLOG("retainCount btn%i", this->btn->retainCount());
+	//this->btn->release();
 	
 	vector<string> v;
 	v.push_back("3");
@@ -181,4 +174,49 @@ void Test::btn2ClickHandler( CCObject* pSender, CCControlEvent event )
 {
 	CCLOG("click2");
 	FloatTips::clear();
+}
+
+void Test::initTarBarList()
+{
+	this->tarBarList = CCArray::create();
+	this->tarBarList->retain();
+
+	CCString* ccstr = CCString::create("images/tabBar/item/weapon.png");
+	CCArray* ary = CCArray::create();
+	ary->addObject(ccstr);
+	ccstr = CCString::create("images/tabBar/item/weaponSelected.png");
+	ary->addObject(ccstr);
+	tarBarList->addObject(ary);
+
+	ccstr = CCString::create("images/tabBar/item/clothing.png");
+	ary = CCArray::create();
+	ary->addObject(ccstr);
+	ccstr = CCString::create("images/tabBar/item/clothingSelected.png");
+	ary->addObject(ccstr);
+	tarBarList->addObject(ary);
+
+	ccstr = CCString::create("images/tabBar/item/accessories.png");
+	ary = CCArray::create();
+	ary->addObject(ccstr);
+	ccstr = CCString::create("images/tabBar/item/accessoriesSelected.png");
+	ary->addObject(ccstr);
+	tarBarList->addObject(ary);
+
+	ccstr = CCString::create("images/tabBar/item/sell.png");
+	ary = CCArray::create();
+	ary->addObject(ccstr);
+	ccstr = CCString::create("images/tabBar/item/sellSelected.png");
+	ary->addObject(ccstr);
+	tarBarList->addObject(ary);
+
+	ccstr = CCString::create("images/tabBar/item/exchange.png");
+	ary = CCArray::create();
+	ary->addObject(ccstr);
+	ccstr = CCString::create("images/tabBar/item/exchangeSelected.png");
+	ary->addObject(ccstr);
+	tarBarList->addObject(ary);
+
+	this->tarBar = TabBar::create(tarBarList, -35);
+	this->addChild(this->tarBar);
+	this->tarBar->setPosition(ccp(10, 800));
 }
