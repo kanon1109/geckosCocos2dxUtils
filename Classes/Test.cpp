@@ -95,34 +95,30 @@ bool Test::init()
 	this->initTarBarList();
 
 	this->btn = TextButton::create(1, Language::get("union_btn_view"), 0);
-	this->addChild(btn);
-	btn->setPosition(ccp(200, 800));
-	btn->setTag(11);
-	btn->coreTarget->addTargetWithActionForControlEvents(this, cccontrol_selector(Test::btnClickHandler), CCControlEventTouchUpInside);  
+	this->addChild(this->btn);
+	this->btn->setPosition(ccp(200, 600));
+	this->btn->setTag(11);
+	this->btn->addEventListener(text_button_selector(Test::btnClickHandler));
 	this->btn->setEnabled(false);
 
 	this->btn2 = TextButton::create(5, "button", 0);
 	this->addChild(this->btn2);
-	this->btn2->setPosition(ccp(300, 700));
+	this->btn2->setPosition(ccp(300, 500));
 	this->btn2->setTag(22);
 	/* 当鼠标处于按下并曾经点中按钮的状态下，鼠标松开且在按钮范围内，则触发一次 */  
-	this->btn2->coreTarget->addTargetWithActionForControlEvents(this, cccontrol_selector(Test::btn2ClickHandler), CCControlEventTouchUpInside);  
+	this->btn2->addEventListener(text_button_selector(Test::btn2ClickHandler));
 
 	TestChildScene* cs = TestChildScene::create();
 	this->addChild(cs);
-
-	
-	
 	//CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
 	return true;
 }
 
-void Test::btnClickHandler( CCObject* pSender, CCControlEvent event )
+void Test::btnClickHandler(CCNode* node)
 {
 	/*CCControlButton* btn = (CCControlButton*) pSender;
 	CCLOG("click btn%i", btn->getTag());*/
-
-	this->btn->removeFromParent();
+	node->removeFromParent();
 	//CCLOG("retainCount btn%i", this->btn->retainCount());
 	//this->btn->release();
 	
@@ -170,7 +166,7 @@ void Test::onEnter()
 	CCScene::onEnter();
 }
 
-void Test::btn2ClickHandler( CCObject* pSender, CCControlEvent event )
+void Test::btn2ClickHandler(CCNode* node)
 {
 	CCLOG("click2");
 	FloatTips::clear();
@@ -218,7 +214,7 @@ void Test::initTarBarList()
 
 	this->tarBar = TabBar::create(tarBarList, -35, tar_bar_selector(Test::tarBarClickHandler));
 	this->addChild(this->tarBar);
-	this->tarBar->setPosition(ccp(10, 800));
+	this->tarBar->setPosition(ccp(10, 500));
 }
 
 void Test::tarBarClickHandler(int selectedIndex )

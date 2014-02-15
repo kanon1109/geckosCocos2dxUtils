@@ -5,7 +5,10 @@
 #include "cocos-ext.h"
 USING_NS_CC;
 using namespace extension;
-//定义tarbar的回调函数类型
+/************************************************************************/
+/* 横向标签																*/
+/************************************************************************/
+//定义tabBar的回调函数类型
 typedef void (CCObject::*SEL_TAR_BAR_SELECTOR)(int);
 #define tar_bar_selector(_SELECTOR) (SEL_TAR_BAR_SELECTOR)(&_SELECTOR)
 class TabBar:public CCNodeRGBA

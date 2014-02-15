@@ -23,8 +23,8 @@ private:
 	TabBar* tarBar;
 	CCArray* tarBarList;
 	//clickÊÂ¼þ
-	void btnClickHandler(CCObject* pSender, CCControlEvent event);
-	void btn2ClickHandler(CCObject* pSender, CCControlEvent event);
+	void btnClickHandler(CCNode* node);
+	void btn2ClickHandler(CCNode* node);
 	void tarBarClickHandler(int selectedIndex);
 };
 

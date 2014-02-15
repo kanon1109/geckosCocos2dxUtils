@@ -10,6 +10,9 @@ USING_NS_CC;
 /************************************************************************/
 using namespace std;
 using namespace extension;
+//定义按钮的回调函数类型
+typedef void (CCObject::*SEL_TEXT_BUTTON_SELECTOR)(CCNode*);
+#define text_button_selector(_SELECTOR) (SEL_TEXT_BUTTON_SELECTOR)(&_SELECTOR)
 class TextButton:public CCNodeRGBA
 {
 public:
@@ -21,20 +24,22 @@ public:
 	TextButton(int type, string str, float width = 0);
 	~TextButton(void);
 	static TextButton* create(int type, string str, float width = 0);
-	//按钮
-	CCControlButton* coreTarget;
-	//设置按钮标签
-	virtual void setTag(int nTag);
 	//设置是否可以点击
 	void setMouseEnabeld(bool flag);
 	//设置是否按钮效果
 	void setEnabled(bool flag);
+	//监听回调
+	void addEventListener(SEL_TEXT_BUTTON_SELECTOR callBackFunc);
 private:
+	//按钮
+	CCControlButton* coreTarget;
 	//9宫格
 	CCScale9Sprite* upSpt;
 	//文本
 	CCLabelTTF* label;
-
+	//内部点击方法
 	void btnClickHandler(CCObject* pSender, CCControlEvent event);
+	//外部回调方法。
+	SEL_TEXT_BUTTON_SELECTOR btnCallBackFunc;
 };
 #endif

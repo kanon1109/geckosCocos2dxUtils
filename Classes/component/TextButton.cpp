@@ -56,15 +56,13 @@ TextButton::~TextButton(void)
 	this->coreTarget->removeFromParent();
 }
 
-void TextButton::setTag( int nTag )
-{
-	CCNodeRGBA::setTag(nTag);
-	this->coreTarget->setTag(nTag);
-}
-
 void TextButton::btnClickHandler( CCObject* pSender, CCControlEvent event )
 {  
 	this->label->setPositionY(this->label->getPositionY() + 3);
+	if(this->btnCallBackFunc && event == CCControlEventTouchUpInside)
+	{
+		(this->*btnCallBackFunc)(this);
+	}
 }
 
 TextButton* TextButton::create(int type, string str, float width)
@@ -88,4 +86,9 @@ void TextButton::setMouseEnabeld( bool flag )
 void TextButton::setEnabled( bool flag )
 {
 	this->coreTarget->setZoomOnTouchDown(flag);
+}
+
+void TextButton::addEventListener( SEL_TEXT_BUTTON_SELECTOR callBackFunc )
+{
+	this->btnCallBackFunc = callBackFunc;
 }
