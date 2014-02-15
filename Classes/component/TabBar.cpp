@@ -2,10 +2,11 @@
 #include "cocos-ext.h"
 USING_NS_CC;
 using namespace extension;
-TabBar::TabBar(CCArray* textureList, int gap/*=0*/)
+TabBar::TabBar(CCArray* textureList, int gap/*=0*/, SEL_TAR_BAR_SELECTOR callBackFunc/*=NULL*/)
 {
 	this->textureList = textureList;
 	this->gap = gap;
+	this->callBackFunc = callBackFunc;
 	this->initUI();
 }
 
@@ -14,9 +15,9 @@ TabBar::~TabBar(void)
 
 }
 
-TabBar* TabBar::create( CCArray* textureList, int gap/*=0*/ )
+TabBar* TabBar::create( CCArray* textureList, int gap/*=0*/, SEL_TAR_BAR_SELECTOR callBackFunc/*=NULL*/)
 {
-	TabBar* textureTabBar = new TabBar(textureList, gap);
+	TabBar* textureTabBar = new TabBar(textureList, gap, callBackFunc);
 	if (textureTabBar && textureTabBar->init())
 	{
 		textureTabBar->autorelease();
@@ -77,6 +78,11 @@ void TabBar::btnClickHandler( CCObject* pSender, CCControlEvent event )
 	CCControlButton* selectedBtn = (CCControlButton* )this->getChildByTag(btn->getTag() * 10);
 	selectedBtn->setVisible(true);
 	btn->setVisible(false);
+
+	if(this->callBackFunc)
+	{
+		(this->*callBackFunc)(btn->getTag() - 1);
+	}
 }
 
 void TabBar::setSelectedIndex( int index )
@@ -94,7 +100,7 @@ void TabBar::setSelectedIndex( int index )
 			selectedBtn = (CCControlButton*)this->getChildByTag((i + 1) * 10);
 			selectedBtn->setVisible(false);
 			btn->setVisible(true);
-			CCLOG("getZOrder = %i%i", btn->getZOrder(), selectedBtn->getZOrder());
+			//CCLOG("getZOrder = %i%i", btn->getZOrder(), selectedBtn->getZOrder());
 		}
 	}
 }

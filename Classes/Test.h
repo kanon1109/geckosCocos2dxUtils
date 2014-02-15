@@ -25,5 +25,6 @@ private:
 	//clickÊÂ¼ş
 	void btnClickHandler(CCObject* pSender, CCControlEvent event);
 	void btn2ClickHandler(CCObject* pSender, CCControlEvent event);
+	void tarBarClickHandler(int selectedIndex);
 };
 

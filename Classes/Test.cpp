@@ -216,7 +216,12 @@ void Test::initTarBarList()
 	ary->addObject(ccstr);
 	tarBarList->addObject(ary);
 
-	this->tarBar = TabBar::create(tarBarList, -35);
+	this->tarBar = TabBar::create(tarBarList, -35, tar_bar_selector(Test::tarBarClickHandler));
 	this->addChild(this->tarBar);
 	this->tarBar->setPosition(ccp(10, 800));
+}
+
+void Test::tarBarClickHandler(int selectedIndex )
+{
+	CCLOG("selectedIndex %i", selectedIndex);
 }
