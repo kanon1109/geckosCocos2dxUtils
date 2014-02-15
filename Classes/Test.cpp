@@ -98,15 +98,16 @@ bool Test::init()
 	this->addChild(this->btn);
 	this->btn->setPosition(ccp(200, 600));
 	this->btn->setTag(11);
-	this->btn->addEventListener(text_button_selector(Test::btnClickHandler));
+	this->btn->addEventListener(this, text_button_selector(Test::btnClickHandler));
 	this->btn->setEnabled(false);
+	//this->btn->setMouseEnabeld(false);
 
 	this->btn2 = TextButton::create(5, "button", 0);
 	this->addChild(this->btn2);
 	this->btn2->setPosition(ccp(300, 500));
 	this->btn2->setTag(22);
 	/* 当鼠标处于按下并曾经点中按钮的状态下，鼠标松开且在按钮范围内，则触发一次 */  
-	this->btn2->addEventListener(text_button_selector(Test::btn2ClickHandler));
+	//this->btn2->addEventListener(this, text_button_selector(Test::btn2ClickHandler));
 
 	TestChildScene* cs = TestChildScene::create();
 	this->addChild(cs);
@@ -121,25 +122,26 @@ void Test::btnClickHandler(CCNode* node)
 	node->removeFromParent();
 	//CCLOG("retainCount btn%i", this->btn->retainCount());
 	//this->btn->release();
-	
+	this->tarBar->removeFromParent();
 	vector<string> v;
 	v.push_back("3");
 	v.push_back("4");
 	v.push_back("5");
 	FloatTips::show(Language::get("test", &v));
-	//CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
+	
+	CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
 }
 
 
 bool Test::ccTouchBegan(CCTouch* touch, CCEvent* event)
 {
 	//CCLOG("retainCount btn%i", this->btn->retainCount());
-	
+	//this->tarBar->removeFromParent();
 	CCLOG("randomFloat r=%f", Random::randomFloat(-2.4f, 6.6f));
 	CCLOG("randomInt r =%i", Random::randomInt(-6, 6));
 	CCLOG("randrange r =%i", Random::randrange(1, 10, 2));
 	CCLOG("boolean=%i", Random::boolean(.2f));
-	EnterFrame::clear();
+	//EnterFrame::clear();
 
 	vector<string> v;
 	v.push_back("3");
@@ -170,6 +172,8 @@ void Test::btn2ClickHandler(CCNode* node)
 {
 	CCLOG("click2");
 	FloatTips::clear();
+	this->tarBar->removeFromParent();
+	//CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
 }
 
 void Test::initTarBarList()
@@ -210,11 +214,12 @@ void Test::initTarBarList()
 	ary->addObject(ccstr);
 	ccstr = CCString::create("images/tabBar/item/exchangeSelected.png");
 	ary->addObject(ccstr);
-	tarBarList->addObject(ary);
+	tarBarList->addObject(ary);    
 
-	this->tarBar = TabBar::create(tarBarList, -35, tar_bar_selector(Test::tarBarClickHandler));
+	this->tarBar = TabBar::create(tarBarList, -35);
 	this->addChild(this->tarBar);
 	this->tarBar->setPosition(ccp(10, 500));
+	this->tarBar->addEventListener(this, tar_bar_selector(Test::tarBarClickHandler));
 }
 
 void Test::tarBarClickHandler(int selectedIndex )

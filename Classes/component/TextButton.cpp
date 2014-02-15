@@ -41,7 +41,8 @@ TextButton::TextButton(int type, string str, float width)
 	}
 	this->addChild(this->coreTarget);
 	this->label->setPositionY(this->label->getPositionY() + 3);
-
+	this->callBackFunc = NULL;
+	this->target = NULL;
 	this->coreTarget->addTargetWithActionForControlEvents(this, cccontrol_selector(TextButton::btnClickHandler), CCControlEventTouchDown);  
 	this->coreTarget->addTargetWithActionForControlEvents(this, cccontrol_selector(TextButton::btnClickHandler), CCControlEventTouchUpInside);  
 }
@@ -59,9 +60,9 @@ TextButton::~TextButton(void)
 void TextButton::btnClickHandler( CCObject* pSender, CCControlEvent event )
 {  
 	this->label->setPositionY(this->label->getPositionY() + 3);
-	if(this->btnCallBackFunc && event == CCControlEventTouchUpInside)
+	if(this->target && this->callBackFunc && event == CCControlEventTouchUpInside)
 	{
-		(this->*btnCallBackFunc)(this);
+		(this->target->*callBackFunc)(this);
 	}
 }
 
@@ -88,7 +89,8 @@ void TextButton::setEnabled( bool flag )
 	this->coreTarget->setZoomOnTouchDown(flag);
 }
 
-void TextButton::addEventListener( SEL_TEXT_BUTTON_SELECTOR callBackFunc )
+void TextButton::addEventListener(CCObject* target, SEL_TEXT_BUTTON_SELECTOR callBackFunc )
 {
-	this->btnCallBackFunc = callBackFunc;
+	this->callBackFunc = callBackFunc;
+	this->target = target;
 }

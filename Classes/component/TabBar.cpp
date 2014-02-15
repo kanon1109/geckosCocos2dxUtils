@@ -2,22 +2,33 @@
 #include "cocos-ext.h"
 USING_NS_CC;
 using namespace extension;
-TabBar::TabBar(CCArray* textureList, int gap/*=0*/, SEL_TAR_BAR_SELECTOR callBackFunc/*=NULL*/)
+TabBar::TabBar(CCArray* textureList, int gap/*=0*/)
 {
 	this->textureList = textureList;
 	this->gap = gap;
-	this->callBackFunc = callBackFunc;
+	this->callBackFunc = NULL;
+	this->target = NULL;
 	this->initUI();
 }
 
 TabBar::~TabBar(void)
 {
-
+	int count = this->textureList->count();
+	CCControlButton* btn;
+	CCControlButton* selectedBtn;
+	for (int i = 0; i < count; i+=1)
+	{
+		btn = (CCControlButton* )this->getChildByTag(i + 1);
+		selectedBtn = (CCControlButton*)this->getChildByTag((i + 1) * 10);
+		btn->removeFromParentAndCleanup(true);
+		selectedBtn->removeFromParentAndCleanup(true);
+	}
+	this->textureList->removeAllObjects();
 }
 
-TabBar* TabBar::create( CCArray* textureList, int gap/*=0*/, SEL_TAR_BAR_SELECTOR callBackFunc/*=NULL*/)
+TabBar* TabBar::create( CCArray* textureList, int gap/*=0*/)
 {
-	TabBar* textureTabBar = new TabBar(textureList, gap, callBackFunc);
+	TabBar* textureTabBar = new TabBar(textureList, gap);
 	if (textureTabBar && textureTabBar->init())
 	{
 		textureTabBar->autorelease();
@@ -78,10 +89,10 @@ void TabBar::btnClickHandler( CCObject* pSender, CCControlEvent event )
 	CCControlButton* selectedBtn = (CCControlButton* )this->getChildByTag(btn->getTag() * 10);
 	selectedBtn->setVisible(true);
 	btn->setVisible(false);
-
-	if(this->callBackFunc)
+	//目标指针调用回调函数
+	if(this->target && this->callBackFunc)
 	{
-		(this->*callBackFunc)(btn->getTag() - 1);
+		(this->target->*callBackFunc)(btn->getTag() - 1);
 	}
 }
 
@@ -103,4 +114,10 @@ void TabBar::setSelectedIndex( int index )
 			//CCLOG("getZOrder = %i%i", btn->getZOrder(), selectedBtn->getZOrder());
 		}
 	}
+}
+
+void TabBar::addEventListener( CCObject* target, SEL_TAR_BAR_SELECTOR callBackFunc )
+{
+	this->target = target;
+	this->callBackFunc = callBackFunc;
 }

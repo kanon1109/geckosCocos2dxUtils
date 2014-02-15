@@ -18,10 +18,12 @@ public:
 	 * @param	textureList		纹理列表		
 	 * @param	gap				按钮间隔	
 	 */
-	TabBar(CCArray* textureList, int gap=0, SEL_TAR_BAR_SELECTOR callBackFunc=NULL);
+	TabBar(CCArray* textureList, int gap=0);
 	~TabBar(void);
 
-	static TabBar* create(CCArray* textureList, int gap=0, SEL_TAR_BAR_SELECTOR callBackFunc=NULL);
+	static TabBar* create(CCArray* textureList, int gap=0);
+	//监听回调
+	void addEventListener(CCObject* target, SEL_TAR_BAR_SELECTOR callBackFunc);	
 private:
 	//间隔
 	int gap;
@@ -31,6 +33,9 @@ private:
 	void initUI();
 	//设置选择按钮
 	void setSelectedIndex(int index);
+	//外部回调方法。
 	void btnClickHandler(CCObject* pSender, CCControlEvent event);
+	//调用回调的目标指针
+	CCObject* target;
 };
 #endif

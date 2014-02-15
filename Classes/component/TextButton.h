@@ -29,7 +29,7 @@ public:
 	//设置是否按钮效果
 	void setEnabled(bool flag);
 	//监听回调
-	void addEventListener(SEL_TEXT_BUTTON_SELECTOR callBackFunc);
+	void addEventListener(CCObject* target, SEL_TEXT_BUTTON_SELECTOR callBackFunc);	
 private:
 	//按钮
 	CCControlButton* coreTarget;
@@ -40,6 +40,8 @@ private:
 	//内部点击方法
 	void btnClickHandler(CCObject* pSender, CCControlEvent event);
 	//外部回调方法。
-	SEL_TEXT_BUTTON_SELECTOR btnCallBackFunc;
+	SEL_TEXT_BUTTON_SELECTOR callBackFunc;
+	//调用回调的目标指针
+	CCObject* target;
 };
 #endif
