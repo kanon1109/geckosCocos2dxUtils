@@ -1,13 +1,5 @@
 #include "TextButton.h"
-static const int TYPE_RECT_BLUE	 = 1;
-static const int TYPE_RECT_GRAY = 2;
-static const int TYPE_RECT_GREEN = 3;
-static const int TYPE_RECT_RED = 4;
-static const int TYPE_2CORNER_GREEN = 5;
-static const int TYPE_2CORNER_RED = 6;
-static const int TYPE_1CORNER_GREEN = 7;
-static const int TYPE_1CORNER_RED = 8;
-static const int TYPE_2CORNER_GRAY = 9;
+
 //默认按钮前缀
 static string nameStr = "images/button/common_btn_";
 static string tailStr = ".png";
@@ -17,29 +9,35 @@ TextButton::TextButton(int type, string str, float width)
 	sprintf(num, "%i", type);
 	string name = nameStr + num + tailStr;
 	this->upSpt = CCScale9Sprite::create(name.c_str());  
-
 	this->label = CCLabelTTF::create(str.c_str(), "隶书", 30);
-	
 	this->coreTarget = CCControlButton::create(this->label, this->upSpt);
+	float btnWidth;
+	float btnHeight;
 	switch(type)
 	{
 		case TYPE_RECT_BLUE:
 		case TYPE_RECT_GRAY:
 		case TYPE_RECT_GREEN:
 		case TYPE_RECT_RED:
-			this->coreTarget->setPreferredSize(CCSize(137, 67)); 
+			btnWidth = 137;
+			btnHeight = 67;
 			break;
 		case TYPE_2CORNER_GREEN	:
 		case TYPE_2CORNER_RED	:
 		case TYPE_2CORNER_GRAY	:
-			this->coreTarget->setPreferredSize(CCSize(209, 63)); 
+			btnWidth = 209;
+			btnHeight = 63;
 			break;
 		case TYPE_1CORNER_GREEN	:
 		case TYPE_1CORNER_RED	:
-			this->coreTarget->setPreferredSize(CCSize(177, 63)); 
+			btnWidth = 177;
+			btnHeight = 63;
 			break;
 	}
+	if(width > 0) btnWidth = width;
 	this->addChild(this->coreTarget);
+	this->coreTarget->setPreferredSize(CCSize(btnWidth, btnHeight)); 
+	
 	this->label->setPositionY(this->label->getPositionY() + 3);
 	this->callBackFunc = NULL;
 	this->target = NULL;
@@ -93,4 +91,9 @@ void TextButton::addEventListener(CCObject* target, SEL_TEXT_BUTTON_SELECTOR cal
 {
 	this->callBackFunc = callBackFunc;
 	this->target = target;
+}
+
+CCSize TextButton::getContentSize()
+{
+	return this->coreTarget->getContentSize();
 }

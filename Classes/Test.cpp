@@ -13,6 +13,7 @@
 #include <algorithm>  
 #include "cocos-ext.h"
 #include "component/TextButton.h"
+#include "component/Alert.h"
 using namespace extension;
 using namespace std;
 using std::vector;
@@ -92,9 +93,10 @@ bool Test::init()
 
 	FloatTips::init(this, ccp(320, 760), texture);
 	
+	
 	this->initTarBarList();
 
-	this->btn = TextButton::create(1, Language::get("union_btn_view"), 0);
+	this->btn = TextButton::create(TYPE_RECT_BLUE, Language::get("eatWhiteBtn"), 300);
 	this->addChild(this->btn);
 	this->btn->setPosition(ccp(200, 600));
 	this->btn->setTag(11);
@@ -111,6 +113,11 @@ bool Test::init()
 
 	TestChildScene* cs = TestChildScene::create();
 	this->addChild(cs);
+
+	Alert::initParent(this);
+
+	Alert::show((char* )Language::get("eatWhiteBtn"), true);
+
 	//CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
 	return true;
 }

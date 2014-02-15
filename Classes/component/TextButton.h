@@ -13,6 +13,16 @@ using namespace extension;
 //定义按钮的回调函数类型
 typedef void (CCObject::*SEL_TEXT_BUTTON_SELECTOR)(CCNode*);
 #define text_button_selector(_SELECTOR) (SEL_TEXT_BUTTON_SELECTOR)(&_SELECTOR)
+
+#define TYPE_RECT_BLUE  1
+#define TYPE_RECT_GRAY  2
+#define TYPE_RECT_GREEN  3
+#define TYPE_RECT_RED  4
+#define TYPE_2CORNER_GREEN  5
+#define TYPE_2CORNER_RED  6
+#define TYPE_1CORNER_GREEN  7
+#define TYPE_1CORNER_RED  8
+#define TYPE_2CORNER_GRAY  9
 class TextButton:public CCNodeRGBA
 {
 public:
@@ -23,6 +33,8 @@ public:
 	 */
 	TextButton(int type, string str, float width = 0);
 	~TextButton(void);
+	//获取高宽
+	CCSize getContentSize();
 	static TextButton* create(int type, string str, float width = 0);
 	//设置是否可以点击
 	void setMouseEnabeld(bool flag);

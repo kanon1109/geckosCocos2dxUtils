@@ -3,7 +3,6 @@
 #define _FLOAT_TIPS_
 #include "cocos2d.h"
 USING_NS_CC;
-
 class FloatTip:public CCNodeRGBA
 {
 public:
