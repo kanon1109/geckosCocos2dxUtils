@@ -37,7 +37,6 @@ TextButton::TextButton(int type, string str, float width)
 	if(width > 0) btnWidth = width;
 	this->addChild(this->coreTarget);
 	this->coreTarget->setPreferredSize(CCSize(btnWidth, btnHeight)); 
-	
 	this->label->setPositionY(this->label->getPositionY() + 3);
 	this->callBackFunc = NULL;
 	this->target = NULL;
@@ -96,4 +95,11 @@ void TextButton::addEventListener(CCObject* target, SEL_TEXT_BUTTON_SELECTOR cal
 CCSize TextButton::getContentSize()
 {
 	return this->coreTarget->getContentSize();
+}
+
+void TextButton::setOpacity( GLubyte opacity )
+{
+	this->coreTarget->setOpacity(opacity);
+	this->label->setOpacity(opacity);
+	CCNodeRGBA::setOpacity(opacity);
 }

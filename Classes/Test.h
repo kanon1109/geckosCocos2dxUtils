@@ -25,6 +25,8 @@ private:
 	//clickÊÂ¼þ
 	void btnClickHandler(CCNode* node);
 	void btn2ClickHandler(CCNode* node);
+	void alertConfirmClickHandler();
+	void alertCancelClickHandler();
 	void tarBarClickHandler(int selectedIndex);
 };
 

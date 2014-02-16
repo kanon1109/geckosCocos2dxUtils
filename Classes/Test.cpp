@@ -29,7 +29,6 @@ Test::~Test(void)
 bool Test::init()
 {
 	CCLOG("r=%f", Random::randomFloat(-2.4f, 6.6f));
-
 	std::string s = " ";
 	CCLOG("rfind = %i\n", s.rfind("\t"));
 	CCLOG("is WhiteSpace: %i\n", StringUtil::isWhiteSpace(s));
@@ -102,6 +101,7 @@ bool Test::init()
 	this->btn->setTag(11);
 	this->btn->addEventListener(this, text_button_selector(Test::btnClickHandler));
 	this->btn->setEnabled(false);
+	//this->btn->setOpacity(0);
 	//this->btn->setMouseEnabeld(false);
 
 	this->btn2 = TextButton::create(5, "button", 0);
@@ -109,14 +109,12 @@ bool Test::init()
 	this->btn2->setPosition(ccp(300, 500));
 	this->btn2->setTag(22);
 	/* 当鼠标处于按下并曾经点中按钮的状态下，鼠标松开且在按钮范围内，则触发一次 */  
-	//this->btn2->addEventListener(this, text_button_selector(Test::btn2ClickHandler));
+	this->btn2->addEventListener(this, text_button_selector(Test::btn2ClickHandler));
 
 	TestChildScene* cs = TestChildScene::create();
 	this->addChild(cs);
 
 	Alert::initParent(this);
-
-	Alert::show((char* )Language::get("eatWhiteBtn"), true);
 
 	//CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
 	return true;
@@ -124,19 +122,22 @@ bool Test::init()
 
 void Test::btnClickHandler(CCNode* node)
 {
+	Alert::show((char* )Language::get("bind_alert"), false, true, this,
+					alert_selector(Test::alertConfirmClickHandler), 
+					alert_selector(Test::alertCancelClickHandler));
 	/*CCControlButton* btn = (CCControlButton*) pSender;
 	CCLOG("click btn%i", btn->getTag());*/
-	node->removeFromParent();
+	//node->removeFromParent();
 	//CCLOG("retainCount btn%i", this->btn->retainCount());
 	//this->btn->release();
-	this->tarBar->removeFromParent();
+	//this->tarBar->removeFromParent();
 	vector<string> v;
 	v.push_back("3");
 	v.push_back("4");
 	v.push_back("5");
 	FloatTips::show(Language::get("test", &v));
 	
-	CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
+	//CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
 }
 
 
@@ -177,10 +178,13 @@ void Test::onEnter()
 
 void Test::btn2ClickHandler(CCNode* node)
 {
-	CCLOG("click2");
-	FloatTips::clear();
-	this->tarBar->removeFromParent();
-	//CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
+	//CCLOG("click2");
+	//FloatTips::clear();
+	//this->tarBar->removeFromParent();
+
+	Alert::show((char* )Language::get("eatWhiteBtn"), true, true, this,
+		alert_selector(Test::alertConfirmClickHandler), 
+		alert_selector(Test::alertCancelClickHandler));
 }
 
 void Test::initTarBarList()
@@ -225,6 +229,7 @@ void Test::initTarBarList()
 
 	this->tarBar = TabBar::create(tarBarList, -35);
 	this->addChild(this->tarBar);
+	//this->tarBar->setOpacity(0);
 	this->tarBar->setPosition(ccp(10, 500));
 	this->tarBar->addEventListener(this, tar_bar_selector(Test::tarBarClickHandler));
 }
@@ -232,4 +237,14 @@ void Test::initTarBarList()
 void Test::tarBarClickHandler(int selectedIndex )
 {
 	CCLOG("selectedIndex %i", selectedIndex);
+}
+
+void Test::alertConfirmClickHandler()
+{
+	CCLOG("alertConfirmClickHandler");
+}
+
+void Test::alertCancelClickHandler()
+{
+	CCLOG("alertCancelClickHandler");
 }

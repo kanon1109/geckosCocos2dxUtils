@@ -42,6 +42,8 @@ public:
 	void setEnabled(bool flag);
 	//监听回调
 	void addEventListener(CCObject* target, SEL_TEXT_BUTTON_SELECTOR callBackFunc);	
+	//设置透明度
+	void setOpacity(GLubyte opacity);
 private:
 	//按钮
 	CCControlButton* coreTarget;

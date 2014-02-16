@@ -24,6 +24,8 @@ public:
 	static TabBar* create(CCArray* textureList, int gap=0);
 	//监听回调
 	void addEventListener(CCObject* target, SEL_TAR_BAR_SELECTOR callBackFunc);	
+	//设置透明度
+	void setOpacity(GLubyte opacity);
 private:
 	//间隔
 	int gap;

@@ -121,3 +121,18 @@ void TabBar::addEventListener( CCObject* target, SEL_TAR_BAR_SELECTOR callBackFu
 	this->target = target;
 	this->callBackFunc = callBackFunc;
 }
+
+void TabBar::setOpacity( GLubyte opacity )
+{
+	int count = this->textureList->count();
+	CCControlButton* btn;
+	CCControlButton* selectedBtn;
+	for (int i = 0; i < count; i+=1)
+	{
+		btn = (CCControlButton* )this->getChildByTag(i + 1);
+		selectedBtn = (CCControlButton*)this->getChildByTag((i + 1) * 10);
+		selectedBtn->setOpacity(opacity);
+		btn->setOpacity(opacity);
+	}
+	CCNodeRGBA::setOpacity(opacity);
+}
