@@ -146,3 +146,22 @@ void StringUtil::split(vector<string> &result, string str, string delim )
 	}
 	result.push_back(cpStr);
 }
+
+string StringUtil::toScoreString(long long int score)
+{
+	char p_str[20];
+	int				len;
+	int				count = 0;
+	sprintf(p_str, "%d", score);
+	len = strlen(p_str);
+	string str = p_str;
+	for (int i = len - 1; i >= 0; i--)
+	{
+		count++;
+		if (count % 3 == 0 && i != 0)
+		{
+			str.insert(i, ",");
+		}
+	}
+	return str;
+}

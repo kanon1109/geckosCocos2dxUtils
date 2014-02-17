@@ -87,6 +87,13 @@ public:
 	 * @param   delim		分割符
      */
 	static void split(vector<string> &result, string str, string delim);
+
+	/**
+	* 分数国际化
+	* @param   score		分数
+	* @return  国际化后的分数
+	*/
+	static string toScoreString(long long score);
 };
 
 #endif

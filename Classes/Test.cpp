@@ -116,6 +116,8 @@ bool Test::init()
 
 	Alert::initParent(this);
 
+	CCLOG("toScoreString %s", StringUtil::toScoreString(1124566681).c_str());
+
 	//CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
 	return true;
 }
