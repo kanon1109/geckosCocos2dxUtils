@@ -181,7 +181,6 @@ void Test::btn2ClickHandler(CCNode* node)
 	//CCLOG("click2");
 	//FloatTips::clear();
 	//this->tarBar->removeFromParent();
-
 	Alert::show((char* )Language::get("eatWhiteBtn"), true, true, this,
 		alert_selector(Test::alertConfirmClickHandler), 
 		alert_selector(Test::alertCancelClickHandler));

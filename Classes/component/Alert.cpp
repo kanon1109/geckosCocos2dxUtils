@@ -48,6 +48,7 @@ Alert::~Alert(void)
 	this->pLabel->removeFromParent();
 	this->scrollView->removeFromParent();
 	alert = NULL;
+	delete alert;
 }
 
 Alert* Alert::create( char* content, bool showCancel /*= false*/, bool touchHide /*= true*/, CCNode* eventTarget /*= NULL*/, SEL_ALERT_SELECTOR confirmHandler /*= NULL*/, SEL_ALERT_SELECTOR cancelHandler /*= NULL*/ )
