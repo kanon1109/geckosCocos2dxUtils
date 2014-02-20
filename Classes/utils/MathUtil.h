@@ -152,5 +152,13 @@ public:
 	 * @return	2点之间的距离
 	 */
 	static float distance(float x1, float y1, float x2, float y2);
+
+	/**
+	 * 获取整数的位数	
+	 * MathUtil::getIntLength(1000)  4;
+	 * @param	num	整数
+	 * @return	位数
+	 */
+	static unsigned int getIntLength(unsigned int num);
 };
 #endif

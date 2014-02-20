@@ -118,6 +118,9 @@ bool Test::init()
 	float d = MathUtil::arithmeticSequenceIndex(21, 1);
 	CCLOG("d %f", d);
 
+	unsigned int n = MathUtil::getIntLength(100200);
+	CCLOG("n %i", n);
+
 	this->initTarBarList();
 
 	this->btn = TextButton::create(TYPE_RECT_BLUE, Language::get("eatWhiteBtn"), 300);
