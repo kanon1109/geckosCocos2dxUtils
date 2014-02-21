@@ -5,7 +5,7 @@
 #include "component/TabBar.h"
 USING_NS_CC;
 using namespace extension;
-class Test:public CCScene, public CCTargetedTouchDelegate
+class Test:public CCScene//, public CCTargetedTouchDelegate
 {
 public:
 	Test(void);

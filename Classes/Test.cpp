@@ -14,6 +14,7 @@
 #include "cocos-ext.h"
 #include "component/TextButton.h"
 #include "component/Alert.h"
+#include "utils/MathUtil.h"
 using namespace extension;
 using namespace std;
 using std::vector;
@@ -75,6 +76,20 @@ bool Test::init()
 	//恢复####点体力######## 恢复3点体力45
 	CCLOG("test= %s", Language::get("test", &v));
 
+	float angle = MathUtil::fixNumber(400, 0, 360);
+	CCLOG("angle %f", angle);
+
+	CCLOG("Factorial %i", MathUtil::getFactorial(3));
+
+	CCLOG("getSlope %f", MathUtil::getSlope(0, 1, 0, 1));
+
+	vector<float> vect;
+	MathUtil::threeSidesMathAngle(vect, 3, 4, 5);
+
+	CCLOG("1vect%f", vect[0]);
+	CCLOG("2vect%f", vect[1]);
+	CCLOG("3vect%f", vect[2]);
+
 	/*EnterFrame::init(this);
 	EnterFrame::push(callfunc_selector(Test::runFun));
 	EnterFrame::push(callfunc_selector(Test::runFun2));
@@ -87,6 +102,8 @@ bool Test::init()
 	/*const char* cc = Language::get("union_btn_view");
 	
 	sprintf((char*)cc, "%i", 2);*/
+
+
 
 	CCTexture2D *texture = CCTextureCache::sharedTextureCache()->addImage("ftips_bg.png");  
 
@@ -103,6 +120,19 @@ bool Test::init()
 	this->btn->setEnabled(false);
 	//this->btn->setOpacity(0);
 	//this->btn->setMouseEnabeld(false);
+	CCSprite* spt1 = CCSprite::create("images/button/common_btn_4.png");
+	spt1->setPosition(ccp(400, 400));
+	this->addChild(spt1);
+
+	CCSprite* spt = CCSprite::create("images/button/common_btn_5.png");
+	spt->setPosition(ccp(300, 300));
+	this->addChild(spt);
+	float dx = spt->getPositionX() - spt1->getPositionX();
+	float dy = spt->getPositionY() - spt1->getPositionY();
+	
+	MathUtil::rotate(vect, spt1->getPositionX(), spt1->getPositionY(), spt->getPositionX(), spt->getPositionY(),  360, true);
+	CCLOG("vect %f  %f", vect[0], vect[1]);
+	spt->setPosition(ccp(vect[0], vect[1]));
 
 	this->btn2 = TextButton::create(5, "button", 0);
 	this->addChild(this->btn2);
