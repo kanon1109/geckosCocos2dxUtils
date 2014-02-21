@@ -2,6 +2,8 @@
 #ifndef _MATH_UTIL_
 #define _MATH_UTIL_
 #include <vector>
+#include "cocos2d.h"
+USING_NS_CC;
 using namespace std;
 using std::vector;
 class MathUtil
@@ -61,6 +63,41 @@ public:
 	* @return 相应的弧度
 	*/
 	static float dgs2rds(float degrees);
+
+	/**
+     * 已知一个角度以及角度对应的边长 可以求出三角外接圆半径R的2倍
+	 * 正弦公式
+	 * a/sinA=b/sinB=c/sinC=2R
+     * @param	angle               角度
+     * @param	line                角对应的变长
+     * @return  三角外接圆半径R
+     */
+	static float sineLaw(float angle, float line);
+
+	/**
+     * 求出直角坐标系 三角形的重心
+     * @param	a      三角形顶点a
+     * @param	b      三角形顶点b
+     * @param	c      三角形顶点c
+     * @return  三角形的重心
+     */
+	static CCPoint triangleCentroid(CCPoint a, CCPoint b, CCPoint c);
+
+	/**
+     * 求出直角坐标系 三角形外接圆中心坐标
+     * x = ((y2 - y1) * (y3 * y3 - y1 * y1 + x3 * x3 - x1 * x1) - 
+     *      (y3 - y1) * (y2 * y2 - y1 * y1 + x2 * x2 - x1 * x1)) / 
+     *      (2 * (x3 - x1) * (y2 - y1) - 2 * ((x2 - x1) * (y3 - y1))); 
+     * 
+     * y = ((x2 - x1) * (x3 * x3 - x1 * x1 + y3 * y3 - y1 * y1) - 
+     *      (x3 - x1) * (x2 * x2 - x1 * x1 + y2 * y2 - y1 * y1)) / 
+     *      (2 * (y3 - y1) * (x2 - x1) - 2 * ((y2 - y1) * (x3 - x1)));
+     * @param	a      三角形顶点a
+     * @param	b      三角形顶点b
+     * @param	c      三角形顶点c
+     * @return  外接圆中心坐标
+     */
+	static CCPoint triangleCircumscribedCircleCenter(CCPoint a, CCPoint b, CCPoint c);
 	
 	/**
 	* 已知3边求出某边对应的角的角度
@@ -89,5 +126,39 @@ public:
 	static void MathUtil::rotate(vector<float>&vect, float cx, float cy,
 									float tx, float ty,
 									float angle, bool reverse);
+
+	/**
+	 * 根据项数和公差求出等差数列项数所对应的值 
+	 * @param	sn  n项的和
+	 * @param	d   公差
+	 * @return  项数所对应的值
+	 */
+	static float arithmeticSequenceIndexValue(unsigned int sn, unsigned int d);
+
+	/**
+	 * 根据数列的和求出等差数列项的次数
+	 * @param	sn  n项的和
+	 * @param	d   公差
+	 * @return  项的次数
+	 */
+	static unsigned int arithmeticSequenceIndex(unsigned int sn, unsigned int d);
+
+	/**
+	 * 计算距离
+	 * @param	x1	点1的x坐标
+	 * @param	y1	点1的y坐标
+	 * @param	x2	点2的x坐标
+	 * @param	y2	点2的y坐标
+	 * @return	2点之间的距离
+	 */
+	static float distance(float x1, float y1, float x2, float y2);
+
+	/**
+	 * 获取整数的位数	
+	 * MathUtil::getIntLength(1000)  4;
+	 * @param	num	整数
+	 * @return	位数
+	 */
+	static unsigned int getIntLength(unsigned int num);
 };
 #endif

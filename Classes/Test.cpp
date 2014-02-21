@@ -109,7 +109,34 @@ bool Test::init()
 
 	FloatTips::init(this, ccp(320, 760), texture);
 	
+	vector<float> vect;
+	MathUtil::threeSidesMathAngle(vect, 3, 4, 5);
+
+	CCLOG("vect %f %f %f", vect[0], vect[1], vect[2]);
 	
+	CCSprite* a1 = CCSprite::create("node.png");
+	a1->setPosition(ccp(65, 145));
+	this->addChild(a1);
+
+	CCSprite* a2 = CCSprite::create("node.png");
+	a2->setPosition(ccp(177, 63));
+	this->addChild(a2);
+
+	CCSprite* a3 = CCSprite::create("node.png");
+	a3->setPosition(ccp(223, 219));
+	this->addChild(a3);
+
+	CCPoint p = MathUtil::triangleCentroid(a1->getPosition(), a2->getPosition(), a3->getPosition());
+	CCSprite* a4 = CCSprite::create("node.png");
+	a4->setPosition(p);
+	this->addChild(a4);
+
+	float d = MathUtil::arithmeticSequenceIndex(21, 1);
+	CCLOG("d %f", d);
+
+	unsigned int n = MathUtil::getIntLength(100200);
+	CCLOG("n %i", n);
+
 	this->initTarBarList();
 
 	this->btn = TextButton::create(TYPE_RECT_BLUE, Language::get("eatWhiteBtn"), 300);
