@@ -109,7 +109,7 @@ bool Test::init()
 
 	FloatTips::init(this, ccp(320, 760), texture);
 	
-	vector<float> vect;
+	//vector<float> vect;
 	MathUtil::threeSidesMathAngle(vect, 3, 4, 5);
 
 	CCLOG("vect %f %f %f", vect[0], vect[1], vect[2]);

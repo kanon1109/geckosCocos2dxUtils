@@ -107,7 +107,7 @@ unsigned int MathUtil::arithmeticSequenceIndex( unsigned int sn, unsigned int d 
 	float hd = d * .5;
 	float a = hd;
 	float b = 1 - hd;
-	int c = -sn;
+	int c = -(int)sn;
 	return ( -b + sqrt(b * b - (4 * a * c))) / (2 * a);
 }
 
