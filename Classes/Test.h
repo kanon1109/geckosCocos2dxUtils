@@ -3,6 +3,7 @@
 #include "cocos-ext.h"
 #include "component/TextButton.h"
 #include "component/TabBar.h"
+#include "utils/Timer.h"
 USING_NS_CC;
 using namespace extension;
 class Test:public CCScene//, public CCTargetedTouchDelegate
@@ -28,5 +29,8 @@ private:
 	void alertConfirmClickHandler();
 	void alertCancelClickHandler();
 	void tarBarClickHandler(int selectedIndex);
+
+	void timerCompleteHandler(Timer* timer);
+	void timerHandler(Timer* timer);
 };
 

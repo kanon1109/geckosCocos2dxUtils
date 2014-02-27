@@ -15,6 +15,7 @@
 #include "component/TextButton.h"
 #include "component/Alert.h"
 #include "utils/MathUtil.h"
+#include "utils/Timer.h"
 using namespace extension;
 using namespace std;
 using std::vector;
@@ -103,6 +104,10 @@ bool Test::init()
 	
 	sprintf((char*)cc, "%i", 2);*/
 
+	Timer* timer = Timer::create(1000);
+	timer->addEventListener(this, timer_selector(Test::timerHandler));
+	timer->start();
+	this->addChild(timer);
 
 
 	CCTexture2D *texture = CCTextureCache::sharedTextureCache()->addImage("ftips_bg.png");  
@@ -305,4 +310,19 @@ void Test::alertConfirmClickHandler()
 void Test::alertCancelClickHandler()
 {
 	CCLOG("alertCancelClickHandler");
+}
+
+void Test::timerCompleteHandler(Timer* timer)
+{
+	CCLOG("currentCount %d", timer->currentCount);
+	CCLOG("timerCompleteHandler");
+}
+
+void Test::timerHandler(Timer* timer)
+{
+	if (timer->currentCount == 5)
+	{
+		timer->setDelay(200);
+	}
+	CCLOG("timerHandler %d", timer->currentCount);
 }
