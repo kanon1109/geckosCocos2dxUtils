@@ -18,6 +18,7 @@ void Timer::start()
 {
 	if (this->running) return;
 	this->running = true;
+	this->currentCount = 0;
 	this->schedule(schedule_selector(Timer::loop), (float)(this->m_delay / 1000));
 }
 
