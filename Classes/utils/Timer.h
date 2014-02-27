@@ -4,7 +4,7 @@
 #include "cocos2d.h"
 USING_NS_CC;
 //一个计时器时间结束时回调
-typedef void (CCObject::*SEL_TIMER_SELECTOR)(CCNode*);
+typedef void (CCObject::*SEL_TIMER_SELECTOR)(CCObject*);
 #define timer_selector(_SELECTOR) (SEL_TIMER_SELECTOR)(&_SELECTOR)
 
 class Timer:public CCNode
@@ -18,7 +18,7 @@ public:
 	Timer(float delay, int repeatCount = 0);
 	~Timer();
 	static Timer* create(float delay, int repeatCount = 0);
-	void addEventListener(CCNode* target, SEL_TIMER_SELECTOR timeFunc);
+	void addEventListener(CCObject* target, SEL_TIMER_SELECTOR timeFunc);
 	//开始和暂停
 	void start();
 	void stop();
@@ -34,7 +34,7 @@ public:
 private:
 	float m_delay;
 	int m_repeatCount;
-	CCNode* target;
+	CCObject* target;
 	SEL_TIMER_SELECTOR timeHandler;
 	void loop(float dt);
 };

@@ -67,7 +67,7 @@ void Timer::loop(float dt)
 	}
 }
 
-void Timer::addEventListener(CCNode* target, SEL_TIMER_SELECTOR timeFunc)
+void Timer::addEventListener(CCObject* target, SEL_TIMER_SELECTOR timeFunc)
 {
 	this->target = target;
 	this->timeHandler = timeFunc;
