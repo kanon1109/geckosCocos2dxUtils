@@ -13,7 +13,6 @@ Language::Language(void)
 {
 }
 
-
 Language::~Language(void)
 {
 }
@@ -35,6 +34,7 @@ void Language::init(string name)
 			element = element->NextSiblingElement();
 		}
 		isInit = true;
+		delete doc;
 	}
 }
 
