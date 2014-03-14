@@ -74,13 +74,6 @@ public:
 	static void cutOff(string* str, unsigned int start, unsigned int len, bool order=true);
 
 	 /**
-     * 是否为Email地址
-     * @param   email 字符串
-     * @return  是否为Email地址
-     */
-	static bool isEmail(string* email);
-
-	 /**
      * 分割字符串
 	 * @param   result		分割后的vector
 	 * @param   str			待分割的字符串

@@ -106,30 +106,6 @@ void StringUtil::cutOff( string* str, unsigned int start, unsigned int len, bool
 	*str = newStr;
 }
 
-bool StringUtil::isEmail( string* email )
-{
-	StringUtil::trim(email);
-	string regStr = "([0-9A-Za-z\\-_\\.]+)@([0-9a-z]+\\.[a-z]{2,3}(\\.[a-z]{2})?)";
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-	char ss[100] = {};  
-	sprintf(ss,"%s", email->c_str());  
-	regmatch_t pmatch[4];  
-	regex_t match_regex;  
-	regcomp( &match_regex,  regStr, REG_EXTENDED );  
-	if (regexec( &match_regex, ss, 4, pmatch, 0 ) != 0 )  return false;
-	regfree( &match_regex );  
-	return true;
-#endif
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)  
-	regex pattern(regStr);  
-	if (!regex_match(*email, pattern ))  
-		return false;
-	return true;
-#endif
-	//其他平台暂时不能验证
-	return false;
-}
-
 void StringUtil::split(vector<string> &result, string str, string delim )
 {
 	string cpStr = str;
