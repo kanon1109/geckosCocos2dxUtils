@@ -21,10 +21,14 @@ void Language::init(string name)
 {
 	if(!isInit)
 	{
+		unsigned char* pBuffer = NULL;
+		unsigned long bufferSize = 0;
+		//ÏÈ½«xml¶ÁÈëbuffer
+		pBuffer = CCFileUtils::sharedFileUtils()->getFileData(name.c_str(), "r", &bufferSize);
 		dict = CCDictionary::create();
 		dict->retain();
 		doc = new tinyxml2::XMLDocument();
-		doc->LoadFile(name.c_str());
+		doc->Parse((const char*)pBuffer);
 		rootElement = doc->RootElement();
 		XMLElement *element = rootElement->FirstChildElement();
 		while (element)
