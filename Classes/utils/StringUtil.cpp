@@ -128,7 +128,7 @@ string StringUtil::toScoreString(long long int score)
 	char p_str[20];
 	int				len;
 	int				count = 0;
-	sprintf(p_str, "%d", score);
+	sprintf(p_str, "%lld", score);
 	len = strlen(p_str);
 	string str = p_str;
 	for (int i = len - 1; i >= 0; i--)
