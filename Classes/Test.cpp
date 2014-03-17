@@ -47,11 +47,11 @@ bool Test::init()
 	StringUtil::cutOff(&str, 1, 1);
 	CCLOG("cutOff= %s", str.c_str());
 
-	string email = "kanontang@gmail.com";
+	/*string email = "kanontang@gmail.com";
 	StringUtil::trim(&email);
 	CCLOG("email= %s", email.c_str());
 	bool isEmail = StringUtil::isEmail(&email);
-	CCLOG("%d", isEmail);
+	CCLOG("%d", isEmail);*/
 	//CCLOG("bool", StringUtil::isEmail(&email));
 	//CCLOG("email= %s", email.c_str());
 	vector<string> v;
