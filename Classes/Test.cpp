@@ -49,9 +49,9 @@ bool Test::init()
 
 	string email = "kanontang@gmail.com";
 	StringUtil::trim(&email);
-	CCLOG("email= %s", email.c_str());
-	bool isEmail = StringUtil::isEmail(&email);
-	CCLOG("%d", isEmail);
+	//CCLOG("email= %s", email.c_str());
+	//bool isEmail = StringUtil::isEmail(&email);
+	//CCLOG("%d", isEmail);
 	//CCLOG("bool", StringUtil::isEmail(&email));
 	//CCLOG("email= %s", email.c_str());
 	vector<string> v;
