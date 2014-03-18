@@ -15,7 +15,7 @@ ScreenUtil::~ScreenUtil()
 {
 }
 
-void ScreenUtil::setScreenSize(float width, float height, bool isFixHeight /*= true*/)
+void ScreenUtil::setScreenSize(float width /*= 960*/, float height /*= 640*/, bool isFixHeight /*= true*/)
 {
 	CCEGLView* pEGLView = CCEGLView::sharedOpenGLView();
 	CCSize frameSize = pEGLView->getFrameSize();

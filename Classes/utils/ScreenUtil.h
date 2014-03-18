@@ -13,7 +13,7 @@ public:
 	* @width	屏幕宽度
 	* @height	屏幕高度
 	*/
-	static void setScreenSize(float width, float height, bool isFixHeight = true);
+	static void setScreenSize(float width = 960, float height = 640, bool isFixHeight = true);
 
 	/*屏幕中心点左边*/
 	static CCPoint getCenter();
