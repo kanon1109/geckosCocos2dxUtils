@@ -48,3 +48,19 @@ void IllegalWord::filter(string &target)
 		StringUtil::replace(target, keyWordStr->m_sString, "**");
 	}
 }
+
+bool IllegalWord::hasKeyWord(string &target)
+{
+	CCString* keyWordStr;
+	unsigned int count = wordArr->count();
+	for (unsigned int i = 0; i < count; i++)
+	{
+		keyWordStr = (CCString*)wordArr->objectAtIndex(i);
+		int pos = StringUtil::indexOf(target, keyWordStr->m_sString);
+		if (pos != -1)
+		{
+			return true;
+		}
+	}
+	return false;
+}
