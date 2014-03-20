@@ -93,21 +93,21 @@ public:
 	* @param   str		×Ö·û´®
 	* @return  ÊÇ·ñÊÇ·ûºÅ×Ö·û
 	*/
-	static bool isSymbolWord(char* str);
+	static bool isSymbolWord(const char* str);
 
 	/**
 	* ÊÇ·ñÊÇ×Ö·ûÊÇ·ñÊÇ×ÖÄ¸
 	* @param   str		×Ö·û´®
 	* @return  ÊÇ·ñÊÇ×ÖÄ¸×Ö·û
 	*/
-	static bool isAlphabetWord(char* str);
+	static bool isAlphabetWord(const char* str);
 
 	/**
 	* ÊÇ·ñÊÇ×Ö·ûÊÇ·ñÊÇÊı×Ö
 	* @param   str		×Ö·û´®
 	* @return  ÊÇ·ñÊÇÊı×Ö×Ö·û
 	*/
-	static bool isNumberWord(char* str);
+	static bool isNumberWord(const char* str);
 };
 
 #endif

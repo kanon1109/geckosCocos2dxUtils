@@ -142,7 +142,7 @@ string StringUtil::toScoreString(long long int score)
 	return str;
 }
 
-bool StringUtil::isSymbolWord(char* str)
+bool StringUtil::isSymbolWord(const char* str)
 {
 	if ((*str >= 32 && *str <= 47) || 
 		(*str >= 58 && *str <= 64) ||
@@ -154,7 +154,7 @@ bool StringUtil::isSymbolWord(char* str)
 	return false;
 }
 
-bool StringUtil::isAlphabetWord(char* str)
+bool StringUtil::isAlphabetWord(const char* str)
 {
 	if ((*str >= 65 && *str <= 90) ||
 		(*str >= 97 && *str <= 122))
@@ -164,7 +164,7 @@ bool StringUtil::isAlphabetWord(char* str)
 	return false;
 }
 
-bool StringUtil::isNumberWord(char* str)
+bool StringUtil::isNumberWord(const char* str)
 {
 	if (*str >= 48 && *str <= 57)
 	{
