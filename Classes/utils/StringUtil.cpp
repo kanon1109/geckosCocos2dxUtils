@@ -141,3 +141,34 @@ string StringUtil::toScoreString(long long int score)
 	}
 	return str;
 }
+
+bool StringUtil::isSymbolWord(char* str)
+{
+	if ((*str >= 32 && *str <= 47) || 
+		(*str >= 58 && *str <= 64) ||
+		(*str >= 91 && *str <= 96) ||
+		(*str >= 123 && *str <= 126))
+	{
+		return true;
+	}
+	return false;
+}
+
+bool StringUtil::isAlphabetWord(char* str)
+{
+	if ((*str >= 65 && *str <= 90) ||
+		(*str >= 97 && *str <= 122))
+	{
+		return true;
+	}
+	return false;
+}
+
+bool StringUtil::isNumberWord(char* str)
+{
+	if (*str >= 48 && *str <= 57)
+	{
+		return true;
+	}
+	return false;
+}

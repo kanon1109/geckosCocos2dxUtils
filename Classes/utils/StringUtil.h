@@ -87,6 +87,27 @@ public:
 	* @return  国际化后的分数
 	*/
 	static string toScoreString(long long score);
+
+	/**
+	* 是否是字符是否是符号
+	* @param   str		字符串
+	* @return  是否是符号字符
+	*/
+	static bool isSymbolWord(char* str);
+
+	/**
+	* 是否是字符是否是字母
+	* @param   str		字符串
+	* @return  是否是字母字符
+	*/
+	static bool isAlphabetWord(char* str);
+
+	/**
+	* 是否是字符是否是数字
+	* @param   str		字符串
+	* @return  是否是数字字符
+	*/
+	static bool isNumberWord(char* str);
 };
 
 #endif
