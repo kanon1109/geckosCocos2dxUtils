@@ -144,7 +144,8 @@ string StringUtil::toScoreString(long long int score)
 
 bool StringUtil::isSymbolWord(const char* str)
 {
-	if ((*str >= 32 && *str <= 47) || 
+	if (*str == '\n' ||
+		(*str >= 32 && *str <= 47) || 
 		(*str >= 58 && *str <= 64) ||
 		(*str >= 91 && *str <= 96) ||
 		(*str >= 123 && *str <= 126))
