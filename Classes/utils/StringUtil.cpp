@@ -173,3 +173,15 @@ bool StringUtil::isNumberWord(const char* str)
 	}
 	return false;
 }
+
+int StringUtil::indexOf(string str, string match)
+{
+	size_t pos = str.find(match);
+	if (pos == std::string::npos) return -1;
+	return pos;
+}
+
+void StringUtil::replace(string &str, string match, string repl)
+{
+	str.replace(StringUtil::indexOf(str, match), match.length(), repl);
+}

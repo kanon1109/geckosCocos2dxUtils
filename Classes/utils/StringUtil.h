@@ -108,6 +108,22 @@ public:
 	* @return  是否是数字字符
 	*/
 	static bool isNumberWord(const char* str);
+
+	/**
+	* 搜索字符串，并返回匹配位置
+	* @param   str			要被搜索到字符串源
+	* @param   match		要搜索的子字符串
+	* @return  指定子字符串的第一个匹配项的索引，或 -1。 
+	*/
+	static int indexOf(string str, string match);
+
+	/**
+	* 替换字符串
+	* @param   str			源字符串
+	* @param   match		需要替换内容的子字符串
+	* @param   repl			替换的内容
+	*/
+	static void replace(string &str, string match, string repl);
 };
 
 #endif
