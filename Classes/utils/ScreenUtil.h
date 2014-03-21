@@ -29,5 +29,13 @@ public:
 	
 	/*фад╩сроб╫гвС╠ъ*/
 	static CCPoint getRightBottom();
+
+	static float getLeft();
+
+	static float getRight();
+
+	static float getBottom();
+
+	static float getTop();
 };
 #endif

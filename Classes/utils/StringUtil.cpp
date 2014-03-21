@@ -185,3 +185,42 @@ void StringUtil::replace(string &str, string match, string repl)
 {
 	str.replace(StringUtil::indexOf(str, match), match.length(), repl);
 }
+
+bool StringUtil::hasNumberWord(const char* str)
+{
+	int len = strlen(str);
+	for (int i = 0; i < len; i++)
+	{
+		if (StringUtil::isNumberWord(&str[i]))
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
+bool StringUtil::hasAlphabetWord(const char* str)
+{
+	int len = strlen(str);
+	for (int i = 0; i < len; i++)
+	{
+		if (StringUtil::isAlphabetWord(&str[i]))
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
+bool StringUtil::hasSymbolWord(const char* str)
+{
+	int len = strlen(str);
+	for (int i = 0; i < len; i++)
+	{
+		if (StringUtil::isSymbolWord(&str[i]))
+		{
+			return true;
+		}
+	}
+	return false;
+}

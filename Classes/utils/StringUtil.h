@@ -110,6 +110,27 @@ public:
 	static bool isNumberWord(const char* str);
 
 	/**
+	* 多个字符是否包含数字
+	* @param   str		字符串
+	* @return  是否包含数字
+	*/
+	static bool hasNumberWord(const char* str);
+
+	/**
+	* 多个字符是否包含字母
+	* @param   str		字符串
+	* @return  是否包含字母
+	*/
+	static bool hasAlphabetWord(const char* str);
+
+	/**
+	* 多个字符是否包含符号
+	* @param   str		字符串
+	* @return  是否包含符号
+	*/
+	static bool hasSymbolWord(const char* str);
+
+	/**
 	* 搜索字符串，并返回匹配位置
 	* @param   str			要被搜索到字符串源
 	* @param   match		要搜索的子字符串

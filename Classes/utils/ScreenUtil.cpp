@@ -75,3 +75,23 @@ CCPoint ScreenUtil::getRightBottom()
 {
 	return rightBottom;
 }
+
+float ScreenUtil::getLeft()
+{
+	return leftTop.x;
+}
+
+float ScreenUtil::getRight()
+{
+	return rightTop.x;
+}
+
+float ScreenUtil::getBottom()
+{
+	return leftBottom.y;
+}
+
+float ScreenUtil::getTop()
+{
+	return leftTop.y;
+}
