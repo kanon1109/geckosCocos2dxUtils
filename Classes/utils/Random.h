@@ -8,6 +8,18 @@ class Random
 public:
 	Random(void);
 	~Random(void);
+
+	/**
+	* 初始化随机种子
+	*/
+	static void initRandomSeed();
+
+	/**
+	* 初始化随机种子
+	* @param seed	种子参数，2个相同种子可创建相同随机序列，每次编译生成都是同一种序列。
+	*/
+	static void initRandomSeed(unsigned int seed);
+
 	 /**
      * 返回 a - b之间的随机数，不包括  max(a, b)
      * @param a

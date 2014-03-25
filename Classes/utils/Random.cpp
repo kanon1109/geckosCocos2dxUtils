@@ -34,3 +34,15 @@ bool Random::boolean( float chance/*=.5f*/ )
 {
 	return (CCRANDOM_0_1() < chance) ? true : false;
 }
+
+void Random::initRandomSeed()
+{
+	//设置随机数种子
+	const time_t t = time(NULL);
+	srand(unsigned(time(NULL)));
+}
+
+void Random::initRandomSeed(unsigned int seed)
+{
+	srand(seed);
+}
