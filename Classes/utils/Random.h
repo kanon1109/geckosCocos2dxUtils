@@ -3,6 +3,7 @@
 #define _RANDOM_INIT_
 #include "cocos2d.h"
 USING_NS_CC;
+#define min(a,b)            (((a) < (b)) ? (a) : (b))
 class Random
 {
 public:
