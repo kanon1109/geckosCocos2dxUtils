@@ -1,12 +1,12 @@
 #include "ScreenUtil.h"
 #include "cocos2d.h"
 USING_NS_CC;
-static CCPoint leftTop;		//×óÉÏ±ßÆÁÄ»×ø±ê
-static CCPoint leftBottom;	//×óÏÂ±ßÆÁÄ»×ø±ê
-static CCPoint rightTop;	//ÓÒ±ßÆÁÄ»×ø±ê
-static CCPoint rightBottom;	//ÓÒ±ßÆÁÄ»×ø±ê
-static CCPoint center;		//ÖÐÐÄµãÆÁÄ»×ø±ê
-//ÆÁÄ»²Î¿¼´óÐ¡
+static CCPoint leftTop;		//å·¦ä¸Šè¾¹å±å¹•åæ ‡
+static CCPoint leftBottom;	//å·¦ä¸‹è¾¹å±å¹•åæ ‡
+static CCPoint rightTop;	//å³è¾¹å±å¹•åæ ‡
+static CCPoint rightBottom;	//å³è¾¹å±å¹•åæ ‡
+static CCPoint center;		//ä¸­å¿ƒç‚¹å±å¹•åæ ‡
+//å±å¹•å‚è€ƒå¤§å°
 static float screenReferenceWidth;
 static float screenReferenceHeight;
 ScreenUtil::ScreenUtil()
@@ -19,7 +19,7 @@ ScreenUtil::~ScreenUtil()
 
 void ScreenUtil::setScreenSize(float width /*= 960*/, float height /*= 640*/, bool isFixHeight /*= true*/)
 {
-	CCEGLView* pEGLView = CCEGLView::sharedOpenGLView(); 
+	CCEGLView* pEGLView = CCEGLView::sharedOpenGLView();
 	CCSize frameSize = pEGLView->getFrameSize();
 	screenReferenceWidth = width;
 	screenReferenceHeight = height;
@@ -30,13 +30,13 @@ void ScreenUtil::setScreenSize(float width /*= 960*/, float height /*= 640*/, bo
 	float scale = MAX(scaleX, scaleY);
 	if (isFixHeight)
 	{
-		// ¹Ì¶¨¸ß¶È
+		// å›ºå®šé«˜åº¦
 		if (scaleX > scaleY) scale = scaleX / (frameSize.height / (float)vSize.height);
 		else scale = scaleX / (frameSize.width / (float)vSize.width);
 	}
 	else
 	{
-		// ¹Ì¶¨¿í¶È
+		// å›ºå®šå®½åº¦
 		if (scaleX > scaleY) scale = scaleY / (frameSize.height / (float)vSize.height);
 		else scale = scaleY / (frameSize.width / (float)vSize.width);
 	}
