@@ -1,4 +1,4 @@
-#include "ScreenUtil.h"
+﻿#include "ScreenUtil.h"
 #include "cocos2d.h"
 USING_NS_CC;
 static CCPoint leftTop;		//左上边屏幕坐标
