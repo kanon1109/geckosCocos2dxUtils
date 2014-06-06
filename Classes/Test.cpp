@@ -191,20 +191,13 @@ bool Test::init()
 
 	CCLOG("toScoreString %s", StringUtil::toScoreString(1124566681).c_str());
 
-
-	
-	/*ProgressLabel* plabel = ProgressLabel::create("Arial", 30);
+	ProgressLabel* plabel = ProgressLabel::create("Arial", 30);
 	plabel->setAnchorPoint(ccp(0, 0));
-	plabel->show("123123asdasdasdasd", 10);
+	plabel->show(Language::get("alert_lack_hero"), 100);
 	plabel->setDimensions(CCSizeMake(400, 0));
 	plabel->setPosition(ccp(300, 100));
 	plabel->setHorizontalAlignment(kCCTextAlignmentLeft);
-	this->addChild(plabel);*/
-
-	string szInfo = "TestÖÐÎÄ";
-	string szUTF8 = StringConvert::a2u(szInfo.c_str());
-
-
+	this->addChild(plabel);
 
 	/*CCLabelTTF* pLabel = CCLabelTTF::create("", "Arial", 32);
 	pLabel->setString(szUTF8.c_str());

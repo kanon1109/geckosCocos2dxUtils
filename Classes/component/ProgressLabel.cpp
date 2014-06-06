@@ -35,9 +35,22 @@ void ProgressLabel::timerHandler(float dt)
 {
 	int length = strlen(this->m_str);
 	string s = this->m_str;
-	this->setString(s.substr(0, wordCount).c_str());
-	this->wordCount++;
-	if (this->wordCount > length)
+	//根据ASCII码找出中英文字符
+	if(s.at(this->wordCount) >= 0 && s.at(this->wordCount) <= 127)
+	{
+		//英文
+		this->setString(s.substr(0, wordCount).c_str());
+		this->wordCount++;
+	}
+	else
+	{
+		//中文
+		this->setString(s.substr(0, wordCount + 3).c_str());
+		this->wordCount += 3;
+	}
+	CCLOG("%i", this->wordCount);
+	CCLOG("length %i", length);
+	if (this->wordCount >= length)
 		this->unschedule(schedule_selector(ProgressLabel::timerHandler));
 }
 

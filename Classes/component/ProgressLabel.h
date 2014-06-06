@@ -18,7 +18,7 @@ public:
 	static ProgressLabel* create(const char *fontName, float fontSize);
 	
 	//************************************
-	// Description: 显示文字逐行显示效果
+	// Description: 显示文字逐行显示效果（中文字符集必须是utf-8格式）
 	// Parameter: const char * str		文字内容
 	// Parameter: int delay				显示间隔（豪秒）
 	// Returns:   void
