@@ -5,8 +5,10 @@
 #include <cstdlib>
 #include <algorithm>
 #include "utils/StringUtil.h"
+#ifndef CC_PLATFORM_WIN32
+#include <math.h>
+#endif
 using namespace std;
-using std::vector;
 TimeFormat::TimeFormat(void)
 {
 }

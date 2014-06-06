@@ -32,5 +32,7 @@ private:
 
 	void timerCompleteHandler(Timer* timer);
 	void timerHandler(Timer* timer);
+
+	void test(int& i);
 };
 

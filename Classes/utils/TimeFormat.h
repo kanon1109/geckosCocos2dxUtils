@@ -2,9 +2,6 @@
 #ifndef _TIME_FORMAT_
 #define _TIME_FORMAT_
 #include <iostream>
-#ifndef CC_PLATFORM_WIN32
-#include <math.h>
-#endif
 using namespace std;
 class TimeFormat
 {

@@ -2,7 +2,6 @@
 #ifndef _ENTER_FRAME_INIT_
 #define _ENTER_FRAME_INIT_
 #include "cocos2d.h"
-#include <vector>
 USING_NS_CC;
 class EnterFrame
 {

@@ -1,7 +1,6 @@
 #include "StringUtil.h"
 #include "cocos2d.h"
 #include <stdio.h>
-#include <algorithm>
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)  
 #include <regex>  
 #endif

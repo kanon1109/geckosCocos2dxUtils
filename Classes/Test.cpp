@@ -28,8 +28,17 @@ Test::~Test(void)
 {
 }
 
+
+int i = 0;
+void Test::test(int& i)
+{
+	i = 100;
+}
+
 bool Test::init()
 {
+	test(i);
+	CCLOG("i = %d", i);
 	CCLOG("r=%f", Random::randomFloat(-2.4f, 6.6f));
 	std::string s = " ";
 	CCLOG("rfind = %i\n", s.rfind("\t"));
@@ -91,14 +100,14 @@ bool Test::init()
 	CCLOG("2vect%f", vect[1]);
 	CCLOG("3vect%f", vect[2]);
 
-	/*EnterFrame::init(this);
+	EnterFrame::init(this);
 	EnterFrame::push(callfunc_selector(Test::runFun));
 	EnterFrame::push(callfunc_selector(Test::runFun2));
 	EnterFrame::push(callfunc_selector(Test::runFun));
 
 	EnterFrame::pop(callfunc_selector(Test::runFun2));
 	EnterFrame::pop(callfunc_selector(Test::runFun));
-	EnterFrame::push(callfunc_selector(Test::runFun));*/
+	EnterFrame::push(callfunc_selector(Test::runFun));
 
 	/*const char* cc = Language::get("union_btn_view");
 	
@@ -326,3 +335,4 @@ void Test::timerHandler(Timer* timer)
 	}
 	CCLOG("timerHandler %d", timer->currentCount);
 }
+

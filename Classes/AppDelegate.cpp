@@ -26,10 +26,10 @@ bool AppDelegate::applicationDidFinishLaunching() {
     // set FPS. the default value is 1.0/60 if you don't call this
     pDirector->setAnimationInterval(1.0 / 60);
 
-	ScreenUtil::setScreenSize(960, 640);
+	ScreenUtil::setScreenSize(960, 540);
 
     // create a scene. it's an autorelease object
-    CCScene *pScene = ScreenSizeTest::create();
+	CCScene *pScene = Test::create();
 
     // run
     pDirector->runWithScene(pScene);
