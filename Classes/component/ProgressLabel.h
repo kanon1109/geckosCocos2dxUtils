@@ -32,7 +32,7 @@ public:
 	void togglePause();
 private:
 	//间隔
-	int m_delay;
+	float m_delay;
 	//是否暂停
 	bool isPause;
 	//需要显示的字符串

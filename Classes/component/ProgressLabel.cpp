@@ -27,6 +27,11 @@ void ProgressLabel::togglePause()
 	}
 	else
 	{
+		if (this->wordCount >= strlen(this->m_str))
+		{
+			this->setString("");
+			this->wordCount = 0;
+		}
 		this->schedule(schedule_selector(ProgressLabel::timerHandler), (float)(this->m_delay / 1000));
 	}
 }
@@ -48,8 +53,6 @@ void ProgressLabel::timerHandler(float dt)
 		this->setString(s.substr(0, wordCount + 3).c_str());
 		this->wordCount += 3;
 	}
-	CCLOG("%i", this->wordCount);
-	CCLOG("length %i", length);
 	if (this->wordCount >= length)
 		this->unschedule(schedule_selector(ProgressLabel::timerHandler));
 }

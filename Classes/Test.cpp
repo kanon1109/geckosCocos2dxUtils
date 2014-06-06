@@ -17,7 +17,6 @@
 #include "utils/MathUtil.h"
 #include "utils/Timer.h"
 #include "component/ProgressLabel.h"
-#include "utils/StringConvert.h"
 using namespace extension;
 using namespace std;
 using std::vector;
@@ -192,6 +191,7 @@ bool Test::init()
 	CCLOG("toScoreString %s", StringUtil::toScoreString(1124566681).c_str());
 
 	ProgressLabel* plabel = ProgressLabel::create("Arial", 30);
+	plabel->setTag(100);
 	plabel->setAnchorPoint(ccp(0, 0));
 	plabel->show(Language::get("alert_lack_hero"), 100);
 	plabel->setDimensions(CCSizeMake(400, 0));
@@ -269,9 +269,12 @@ void Test::btn2ClickHandler(CCNode* node)
 	//CCLOG("click2");
 	//FloatTips::clear();
 	//this->tarBar->removeFromParent();
-	Alert::show((char* )Language::get("eatWhiteBtn"), true, true, this,
+	ProgressLabel* plabel = (ProgressLabel*)this->getChildByTag(100);
+	plabel->togglePause();
+
+	/*Alert::show((char* )Language::get("eatWhiteBtn"), true, true, this,
 		alert_selector(Test::alertConfirmClickHandler), 
-		alert_selector(Test::alertCancelClickHandler));
+		alert_selector(Test::alertCancelClickHandler));*/
 }
 
 void Test::initTarBarList()
