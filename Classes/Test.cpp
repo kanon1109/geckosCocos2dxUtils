@@ -16,6 +16,8 @@
 #include "component/Alert.h"
 #include "utils/MathUtil.h"
 #include "utils/Timer.h"
+#include "component/ProgressLabel.h"
+#include "utils/StringConvert.h"
 using namespace extension;
 using namespace std;
 using std::vector;
@@ -100,20 +102,20 @@ bool Test::init()
 	CCLOG("2vect%f", vect[1]);
 	CCLOG("3vect%f", vect[2]);
 
-	EnterFrame::init(this);
+	/*EnterFrame::init(this);
 	EnterFrame::push(callfunc_selector(Test::runFun));
 	EnterFrame::push(callfunc_selector(Test::runFun2));
 	EnterFrame::push(callfunc_selector(Test::runFun));
 
 	EnterFrame::pop(callfunc_selector(Test::runFun2));
 	EnterFrame::pop(callfunc_selector(Test::runFun));
-	EnterFrame::push(callfunc_selector(Test::runFun));
+	EnterFrame::push(callfunc_selector(Test::runFun));*/
 
 	/*const char* cc = Language::get("union_btn_view");
 	
 	sprintf((char*)cc, "%i", 2);*/
 
-	Timer* timer = Timer::create(1000);
+	Timer* timer = Timer::create(500);
 	timer->addEventListener(this, timer_selector(Test::timerHandler));
 	timer->start();
 	this->addChild(timer);
@@ -189,7 +191,27 @@ bool Test::init()
 
 	CCLOG("toScoreString %s", StringUtil::toScoreString(1124566681).c_str());
 
-	//CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
+
+	
+	/*ProgressLabel* plabel = ProgressLabel::create("Arial", 30);
+	plabel->setAnchorPoint(ccp(0, 0));
+	plabel->show("123123asdasdasdasd", 10);
+	plabel->setDimensions(CCSizeMake(400, 0));
+	plabel->setPosition(ccp(300, 100));
+	plabel->setHorizontalAlignment(kCCTextAlignmentLeft);
+	this->addChild(plabel);*/
+
+	string szInfo = "TestÖĞÎÄ";
+	string szUTF8 = StringConvert::a2u(szInfo.c_str());
+
+
+
+	/*CCLabelTTF* pLabel = CCLabelTTF::create("", "Arial", 32);
+	pLabel->setString(szUTF8.c_str());
+	pLabel->setDimensions(CCSizeMake(200, 0));
+	pLabel->setHorizontalAlignment(kCCTextAlignmentLeft);
+	pLabel->setPosition(ccp(300, 300));
+	this->addChild(pLabel);*/
 	return true;
 }
 
@@ -333,6 +355,6 @@ void Test::timerHandler(Timer* timer)
 	{
 		timer->setDelay(200);
 	}
-	CCLOG("timerHandler %d", timer->currentCount);
+	//CCLOG("timerHandler %d", timer->currentCount);
 }
 
