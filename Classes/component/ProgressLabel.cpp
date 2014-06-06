@@ -27,7 +27,7 @@ void ProgressLabel::togglePause()
 	}
 	else
 	{
-		if (this->wordCount >= strlen(this->m_str))
+		if (this->wordCount >= (int)strlen(this->m_str))
 		{
 			this->setString("");
 			this->wordCount = 0;
@@ -67,4 +67,17 @@ ProgressLabel* ProgressLabel::create(const char *fontName, float fontSize)
 	}
 	CC_SAFE_DELETE(pLabel);
 	return NULL;
+}
+
+void ProgressLabel::setDelay( float delay )
+{
+	this->m_delay = delay;
+	this->unschedule(schedule_selector(ProgressLabel::timerHandler));
+	if(this->m_delay == 0) 
+	{
+		this->setString(this->m_str);
+		return;
+	}
+	if (this->isPause) return;
+	this->schedule(schedule_selector(ProgressLabel::timerHandler), (float)(this->m_delay / 1000));
 }

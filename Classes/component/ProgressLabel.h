@@ -24,6 +24,14 @@ public:
 	// Returns:   void
 	//************************************
 	void show(const char* str, float delay = 10);
+
+
+	//************************************
+	// Method:    setDelay		…Ë÷√º‰∏Ù
+	// Parameter: float delay	œ‘ æº‰∏Ù£®∫¿√Î£©
+	// Returns:   void
+	//************************************
+	void setDelay(float delay);
 	
 	//************************************
 	// Description: ‘›Õ£ªÚª÷∏¥

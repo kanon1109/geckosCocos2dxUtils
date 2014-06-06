@@ -270,8 +270,8 @@ void Test::btn2ClickHandler(CCNode* node)
 	//FloatTips::clear();
 	//this->tarBar->removeFromParent();
 	ProgressLabel* plabel = (ProgressLabel*)this->getChildByTag(100);
-	plabel->togglePause();
-
+	//plabel->togglePause();
+	plabel->setDelay(0);
 	/*Alert::show((char* )Language::get("eatWhiteBtn"), true, true, this,
 		alert_selector(Test::alertConfirmClickHandler), 
 		alert_selector(Test::alertCancelClickHandler));*/
