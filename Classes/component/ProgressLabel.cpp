@@ -1,10 +1,8 @@
 #include "ProgressLabel.h"
-#include <string>
+
 using namespace std;
 ProgressLabel::ProgressLabel()
 {
-	this->isPause = false;
-	this->wordCount = 0;
 }
 
 ProgressLabel::~ProgressLabel()
@@ -13,6 +11,8 @@ ProgressLabel::~ProgressLabel()
 
 void ProgressLabel::show(const char* str, float delay)
 {
+	this->isPause = false;
+	this->wordCount = 0;
 	this->m_delay = delay;
 	this->m_str = str;
 	this->schedule(schedule_selector(ProgressLabel::timerHandler), (float)(delay / 1000));

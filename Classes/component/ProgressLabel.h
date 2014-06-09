@@ -25,7 +25,6 @@ public:
 	//************************************
 	void show(const char* str, float delay = 10);
 
-
 	//************************************
 	// Method:    setDelay		设置间隔
 	// Parameter: float delay	显示间隔（豪秒）
