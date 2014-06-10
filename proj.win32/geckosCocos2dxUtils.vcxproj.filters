@@ -1,0 +1,226 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="win32">
+      <UniqueIdentifier>{84a8ebd7-7cf0-47f6-b75e-d441df67da40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes">
+      <UniqueIdentifier>{bb6c862e-70e9-49d9-81b7-3829a6f50471}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\component">
+      <UniqueIdentifier>{ed6e8006-9afc-4e8d-9dea-243d652fe71f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\utils">
+      <UniqueIdentifier>{7da5764f-670e-4060-9055-b0d4208a77ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{a8a90cf1-5bb3-4416-83e8-531f2fc9c98f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\images">
+      <UniqueIdentifier>{aa632e11-61f1-486b-bde6-b82a61c8d3ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\images\button">
+      <UniqueIdentifier>{8eb5e73f-fb0e-4d5a-a827-63c707696d63}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\images\tabBar">
+      <UniqueIdentifier>{8f5258f3-a4b0-4df4-bc01-db7873d08a08}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\images\tabBar\item">
+      <UniqueIdentifier>{16cba8ff-3ee1-4103-b964-1c926b498380}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\component\FloatTips.cpp">
+      <Filter>Classes\component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\component\TabBar.cpp">
+      <Filter>Classes\component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\component\TextButton.cpp">
+      <Filter>Classes\component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\utils\Cookie.cpp">
+      <Filter>Classes\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\utils\EnterFrame.cpp">
+      <Filter>Classes\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\utils\Language.cpp">
+      <Filter>Classes\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\utils\Random.cpp">
+      <Filter>Classes\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\utils\StringUtil.cpp">
+      <Filter>Classes\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\utils\TimeFormat.cpp">
+      <Filter>Classes\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AppDelegate.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Test.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\TestChildScene.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\component\Alert.cpp">
+      <Filter>Classes\component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\utils\MathUtil.cpp">
+      <Filter>Classes\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\utils\Timer.cpp">
+      <Filter>Classes\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\utils\ScreenUtil.cpp">
+      <Filter>Classes\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ScreenSizeTest.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\component\ProgressLabel.cpp">
+      <Filter>Classes\component</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="main.h">
+      <Filter>win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\component\FloatTips.h">
+      <Filter>Classes\component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\component\TabBar.h">
+      <Filter>Classes\component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\component\TextButton.h">
+      <Filter>Classes\component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\utils\Cookie.h">
+      <Filter>Classes\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\utils\EnterFrame.h">
+      <Filter>Classes\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\utils\Language.h">
+      <Filter>Classes\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\utils\Random.h">
+      <Filter>Classes\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\utils\StringUtil.h">
+      <Filter>Classes\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\utils\TimeFormat.h">
+      <Filter>Classes\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AppDelegate.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Test.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\TestChildScene.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\component\Alert.h">
+      <Filter>Classes\component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\utils\MathUtil.h">
+      <Filter>Classes\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\utils\Timer.h">
+      <Filter>Classes\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\utils\ScreenUtil.h">
+      <Filter>Classes\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ScreenSizeTest.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\component\ProgressLabel.h">
+      <Filter>Classes\component</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\Resources\images\button\common_btn_1.png">
+      <Filter>Resources\images\button</Filter>
+    </Image>
+    <Image Include="..\Resources\images\button\common_btn_2.png">
+      <Filter>Resources\images\button</Filter>
+    </Image>
+    <Image Include="..\Resources\images\button\common_btn_3.png">
+      <Filter>Resources\images\button</Filter>
+    </Image>
+    <Image Include="..\Resources\images\button\common_btn_4.png">
+      <Filter>Resources\images\button</Filter>
+    </Image>
+    <Image Include="..\Resources\images\button\common_btn_5.png">
+      <Filter>Resources\images\button</Filter>
+    </Image>
+    <Image Include="..\Resources\images\button\common_btn_6.png">
+      <Filter>Resources\images\button</Filter>
+    </Image>
+    <Image Include="..\Resources\images\button\common_btn_7.png">
+      <Filter>Resources\images\button</Filter>
+    </Image>
+    <Image Include="..\Resources\images\button\common_btn_8.png">
+      <Filter>Resources\images\button</Filter>
+    </Image>
+    <Image Include="..\Resources\images\button\common_btn_9.png">
+      <Filter>Resources\images\button</Filter>
+    </Image>
+    <Image Include="..\Resources\images\tabBar\item\accessories.png">
+      <Filter>Resources\images\tabBar\item</Filter>
+    </Image>
+    <Image Include="..\Resources\images\tabBar\item\accessoriesSelected.png">
+      <Filter>Resources\images\tabBar\item</Filter>
+    </Image>
+    <Image Include="..\Resources\images\tabBar\item\clothing.png">
+      <Filter>Resources\images\tabBar\item</Filter>
+    </Image>
+    <Image Include="..\Resources\images\tabBar\item\clothingSelected.png">
+      <Filter>Resources\images\tabBar\item</Filter>
+    </Image>
+    <Image Include="..\Resources\images\tabBar\item\exchange.png">
+      <Filter>Resources\images\tabBar\item</Filter>
+    </Image>
+    <Image Include="..\Resources\images\tabBar\item\exchangeSelected.png">
+      <Filter>Resources\images\tabBar\item</Filter>
+    </Image>
+    <Image Include="..\Resources\images\tabBar\item\sell.png">
+      <Filter>Resources\images\tabBar\item</Filter>
+    </Image>
+    <Image Include="..\Resources\images\tabBar\item\sellSelected.png">
+      <Filter>Resources\images\tabBar\item</Filter>
+    </Image>
+    <Image Include="..\Resources\images\tabBar\item\weapon.png">
+      <Filter>Resources\images\tabBar\item</Filter>
+    </Image>
+    <Image Include="..\Resources\images\tabBar\item\weaponSelected.png">
+      <Filter>Resources\images\tabBar\item</Filter>
+    </Image>
+    <Image Include="..\Resources\images\AlertBg.png">
+      <Filter>Resources\images</Filter>
+    </Image>
+    <Image Include="..\Resources\ftips_bg.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="..\Resources\bg.jpg">
+      <Filter>Resources</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="..\Resources\language.xml">
+      <Filter>Resources</Filter>
+    </Xml>
+    <Xml Include="..\Resources\language_taiwan.xml">
+      <Filter>Resources</Filter>
+    </Xml>
+  </ItemGroup>
+</Project>

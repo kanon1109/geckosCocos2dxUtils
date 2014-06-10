@@ -156,10 +156,10 @@ bool Test::init()
 
 	this->btn = TextButton::create(TYPE_RECT_BLUE, Language::get("eatWhiteBtn"), 300);
 	this->addChild(this->btn);
-	this->btn->setPosition(ccp(200, 600));
+	this->btn->setPosition(ccp(200, 200));
 	this->btn->setTag(11);
 	this->btn->addEventListener(this, text_button_selector(Test::btnClickHandler));
-	this->btn->setEnabled(false);
+	//this->btn->setEnabled(false);
 	//this->btn->setOpacity(0);
 	//this->btn->setMouseEnabeld(false);
 	CCSprite* spt1 = CCSprite::create("images/button/common_btn_4.png");
@@ -192,13 +192,12 @@ bool Test::init()
 
 	ProgressLabel* plabel = ProgressLabel::create("Arial", 30);
 	plabel->setTag(100);
-	plabel->setAnchorPoint(ccp(0, 0));
-	plabel->show(Language::get("alert_lack_hero"), 100);
+	plabel->setAnchorPoint(ccp(0, 1));
+	plabel->show(Language::get("alert_lack_hero"), 30);
 	plabel->setDimensions(CCSizeMake(400, 0));
-	plabel->setPosition(ccp(300, 100));
+	plabel->setPosition(ccp(300, 300));
 	plabel->setHorizontalAlignment(kCCTextAlignmentLeft);
 	this->addChild(plabel);
-
 	/*CCLabelTTF* pLabel = CCLabelTTF::create("", "Arial", 32);
 	pLabel->setString(szUTF8.c_str());
 	pLabel->setDimensions(CCSizeMake(200, 0));
@@ -210,11 +209,11 @@ bool Test::init()
 
 void Test::btnClickHandler(CCNode* node)
 {
-	Alert::show((char* )Language::get("bind_alert"), false, true, this,
+	/*Alert::show((char* )Language::get("bind_alert"), false, true, this,
 					alert_selector(Test::alertConfirmClickHandler), 
 					alert_selector(Test::alertCancelClickHandler));
-	/*CCControlButton* btn = (CCControlButton*) pSender;
-	CCLOG("click btn%i", btn->getTag());*/
+	/ *CCControlButton* btn = (CCControlButton*) pSender;
+	CCLOG("click btn%i", btn->getTag());* /
 	//node->removeFromParent();
 	//CCLOG("retainCount btn%i", this->btn->retainCount());
 	//this->btn->release();
@@ -223,7 +222,11 @@ void Test::btnClickHandler(CCNode* node)
 	v.push_back("3");
 	v.push_back("4");
 	v.push_back("5");
-	FloatTips::show(Language::get("test", &v));
+	FloatTips::show(Language::get("test", &v));*/
+
+	ProgressLabel* plabel = (ProgressLabel*)this->getChildByTag(100);
+	plabel->togglePause();
+	//plabel->setDelay(0);
 	
 	//CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
 }
@@ -271,7 +274,9 @@ void Test::btn2ClickHandler(CCNode* node)
 	//this->tarBar->removeFromParent();
 	ProgressLabel* plabel = (ProgressLabel*)this->getChildByTag(100);
 	//plabel->togglePause();
-	plabel->setDelay(0);
+	const char* str = Language::get("alert_lack_hero");
+	plabel->show(str, 30);
+	//plabel->setDelay(0);
 	/*Alert::show((char* )Language::get("eatWhiteBtn"), true, true, this,
 		alert_selector(Test::alertConfirmClickHandler), 
 		alert_selector(Test::alertCancelClickHandler));*/
