@@ -17,6 +17,7 @@
 #include "utils/MathUtil.h"
 #include "utils/Timer.h"
 #include "component/ProgressLabel.h"
+#include "effect/SlotEffect.h"
 using namespace extension;
 using namespace std;
 using std::vector;
@@ -190,20 +191,26 @@ bool Test::init()
 
 	CCLOG("toScoreString %s", StringUtil::toScoreString(1124566681).c_str());
 
-	ProgressLabel* plabel = ProgressLabel::create("Arial", 30);
+	/*ProgressLabel* plabel = ProgressLabel::create("Arial", 30);
 	plabel->setTag(100);
 	plabel->setAnchorPoint(ccp(0, 1));
 	plabel->show(Language::get("alert_lack_hero"), 30);
 	plabel->setDimensions(CCSizeMake(400, 0));
 	plabel->setPosition(ccp(300, 300));
 	plabel->setHorizontalAlignment(kCCTextAlignmentLeft);
-	this->addChild(plabel);
+	this->addChild(plabel);*/
+
 	/*CCLabelTTF* pLabel = CCLabelTTF::create("", "Arial", 32);
 	pLabel->setString(szUTF8.c_str());
 	pLabel->setDimensions(CCSizeMake(200, 0));
 	pLabel->setHorizontalAlignment(kCCTextAlignmentLeft);
 	pLabel->setPosition(ccp(300, 300));
 	this->addChild(pLabel);*/
+
+	SlotEffect* se = SlotEffect::create(1, 15, 2, 50);
+	this->addChild(se);
+	se->start(5);
+
 	return true;
 }
 
