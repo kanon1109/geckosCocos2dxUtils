@@ -131,6 +131,12 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     </PreLinkEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\CocosBase\CocosBase\CCBundle.cpp" />
+    <ClCompile Include="..\..\..\CocosBase\CocosBase\CCMsgDelegate.cpp" />
+    <ClCompile Include="..\..\..\CocosBase\CocosBase\CCMsgManager.cpp" />
+    <ClCompile Include="..\..\..\CocosBase\CocosBase\CCSceneExtension.cpp" />
+    <ClCompile Include="..\..\..\CocosBase\CocosBase\CCSceneExTransition.cpp" />
+    <ClCompile Include="..\..\..\CocosBase\CocosBase\CCSceneManager.cpp" />
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
     <ClCompile Include="..\Classes\component\Alert.cpp" />
     <ClCompile Include="..\Classes\component\FloatTips.cpp" />
@@ -152,6 +158,14 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\CocosBase\CocosBase\CCBaseMacros.h" />
+    <ClInclude Include="..\..\..\CocosBase\CocosBase\CCBundle.h" />
+    <ClInclude Include="..\..\..\CocosBase\CocosBase\CCMsgDelegate.h" />
+    <ClInclude Include="..\..\..\CocosBase\CocosBase\CCMsgManager.h" />
+    <ClInclude Include="..\..\..\CocosBase\CocosBase\CCSceneExtension.h" />
+    <ClInclude Include="..\..\..\CocosBase\CocosBase\CCSceneExTransition.h" />
+    <ClInclude Include="..\..\..\CocosBase\CocosBase\CCSceneManager.h" />
+    <ClInclude Include="..\..\..\CocosBase\CocosBase\cocos-base.h" />
     <ClInclude Include="..\Classes\AppDelegate.h" />
     <ClInclude Include="..\Classes\component\Alert.h" />
     <ClInclude Include="..\Classes\component\FloatTips.h" />

@@ -28,6 +28,12 @@
     <Filter Include="Resources\images\tabBar\item">
       <UniqueIdentifier>{16cba8ff-3ee1-4103-b964-1c926b498380}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Depends">
+      <UniqueIdentifier>{a915562f-d7b1-413d-9753-23adc560683a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Depends\CocosBase">
+      <UniqueIdentifier>{4166ed0c-35ed-48dc-ad81-ef94b3cc89d4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -87,6 +93,24 @@
     <ClCompile Include="..\Classes\component\ProgressLabel.cpp">
       <Filter>Classes\component</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\CocosBase\CocosBase\CCBundle.cpp">
+      <Filter>Depends\CocosBase</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\CocosBase\CocosBase\CCMsgDelegate.cpp">
+      <Filter>Depends\CocosBase</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\CocosBase\CocosBase\CCMsgManager.cpp">
+      <Filter>Depends\CocosBase</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\CocosBase\CocosBase\CCSceneExtension.cpp">
+      <Filter>Depends\CocosBase</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\CocosBase\CocosBase\CCSceneExTransition.cpp">
+      <Filter>Depends\CocosBase</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\CocosBase\CocosBase\CCSceneManager.cpp">
+      <Filter>Depends\CocosBase</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -145,6 +169,30 @@
     </ClInclude>
     <ClInclude Include="..\Classes\component\ProgressLabel.h">
       <Filter>Classes\component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\CocosBase\CocosBase\CCBaseMacros.h">
+      <Filter>Depends\CocosBase</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\CocosBase\CocosBase\CCBundle.h">
+      <Filter>Depends\CocosBase</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\CocosBase\CocosBase\CCMsgDelegate.h">
+      <Filter>Depends\CocosBase</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\CocosBase\CocosBase\CCMsgManager.h">
+      <Filter>Depends\CocosBase</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\CocosBase\CocosBase\CCSceneExtension.h">
+      <Filter>Depends\CocosBase</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\CocosBase\CocosBase\CCSceneExTransition.h">
+      <Filter>Depends\CocosBase</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\CocosBase\CocosBase\CCSceneManager.h">
+      <Filter>Depends\CocosBase</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\CocosBase\CocosBase\cocos-base.h">
+      <Filter>Depends\CocosBase</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
