@@ -34,6 +34,12 @@
     <Filter Include="Depends\CocosBase">
       <UniqueIdentifier>{4166ed0c-35ed-48dc-ad81-ef94b3cc89d4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\baseComponet">
+      <UniqueIdentifier>{0774ad59-8e1e-421c-ac51-a721ef5e557a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\effect">
+      <UniqueIdentifier>{aae0539f-8671-446a-83fc-33b5321a112d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -110,6 +116,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\CocosBase\CocosBase\CCSceneManager.cpp">
       <Filter>Depends\CocosBase</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\effect\SlotEffect.cpp">
+      <Filter>Classes\effect</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -193,6 +202,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\CocosBase\CocosBase\cocos-base.h">
       <Filter>Depends\CocosBase</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\effect\SlotEffect.h">
+      <Filter>Classes\effect</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
