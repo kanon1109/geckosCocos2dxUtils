@@ -145,6 +145,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\component\TextButton.cpp" />
     <ClCompile Include="..\Classes\effect\SlotEffect.cpp" />
     <ClCompile Include="..\Classes\ScreenSizeTest.cpp" />
+    <ClCompile Include="..\Classes\SlotEffectTest.cpp" />
     <ClCompile Include="..\Classes\Test.cpp" />
     <ClCompile Include="..\Classes\TestChildScene.cpp" />
     <ClCompile Include="..\Classes\utils\Cookie.cpp" />
@@ -175,6 +176,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\component\TextButton.h" />
     <ClInclude Include="..\Classes\effect\SlotEffect.h" />
     <ClInclude Include="..\Classes\ScreenSizeTest.h" />
+    <ClInclude Include="..\Classes\SlotEffectTest.h" />
     <ClInclude Include="..\Classes\Test.h" />
     <ClInclude Include="..\Classes\TestChildScene.h" />
     <ClInclude Include="..\Classes\utils\Cookie.h" />
