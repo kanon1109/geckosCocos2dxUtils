@@ -10,6 +10,9 @@ SlotEffect::SlotEffect()
 	this->isSlowing = false;
 	this->currentCount = 0;
 	this->addDelay = 300;
+
+	this->m_target = NULL;
+	this->func = NULL;
 }
 
 SlotEffect::~SlotEffect()
@@ -50,8 +53,7 @@ void SlotEffect::start(int targetIndex, bool reverse /*= false*/)
 		this->m_slowIndex = this->fixNumber(this->m_targetIndex + this->m_gapIndex, 1, this->m_maxIndex);
 	this->m_reverse = reverse;
 	this->currentCount = 0;
-	CCLOG("this->m_delay %f", this->m_delay);
-	this->schedule(schedule_selector(SlotEffect::update), (float)(this->m_delay / 1000));
+	this->schedule(schedule_selector(SlotEffect::update), this->m_delay / 1000);
 }
 
 void SlotEffect::pause()
@@ -74,8 +76,8 @@ void SlotEffect::update(float dt)
 		if (this->m_curIndex < 1)
 			this->m_curIndex = this->m_maxIndex;
 	}
-	CCLOG("m_curIndex %d", this->m_curIndex);
-	CCLOG("dt %f", dt);
+	//CCLOG("m_curIndex %d", this->m_curIndex);
+	//CCLOG("dt %f", dt);
 	//一个循环结束
 	if (this->currentCount >= this->m_loop * this->m_maxIndex)
 	{
@@ -84,15 +86,18 @@ void SlotEffect::update(float dt)
 		{
 			CCLOG("in slow");
 			this->isSlowing = true;
-			dt = (float)((this->m_delay + this->addDelay) / 1000);
-			//this->schedule(schedule_selector(SlotEffect::update), (this->m_delay + this->addDelay) / 1000);
+			//dt = (float)((this->m_delay + this->addDelay) / 1000);
+			this->schedule(schedule_selector(SlotEffect::update), (this->m_delay + this->addDelay) / 1000);
 		}
 	}
 	if (this->isSlowing && this->m_curIndex == this->m_targetIndex)
 	{
 		this->pause();
 	}
-	
+	if (this->m_target && this->func)
+	{
+		(this->m_target->*this->func)();
+	}
 	this->currentCount++;
 }
 
@@ -106,4 +111,10 @@ float SlotEffect::fixNumber(float num, float min, float range)
 int SlotEffect::getCurIndex()
 {
 	return this->m_curIndex;
+}
+
+void SlotEffect::addEventListener(CCObject* target, SEL_CallFunc func)
+{
+	this->m_target = target;
+	this->func = func;
 }

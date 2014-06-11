@@ -211,6 +211,8 @@ bool Test::init()
 	this->addChild(se);
 	se->start(5);
 
+
+
 	return true;
 }
 

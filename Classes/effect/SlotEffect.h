@@ -29,6 +29,13 @@ public:
 	void pause();
 	//获取当前索引
 	int getCurIndex();
+	//************************************
+	// Description:添加监听
+	// Parameter: CCObject* target	指针调用回调函数的指针
+	// Parameter: SEL_CallFunc func	回调方法
+	// Returns:   void
+	//************************************
+	void addEventListener(CCObject* target, SEL_CallFunc func);
 private:
 	//初始化的位置索引
 	int m_curIndex;
@@ -54,11 +61,12 @@ private:
 	int currentCount;
 	//增加的间隔
 	int addDelay;
+	//事件目标
+	CCObject* m_target;
+	//方法回调
+	SEL_CallFunc func;
 	//更新方法
 	void update(float dt);
-
-
-
 	//************************************
 	// Description: 修正数字 在一个范围内
 	// Parameter: float num		需要修正的数字
