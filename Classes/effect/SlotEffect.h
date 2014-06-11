@@ -29,6 +29,8 @@ public:
 	void pause();
 	//获取当前索引
 	int getCurIndex();
+	//获取当前随机索引
+	int getRandomIndex();
 	//************************************
 	// Description:添加监听
 	// Parameter: CCObject* target	指针调用回调函数的指针

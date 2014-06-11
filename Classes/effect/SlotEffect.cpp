@@ -1,7 +1,7 @@
 #include "SlotEffect.h"
-
 SlotEffect::SlotEffect()
 {
+	this->m_randomIndex = 0;
 	this->m_curIndex = 0;
 	this->m_maxIndex = 0;
 	this->m_loop = 1;
@@ -22,6 +22,7 @@ SlotEffect::~SlotEffect()
 bool SlotEffect::init(int curIndex, int maxIndex, int loop /*= 1*/, float delay /*= 50*/, int gapIndex /*= 5*/)
 {
 	this->m_curIndex = curIndex;
+	this->m_maxIndex = curIndex;
 	this->m_maxIndex = maxIndex;
 	this->m_loop = loop;
 	this->m_delay = delay;
@@ -76,24 +77,23 @@ void SlotEffect::update(float dt)
 		if (this->m_curIndex < 1)
 			this->m_curIndex = this->m_maxIndex;
 	}
-	//CCLOG("m_curIndex %d", this->m_curIndex);
-	//CCLOG("dt %f", dt);
 	//一个循环结束
 	if (this->currentCount >= this->m_loop * this->m_maxIndex)
 	{
 		//是否进入了慢速模式
 		if (this->m_curIndex == this->m_slowIndex)
 		{
-			CCLOG("in slow");
 			this->isSlowing = true;
-			//dt = (float)((this->m_delay + this->addDelay) / 1000);
 			this->schedule(schedule_selector(SlotEffect::update), (this->m_delay + this->addDelay) / 1000);
 		}
 	}
+	this->m_randomIndex = (int)(CCRANDOM_0_1() * this->m_maxIndex + 1);
 	if (this->isSlowing && this->m_curIndex == this->m_targetIndex)
 	{
+		this->m_randomIndex = this->m_targetIndex;
 		this->pause();
 	}
+	//调用监听回调。
 	if (this->m_target && this->func)
 	{
 		(this->m_target->*this->func)();
@@ -111,6 +111,11 @@ float SlotEffect::fixNumber(float num, float min, float range)
 int SlotEffect::getCurIndex()
 {
 	return this->m_curIndex;
+}
+
+int SlotEffect::getRandomIndex()
+{
+	return this->m_randomIndex;
 }
 
 void SlotEffect::addEventListener(CCObject* target, SEL_CallFunc func)

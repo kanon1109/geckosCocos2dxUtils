@@ -24,9 +24,14 @@ SlotEffectTest::SlotEffectTest()
 	SlotEffect* se = SlotEffect::create(1, 15, 2, 50);
 	se->setTag(100);
 	this->addChild(se);
-	se->start(5);
 	se->addEventListener(this, callfunc_selector(SlotEffectTest::selectSpt));
 
+	CCMenuItemLabel* randomItem = CCMenuItemLabel::create(CCLabelTTF::create("randomBtn", "Arial", 30), this, menu_selector(SlotEffectTest::randomClick));
+	CCMenuItemLabel* item = CCMenuItemLabel::create(CCLabelTTF::create("startBtn", "Arial", 30), this, menu_selector(SlotEffectTest::itemClick));
+	CCMenu* menu = CCMenu::create(randomItem, item, NULL);
+	menu->setPosition(ccp(400, 100));
+	this->addChild(menu);
+	menu->alignItemsHorizontally();
 }
 
 SlotEffectTest::~SlotEffectTest()
@@ -38,7 +43,6 @@ void SlotEffectTest::selectSpt()
 {
 	this->resetAllSpt();
 	SlotEffect* se = (SlotEffect* )this->getChildByTag(100);
-	CCLOG("se->getCurIndex() %d", se->getCurIndex());
 	CCSprite* spt = (CCSprite* )this->getChildByTag(se->getCurIndex());
 	spt->initWithFile("effect/a2.png");
 }
@@ -50,4 +54,26 @@ void SlotEffectTest::resetAllSpt()
 		CCSprite* spt = (CCSprite*)this->getChildByTag(i);
 		spt->initWithFile("effect/a1.png");
 	}
+}
+
+void SlotEffectTest::randomClick(CCObject* obj)
+{
+	SlotEffect* se = (SlotEffect*)this->getChildByTag(100);
+	se->addEventListener(this, callfunc_selector(SlotEffectTest::randomSelectSpt));
+	se->start(5);
+}
+
+void SlotEffectTest::itemClick(CCObject* obj)
+{
+	SlotEffect* se = (SlotEffect*)this->getChildByTag(100);
+	se->addEventListener(this, callfunc_selector(SlotEffectTest::selectSpt));
+	se->start(5);
+}
+
+void SlotEffectTest::randomSelectSpt()
+{
+	this->resetAllSpt();
+	SlotEffect* se = (SlotEffect*)this->getChildByTag(100);
+	CCSprite* spt = (CCSprite*)this->getChildByTag(se->getRandomIndex());
+	spt->initWithFile("effect/a2.png");
 }

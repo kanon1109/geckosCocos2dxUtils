@@ -17,7 +17,6 @@
 #include "utils/MathUtil.h"
 #include "utils/Timer.h"
 #include "component/ProgressLabel.h"
-#include "effect/SlotEffect.h"
 using namespace extension;
 using namespace std;
 using std::vector;
@@ -58,13 +57,6 @@ bool Test::init()
 	StringUtil::cutOff(&str, 1, 1);
 	CCLOG("cutOff= %s", str.c_str());
 
-	/*string email = "kanontang@gmail.com";
-	StringUtil::trim(&email);
-	CCLOG("email= %s", email.c_str());
-	bool isEmail = StringUtil::isEmail(&email);
-	CCLOG("%d", isEmail);*/
-	//CCLOG("bool", StringUtil::isEmail(&email));
-	//CCLOG("email= %s", email.c_str());
 	vector<string> v;
 	StringUtil::split(v, "00:06:11", ":");
 	for (unsigned int i = 0; i < v.size(); i++)
@@ -160,9 +152,6 @@ bool Test::init()
 	this->btn->setPosition(ccp(200, 200));
 	this->btn->setTag(11);
 	this->btn->addEventListener(this, text_button_selector(Test::btnClickHandler));
-	//this->btn->setEnabled(false);
-	//this->btn->setOpacity(0);
-	//this->btn->setMouseEnabeld(false);
 	CCSprite* spt1 = CCSprite::create("images/button/common_btn_4.png");
 	spt1->setPosition(ccp(400, 400));
 	this->addChild(spt1);
@@ -191,28 +180,14 @@ bool Test::init()
 
 	CCLOG("toScoreString %s", StringUtil::toScoreString(1124566681).c_str());
 
-	/*ProgressLabel* plabel = ProgressLabel::create("Arial", 30);
+	ProgressLabel* plabel = ProgressLabel::create("Arial", 30);
 	plabel->setTag(100);
 	plabel->setAnchorPoint(ccp(0, 1));
 	plabel->show(Language::get("alert_lack_hero"), 30);
 	plabel->setDimensions(CCSizeMake(400, 0));
 	plabel->setPosition(ccp(300, 300));
 	plabel->setHorizontalAlignment(kCCTextAlignmentLeft);
-	this->addChild(plabel);*/
-
-	/*CCLabelTTF* pLabel = CCLabelTTF::create("", "Arial", 32);
-	pLabel->setString(szUTF8.c_str());
-	pLabel->setDimensions(CCSizeMake(200, 0));
-	pLabel->setHorizontalAlignment(kCCTextAlignmentLeft);
-	pLabel->setPosition(ccp(300, 300));
-	this->addChild(pLabel);*/
-
-	SlotEffect* se = SlotEffect::create(1, 15, 2, 50);
-	this->addChild(se);
-	se->start(5);
-
-
-
+	this->addChild(plabel);
 	return true;
 }
 

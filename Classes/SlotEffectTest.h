@@ -10,9 +10,13 @@ public:
 	~SlotEffectTest();
 	//选择某个选项
 	void selectSpt();
+	//随机选择
+	void randomSelectSpt();
 	//重置所有选项
 	void resetAllSpt();
-
+	//随机
+	void randomClick(CCObject* obj);
+	void itemClick(CCObject* obj);
 	CREATE_FUNC(SlotEffectTest);
 };
 #endif
