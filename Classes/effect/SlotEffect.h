@@ -18,11 +18,12 @@ public:
 	// Parameter: int loop		快速模式的滚动次数。在快速滚动次数达到后会有一次慢速滚动。所以总滚动次数是loop + 1
 	// Parameter: float delay	运行间隔 毫秒
 	// Parameter: int gapIndex	触发慢速滚动之前的索引
+	// Parameter: int addDelay	间隔增量
 	// Returns:   是否初始化
 	//************************************
-	virtual bool init(int curIndex, int maxIndex, int loop = 1, float delay = 50, int gapIndex = 5);
+	virtual bool init(int curIndex, int maxIndex, int loop = 1, float delay = 50, int gapIndex = 5, int addDelay = 200);
 	//创建
-	static SlotEffect* create(int curIndex, int maxIndex, int loop = 1, float delay = 50, int gapIndex = 5);
+	static SlotEffect* create(int curIndex, int maxIndex, int loop = 1, float delay = 50, int gapIndex = 5, int addDelay = 200);
 	//开始
 	void start(int targetIndex, bool reverse = false);
 	//暂停

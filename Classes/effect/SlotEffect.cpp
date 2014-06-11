@@ -9,8 +9,7 @@ SlotEffect::SlotEffect()
 	this->m_gapIndex = 5;
 	this->isSlowing = false;
 	this->currentCount = 0;
-	this->addDelay = 300;
-
+	this->addDelay = 200;
 	this->m_target = NULL;
 	this->func = NULL;
 }
@@ -19,7 +18,7 @@ SlotEffect::~SlotEffect()
 {
 }
 
-bool SlotEffect::init(int curIndex, int maxIndex, int loop /*= 1*/, float delay /*= 50*/, int gapIndex /*= 5*/)
+bool SlotEffect::init(int curIndex, int maxIndex, int loop /*= 1*/, float delay /*= 50*/, int gapIndex /*= 5*/, int addDelay /*= 200*/)
 {
 	this->m_curIndex = curIndex;
 	this->m_maxIndex = curIndex;
@@ -27,10 +26,11 @@ bool SlotEffect::init(int curIndex, int maxIndex, int loop /*= 1*/, float delay 
 	this->m_loop = loop;
 	this->m_delay = delay;
 	this->m_gapIndex = gapIndex;
+	this->addDelay = addDelay;
 	return true;
 }
 
-SlotEffect* SlotEffect::create(int curIndex, int maxIndex, int loop /*= 1*/, float delay /*= 50*/, int gapIndex /*= 5*/)
+SlotEffect* SlotEffect::create(int curIndex, int maxIndex, int loop /*= 1*/, float delay /*= 50*/, int gapIndex /*= 5*/, int addDelay /*= 200*/)
 {
 	SlotEffect* sl = new SlotEffect();
 	if (sl && sl->init(curIndex, maxIndex, loop, delay, gapIndex))

@@ -21,7 +21,7 @@ SlotEffectTest::SlotEffectTest()
 			startY -= spt->getContentSize().height + gap;
 		}
 	}
-	SlotEffect* se = SlotEffect::create(1, 15, 2, 50);
+	SlotEffect* se = SlotEffect::create(1, 15, 1, 50, 100);
 	se->setTag(100);
 	this->addChild(se);
 	se->addEventListener(this, callfunc_selector(SlotEffectTest::selectSpt));
