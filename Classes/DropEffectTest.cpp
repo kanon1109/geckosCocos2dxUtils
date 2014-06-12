@@ -5,7 +5,6 @@ DropEffectTest::DropEffectTest()
 {
 	DropEffect* de = DropEffect::create();
 	de->setTag(1);
-	de->setPosition(ccp(200, 200));
 	this->addChild(de);
 	CCLOG("DropEffectTest");
 	CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
@@ -31,5 +30,5 @@ void DropEffectTest::ccTouchEnded(CCTouch* touch, CCEvent* event)
 {
 	CCLOG("ccTouchEnded");
 	DropEffect* de = (DropEffect* )this->getChildByTag(1);
-	de->drop("effect/coin.png", 20, 1.0f, .8f);
+	de->drop("effect/coin.png", 20, touch->getLocation().x, touch->getLocation().y, 1.0f, .8f);
 }

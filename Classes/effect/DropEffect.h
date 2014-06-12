@@ -13,6 +13,8 @@ public:
 	// Description:显示掉落效果
 	// Parameter: const char*		资源地址
 	// Parameter: int count			掉落物品的数量
+	// Parameter: float x			x坐标
+	// Parameter: float y			y坐标
 	// Parameter: float gravity		重力
 	// Parameter: float elasticity	弹性
 	// Parameter: float minVx		最小横向速度
@@ -22,14 +24,20 @@ public:
 	// Returns:   void
 	//************************************
 	void drop(const char* pszFileName, 
-				int count, float gravity = 1, 
-				float elasticity = .9, float minVx = -5, 
-				float maxVx = 5, float minVy = 10, float maxVy = 20);
+				int count, 
+				float x = 0,
+				float y = 0,
+				float gravity = 1, 
+				float elasticity = .9, 
+				float minVx = -5, float maxVx = 5, 
+				float minVy = 2, float maxVy = 10);
 	//循环
 	void loop(float dt);
 private:
 	//掉落物品列表
 	CCArray* itemList;
+	//帧频
+	float fps;
 };
 
 //掉落物品
