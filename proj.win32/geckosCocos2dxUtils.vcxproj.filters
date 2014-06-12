@@ -126,6 +126,12 @@
     <ClCompile Include="..\Classes\SlotEffectTest.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\effect\DropEffect.cpp">
+      <Filter>Classes\effect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\DropEffectTest.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -213,6 +219,12 @@
       <Filter>Classes\effect</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\SlotEffectTest.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\effect\DropEffect.h">
+      <Filter>Classes\effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\DropEffectTest.h">
       <Filter>Classes</Filter>
     </ClInclude>
   </ItemGroup>

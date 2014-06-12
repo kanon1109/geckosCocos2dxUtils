@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{C276440B-36E0-4755-936C-C2DF45CD7655}</ProjectGuid>
+    <ProjectGuid>{76A39BB2-9B84-4C65-98A5-654D86B86F2A}</ProjectGuid>
     <RootNamespace>test_win32</RootNamespace>
     <Keyword>Win32Proj</Keyword>
   </PropertyGroup>
@@ -143,6 +143,8 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\component\ProgressLabel.cpp" />
     <ClCompile Include="..\Classes\component\TabBar.cpp" />
     <ClCompile Include="..\Classes\component\TextButton.cpp" />
+    <ClCompile Include="..\Classes\DropEffectTest.cpp" />
+    <ClCompile Include="..\Classes\effect\DropEffect.cpp" />
     <ClCompile Include="..\Classes\effect\SlotEffect.cpp" />
     <ClCompile Include="..\Classes\ScreenSizeTest.cpp" />
     <ClCompile Include="..\Classes\SlotEffectTest.cpp" />
@@ -174,6 +176,8 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\component\ProgressLabel.h" />
     <ClInclude Include="..\Classes\component\TabBar.h" />
     <ClInclude Include="..\Classes\component\TextButton.h" />
+    <ClInclude Include="..\Classes\DropEffectTest.h" />
+    <ClInclude Include="..\Classes\effect\DropEffect.h" />
     <ClInclude Include="..\Classes\effect\SlotEffect.h" />
     <ClInclude Include="..\Classes\ScreenSizeTest.h" />
     <ClInclude Include="..\Classes\SlotEffectTest.h" />
