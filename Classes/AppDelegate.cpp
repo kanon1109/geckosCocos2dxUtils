@@ -3,6 +3,7 @@
 #include "ScreenSizeTest.h"
 #include "utils/ScreenUtil.h"
 #include "SlotEffectTest.h"
+#include "GetMoveSpeedTest.h"
 
 USING_NS_CC;
 
@@ -30,7 +31,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	ScreenUtil::setScreenSize(960, 540);
 
     // create a scene. it's an autorelease object
-	CCScene *pScene = SlotEffectTest::create();
+	CCScene *pScene = GetMoveSpeedTest::create();
 
     // run
     pDirector->runWithScene(pScene);
