@@ -21,26 +21,30 @@ public:
 	bool init(float floorPosY, float fps);
 	//************************************
 	// Description:显示掉落效果
-	// Parameter: const char*		资源地址
-	// Parameter: int count			掉落物品的数量
-	// Parameter: float x			x坐标
-	// Parameter: float y			y坐标
-	// Parameter: float gravity		重力
-	// Parameter: float elasticity	弹性
-	// Parameter: float minVx		最小横向速度
-	// Parameter: float maxVx		最大横向速度
-	// Parameter: float minVy		最小纵向速度
-	// Parameter: float maxVy		最大横向速度
+	// Parameter: const char*			资源地址
+	// Parameter: int count				掉落物品的数量
+	// Parameter: float x				x坐标
+	// Parameter: float y				y坐标
+	// Parameter: float gravity			重力
+	// Parameter: float elasticity		弹性
+	// Parameter: float minDropHeight	最小下落高度
+	// Parameter: float maxDropHeight	最大下落高度
+	// Parameter: float minVx			最小横向速度
+	// Parameter: float maxVx			最大横向速度
+	// Parameter: float minVy			最小纵向速度
+	// Parameter: float maxVy			最大横向速度
 	// Returns:   void
 	//************************************
 	void drop(const char* pszFileName, 
-				int count = 5, 
-				float x = 0,
-				float y = 0,
-				float gravity = .9, 
-				float elasticity = .4, 
-				float minVx = -5, float maxVx = 5, 
-				float minVy = 4, float maxVy = 10);
+			int count = 5,
+			float x = 0,
+			float y = 0,
+			float gravity = .9,
+			float elasticity = .4,
+			float minDropHeight = 0,
+			float maxDropHeight = 0,
+			float minVx = -5, float maxVx = 5,
+			float minVy = 4, float maxVy = 10);
 	//循环
 	void loop(float dt);
 private:
@@ -61,31 +65,48 @@ public:
 
 	//************************************
 	// Description:创建掉落物品
-	// Parameter: const char * pszFileName	掉落物品的资源
-	// Parameter: float gravity				重力
-	// Parameter: float elasticity			弹性
+	// Parameter: const char * pszFileName		掉落物品的资源
+	// Parameter: float gravity					重力
+	// Parameter: float elasticity				弹性
+	// Parameter: float floorPosY				底板位置
+	// Parameter: float minDropHeight			最小下落高度
+	// Parameter: float maxDropHeight			最大下落高度
 	// Returns:   DropItem*
 	//************************************
-	static DropItem* create(const char* pszFileName, float gravity, float elasticity, float floorPosY);
+	static DropItem* create(const char* pszFileName, 
+							float gravity, 
+							float elasticity, 
+							float minDropHeight, 
+							float maxDropHeight);
 
 	//************************************
 	// Description:初始化
-	// Parameter: int gravity		重力
-	// Parameter: int elasticity	弹性
+	// Parameter: int gravity				重力
+	// Parameter: int elasticity			弹性
+	// Parameter: float floorPosY			底板位置
+	// Parameter: float minDropHeight		最小下落高度
+	// Parameter: float maxDropHeight		最大下落高度
 	// Returns:   bool	
 	//************************************
-	bool init(float gravity , float elasticity, float floorPosY);
+	bool init(float gravity, float elasticity, float minDropHeight, float maxDropHeight);
+	//更新方法
+	void update();
+	//设置底板位置
+	void setFloorPos(float pos);
 	//横向速度
 	float vx;
 	//纵向速度
 	float vy;
+private:
 	//重力
 	float gravity;
 	//弹性
 	float elasticity;
 	//地面高度
 	float floorPosY;
-	//更新方法
-	void update();
+	//最小下落高度
+	float minDropHeight;
+	//最大下落高度
+	float maxDropHeight;
 };
 #endif

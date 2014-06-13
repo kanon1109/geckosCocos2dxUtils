@@ -8,11 +8,6 @@ DropEffectTest::DropEffectTest()
 	this->addChild(de);
 	CCLOG("DropEffectTest");
 	CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
-
-	CCSprite* spt = CCSprite::create("effect/coin.png");
-	this->addChild(spt);
-	spt->setPosition(ccp(120, ScreenUtil::getBottom() + spt->getContentSize().height *.5));
-	CCLOG("%f", spt->getContentSize().height);
 }
 
 
@@ -35,5 +30,5 @@ void DropEffectTest::ccTouchEnded(CCTouch* touch, CCEvent* event)
 {
 	CCLOG("ccTouchEnded");
 	DropEffect* de = (DropEffect* )this->getChildByTag(1);
-	de->drop("effect/coin.png", 5, touch->getLocation().x, touch->getLocation().y, .9f, .4f);
+	de->drop("effect/coin.png", 500, touch->getLocation().x, touch->getLocation().y, .9f, .4f, 50, 200);
 }

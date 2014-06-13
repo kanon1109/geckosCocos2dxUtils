@@ -11,27 +11,33 @@ DropEffect::~DropEffect()
 	CC_SAFE_RELEASE_NULL(this->itemList);
 }
 
-void DropEffect::drop(const char* pszFileName, int count /*= 5*/,
-					 float x /*= 0*/, 
-					 float y /*= 0*/, 
-					 float gravity /*= .9*/, 
-					 float elasticity /*= .4*/, 
-					 float minVx /*= -5*/, float maxVx /*= 5*/, 
-					 float minVy /*= 4*/, float maxVy /*= 10*/)
+void DropEffect::drop(const char* pszFileName, 
+					int count /*= 5*/, 
+					float x /*= 0*/, 
+					float y /*= 0*/, 
+					float gravity /*= .9*/, 
+					float elasticity /*= .4*/, 
+					float minDropHeight /*= 0*/,
+					float maxDropHeight /*= 0*/,
+					float minVx /*= -5*/, float maxVx /*= 5*/, 
+					float minVy /*= 4*/, float maxVy /*= 10*/)
 {
 	if (count < 0) count = 0;
 	for (int i = 0; i < count; ++i)
 	{
-		DropItem* dVo = DropItem::create(pszFileName, gravity, elasticity, this->floorPosY);
+		DropItem* dVo = DropItem::create(pszFileName, gravity, elasticity, 
+										 minDropHeight, maxDropHeight);
 		dVo->vx = Random::randomFloat(minVx, maxVx);
 		dVo->vy = Random::randomFloat(minVy, maxVy);
 		dVo->setAnchorPoint(ccp(.5, .5));
 		dVo->setPosition(ccp(x, y));
+		dVo->setFloorPos(this->floorPosY);
 		this->addChild(dVo);
 		this->itemList->addObject(dVo);
 	}
 	this->schedule(schedule_selector(DropEffect::loop), this->fps);
 }
+
 
 void DropEffect::loop(float dt)
 {
@@ -91,10 +97,14 @@ void DropItem::update()
 	if (abs(this->vx) < .1f) this->vx = 0;
 }
 
-DropItem* DropItem::create(const char* pszFileName, float gravity, float elasticity, float floorPosY)
+DropItem* DropItem::create(const char* pszFileName, 
+							float gravity, 
+							float elasticity, 
+							float minDropHeight, 
+							float maxDropHeight)
 {
 	DropItem* dVo = new DropItem();
-	if (dVo && dVo->init(gravity, elasticity, floorPosY))
+	if (dVo && dVo->init(gravity, elasticity, minDropHeight, maxDropHeight))
 	{
 		dVo->initWithFile(pszFileName);
 		dVo->autorelease();
@@ -104,10 +114,20 @@ DropItem* DropItem::create(const char* pszFileName, float gravity, float elastic
 	return NULL;
 }
 
-bool DropItem::init(float gravity, float elasticity, float floorPosY)
+bool DropItem::init(float gravity, float elasticity, 
+					float minDropHeight, 
+					float maxDropHeight)
 {
 	this->gravity = gravity;
 	this->elasticity = elasticity;
-	this->floorPosY = floorPosY;
+	this->minDropHeight = minDropHeight;
+	this->maxDropHeight = maxDropHeight;
 	return true;
+}
+
+void DropItem::setFloorPos(float pos)
+{
+	this->floorPosY = pos;
+	if (this->maxDropHeight != this->minDropHeight && this->minDropHeight != 0)
+		this->floorPosY = this->getPositionY() - Random::randomFloat(minDropHeight, maxDropHeight);
 }
