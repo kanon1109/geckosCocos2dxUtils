@@ -12,6 +12,7 @@ SlotEffect::SlotEffect()
 	this->addDelay = 200;
 	this->m_target = NULL;
 	this->func = NULL;
+	this->setAnchorPoint(ccp(0, 0));
 }
 
 SlotEffect::~SlotEffect()

@@ -4,28 +4,28 @@ DropEffect::DropEffect()
 {
 	this->itemList = CCArray::create();
 	this->itemList->retain();
-	this->fps = .03f;
-
 }
 
 DropEffect::~DropEffect()
 {
+	CC_SAFE_RELEASE_NULL(this->itemList);
 }
 
-void DropEffect::drop(const char* pszFileName, int count,
+void DropEffect::drop(const char* pszFileName, int count /*= 5*/,
 					 float x /*= 0*/, 
 					 float y /*= 0*/, 
-					 float gravity /*= 1*/, 
-					 float elasticity /*= .9*/, 
+					 float gravity /*= .9*/, 
+					 float elasticity /*= .4*/, 
 					 float minVx /*= -5*/, float maxVx /*= 5*/, 
-					 float minVy /*= 2*/, float maxVy /*= 10*/)
+					 float minVy /*= 4*/, float maxVy /*= 10*/)
 {
 	if (count < 0) count = 0;
 	for (int i = 0; i < count; ++i)
 	{
-		DropItem* dVo = DropItem::create(pszFileName, gravity, elasticity);
+		DropItem* dVo = DropItem::create(pszFileName, gravity, elasticity, this->floorPosY);
 		dVo->vx = Random::randomFloat(minVx, maxVx);
 		dVo->vy = Random::randomFloat(minVy, maxVy);
+		dVo->setAnchorPoint(ccp(.5, .5));
 		dVo->setPosition(ccp(x, y));
 		this->addChild(dVo);
 		this->itemList->addObject(dVo);
@@ -36,7 +36,6 @@ void DropEffect::drop(const char* pszFileName, int count,
 void DropEffect::loop(float dt)
 {
 	int count = this->itemList->count();
-	CCLOG("count", count);
 	for (int i = 0; i < count; ++i)
 	{
 		DropItem* dVo = (DropItem* )this->itemList->objectAtIndex(i);
@@ -44,12 +43,31 @@ void DropEffect::loop(float dt)
 	}
 }
 
+DropEffect* DropEffect::create(float floorPosY /*= 0*/, float fps /*= .01f*/)
+{
+	DropEffect* de = new DropEffect();
+	if (de && de->init(floorPosY, fps))
+	{
+		de->autorelease();
+		return de;
+	}
+	CC_SAFE_DELETE(de);
+	return NULL;
+}
+
+bool DropEffect::init(float floorPosY, float fps)
+{
+	this->fps = fps;
+	this->floorPosY = floorPosY;
+	return CCNode::init();
+}
+
 DropItem::DropItem()
 {
 	this->vx = 0;
 	this->vy = 0;
+	this->floorPosY = 0;
 }
-
 
 DropItem::~DropItem()
 {
@@ -59,13 +77,24 @@ void DropItem::update()
 {
 	this->setPositionX(this->getPositionX() + this->vx);
 	this->setPositionY(this->getPositionY() + this->vy);
-	this->vy -= this->gravity;
+	if (this->getPositionY() < this->floorPosY + this->getContentSize().height * .5)
+	{
+		this->setPositionY(this->floorPosY + this->getContentSize().height * .5);
+		this->vy *= -this->elasticity;
+		this->vx *= this->elasticity;
+	}
+	else
+	{
+		this->vy -= this->gravity;
+	}
+	if (abs(this->vy) < .1f) this->vy = 0;
+	if (abs(this->vx) < .1f) this->vx = 0;
 }
 
-DropItem* DropItem::create(const char* pszFileName, float gravity /*= 1*/, float elasticity /*= .9*/)
+DropItem* DropItem::create(const char* pszFileName, float gravity, float elasticity, float floorPosY)
 {
 	DropItem* dVo = new DropItem();
-	if (dVo && dVo->init(gravity, elasticity))
+	if (dVo && dVo->init(gravity, elasticity, floorPosY))
 	{
 		dVo->initWithFile(pszFileName);
 		dVo->autorelease();
@@ -75,9 +104,10 @@ DropItem* DropItem::create(const char* pszFileName, float gravity /*= 1*/, float
 	return NULL;
 }
 
-bool DropItem::init(float gravity /*= 1*/, float elasticity /*= .9*/)
+bool DropItem::init(float gravity, float elasticity, float floorPosY)
 {
 	this->gravity = gravity;
 	this->elasticity = elasticity;
+	this->floorPosY = floorPosY;
 	return true;
 }
