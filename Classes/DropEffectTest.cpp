@@ -30,5 +30,5 @@ void DropEffectTest::ccTouchEnded(CCTouch* touch, CCEvent* event)
 {
 	CCLOG("ccTouchEnded");
 	DropEffect* de = (DropEffect* )this->getChildByTag(1);
-	de->drop("effect/coin.png", 500, touch->getLocation().x, touch->getLocation().y, .9f, .4f, 50, 200);
+	de->drop("effect/coin.png", 5, touch->getLocation().x, touch->getLocation().y, .9f, .4f, 50, 200);
 }
