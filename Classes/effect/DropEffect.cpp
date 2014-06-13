@@ -4,13 +4,21 @@ DropEffect::DropEffect()
 {
 	this->itemList = CCArray::create();
 	this->itemList->retain();
+	this->fps = .03f;
+
 }
 
 DropEffect::~DropEffect()
 {
 }
 
-void DropEffect::drop(const char* pszFileName, int count, float gravity /*= 1*/, float elasticity /*= .9*/, float minVx /*= -5*/, float maxVx /*= 5*/, float minVy /*= 10*/, float maxVy /*= 20*/)
+void DropEffect::drop(const char* pszFileName, int count,
+					 float x /*= 0*/, 
+					 float y /*= 0*/, 
+					 float gravity /*= 1*/, 
+					 float elasticity /*= .9*/, 
+					 float minVx /*= -5*/, float maxVx /*= 5*/, 
+					 float minVy /*= 2*/, float maxVy /*= 10*/)
 {
 	if (count < 0) count = 0;
 	for (int i = 0; i < count; ++i)
@@ -18,10 +26,11 @@ void DropEffect::drop(const char* pszFileName, int count, float gravity /*= 1*/,
 		DropItem* dVo = DropItem::create(pszFileName, gravity, elasticity);
 		dVo->vx = Random::randomFloat(minVx, maxVx);
 		dVo->vy = Random::randomFloat(minVy, maxVy);
+		dVo->setPosition(ccp(x, y));
 		this->addChild(dVo);
 		this->itemList->addObject(dVo);
 	}
-	this->schedule(schedule_selector(DropEffect::loop), .003f);
+	this->schedule(schedule_selector(DropEffect::loop), this->fps);
 }
 
 void DropEffect::loop(float dt)
