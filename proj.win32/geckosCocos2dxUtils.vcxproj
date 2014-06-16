@@ -138,6 +138,8 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\..\..\CocosBase\CocosBase\CCSceneExTransition.cpp" />
     <ClCompile Include="..\..\..\CocosBase\CocosBase\CCSceneManager.cpp" />
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
+    <ClCompile Include="..\Classes\CocosBaseComponetTest.cpp" />
+    <ClCompile Include="..\Classes\cocosBaseComponet\CBFloatTips.cpp" />
     <ClCompile Include="..\Classes\component\Alert.cpp" />
     <ClCompile Include="..\Classes\component\FloatTips.cpp" />
     <ClCompile Include="..\Classes\component\ProgressLabel.cpp" />
@@ -173,6 +175,8 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\..\..\CocosBase\CocosBase\CCSceneManager.h" />
     <ClInclude Include="..\..\..\CocosBase\CocosBase\cocos-base.h" />
     <ClInclude Include="..\Classes\AppDelegate.h" />
+    <ClInclude Include="..\Classes\CocosBaseComponetTest.h" />
+    <ClInclude Include="..\Classes\cocosBaseComponet\CBFloatTips.h" />
     <ClInclude Include="..\Classes\component\Alert.h" />
     <ClInclude Include="..\Classes\component\FloatTips.h" />
     <ClInclude Include="..\Classes\component\ProgressLabel.h" />
@@ -222,6 +226,10 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\Resources\bg.jpg" />
+    <Image Include="..\Resources\cocosBaseComponetTest\ftips_bg.png" />
+    <Image Include="..\Resources\effect\a1.png" />
+    <Image Include="..\Resources\effect\a2.png" />
+    <Image Include="..\Resources\effect\coin.png" />
     <Image Include="..\Resources\ftips_bg.png" />
     <Image Include="..\Resources\images\AlertBg.png" />
     <Image Include="..\Resources\images\button\common_btn_1.png" />

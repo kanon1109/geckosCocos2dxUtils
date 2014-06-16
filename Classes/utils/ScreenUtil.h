@@ -70,5 +70,11 @@ public:
 	// Returns:   float		计算后的y坐标
 	//************************************
 	static float getScreenY(float y);
+
+	//获取屏幕宽度
+	static float getScreenWidth();
+
+	//获取屏幕高度
+	static float getScreenHeight();
 };
 #endif

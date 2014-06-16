@@ -119,6 +119,18 @@ float ScreenUtil::getScreenY( float y )
 	return  visibleOrigin.y + y / screenReferenceHeight * visibleSize.height;
 }
 
+float ScreenUtil::getScreenWidth()
+{
+	return CCDirector::sharedDirector()->getVisibleSize().width;
+}
+
+float ScreenUtil::getScreenHeight()
+{
+	return CCDirector::sharedDirector()->getVisibleSize().height;
+}
+
+
+
 
 
 

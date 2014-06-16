@@ -5,6 +5,7 @@
 #include "SlotEffectTest.h"
 #include "GetMoveSpeedTest.h"
 #include "DropEffectTest.h"
+#include "CocosBaseComponetTest.h"
 USING_NS_CC;
 
 AppDelegate::AppDelegate() {
@@ -31,10 +32,14 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	ScreenUtil::setScreenSize(960, 540);
 
     // create a scene. it's an autorelease object
-	CCScene *pScene = DropEffectTest::create();
-
+	//CCScene *pScene = CocosBaseComponetTest::create();
+	//CCScene *pScene = CocosBaseComponetTest::create();
     // run
-    pDirector->runWithScene(pScene);
+    //pDirector->runWithScene(pScene);
+
+	REGISTER_SCENE_FUNC(CocosBaseComponetTest);
+
+	CCSceneManager::sharedManager()->runWithScene(LoadScene("CocosBaseComponetTest"));
 
     return true;
 }

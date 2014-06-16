@@ -34,14 +34,17 @@
     <Filter Include="Depends\CocosBase">
       <UniqueIdentifier>{4166ed0c-35ed-48dc-ad81-ef94b3cc89d4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Classes\baseComponet">
-      <UniqueIdentifier>{0774ad59-8e1e-421c-ac51-a721ef5e557a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Classes\effect">
       <UniqueIdentifier>{aae0539f-8671-446a-83fc-33b5321a112d}</UniqueIdentifier>
     </Filter>
     <Filter Include="Resources\effect">
       <UniqueIdentifier>{3b48a422-d1ec-4cbe-937d-34671f7d5b7c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\cocosBaseComponet">
+      <UniqueIdentifier>{0774ad59-8e1e-421c-ac51-a721ef5e557a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\cocosBaseComponetTest">
+      <UniqueIdentifier>{27fa8154-413a-4755-9471-f536ee2c9e56}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -137,6 +140,12 @@
     </ClCompile>
     <ClCompile Include="..\Classes\DropEffectTest.cpp">
       <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\CocosBaseComponetTest.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\cocosBaseComponet\CBFloatTips.cpp">
+      <Filter>Classes\cocosBaseComponet</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -239,6 +248,12 @@
     <ClInclude Include="..\Classes\DropEffectTest.h">
       <Filter>Classes</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\CocosBaseComponetTest.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\cocosBaseComponet\CBFloatTips.h">
+      <Filter>Classes\cocosBaseComponet</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\Resources\images\button\common_btn_1.png">
@@ -306,6 +321,18 @@
     </Image>
     <Image Include="..\Resources\bg.jpg">
       <Filter>Resources</Filter>
+    </Image>
+    <Image Include="..\Resources\effect\a1.png">
+      <Filter>Resources\effect</Filter>
+    </Image>
+    <Image Include="..\Resources\effect\a2.png">
+      <Filter>Resources\effect</Filter>
+    </Image>
+    <Image Include="..\Resources\effect\coin.png">
+      <Filter>Resources\effect</Filter>
+    </Image>
+    <Image Include="..\Resources\cocosBaseComponetTest\ftips_bg.png">
+      <Filter>Resources\cocosBaseComponetTest</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>
