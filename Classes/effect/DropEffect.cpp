@@ -4,6 +4,7 @@ DropEffect::DropEffect()
 {
 	this->itemList = CCArray::create();
 	this->itemList->retain();
+	this->batchNode = NULL;
 }
 
 DropEffect::~DropEffect()
@@ -11,8 +12,7 @@ DropEffect::~DropEffect()
 	CC_SAFE_RELEASE_NULL(this->itemList);
 }
 
-void DropEffect::drop(const char* pszFileName, 
-					int count /*= 5*/, 
+void DropEffect::drop(int count /*= 5*/, 
 					float x /*= 0*/, 
 					float y /*= 0*/, 
 					float gravity /*= .9*/, 
@@ -22,17 +22,18 @@ void DropEffect::drop(const char* pszFileName,
 					float minVx /*= -5*/, float maxVx /*= 5*/, 
 					float minVy /*= 4*/, float maxVy /*= 10*/)
 {
-	if (count < 0) count = 0;
+	if (count <= 0) return;
+	if (!this->batchNode) return;
 	for (int i = 0; i < count; ++i)
 	{
-		DropItem* dVo = DropItem::create(pszFileName, gravity, elasticity, 
+		DropItem* dVo = DropItem::create(this->batchNode->getTexture(), gravity, elasticity,
 										 minDropHeight, maxDropHeight);
 		dVo->vx = Random::randomFloat(minVx, maxVx);
 		dVo->vy = Random::randomFloat(minVy, maxVy);
 		dVo->setAnchorPoint(ccp(.5, .5));
 		dVo->setPosition(ccp(x, y));
 		dVo->setFloorPos(this->floorPosY);
-		this->addChild(dVo);
+		this->batchNode->addChild(dVo);
 		this->itemList->addObject(dVo);
 	}
 	this->schedule(schedule_selector(DropEffect::loop), this->fps);
@@ -49,10 +50,10 @@ void DropEffect::loop(float dt)
 	}
 }
 
-DropEffect* DropEffect::create(float floorPosY /*= 0*/, float fps /*= .01f*/)
+DropEffect* DropEffect::create(const char* pszFileName, float floorPosY /*= 0*/, float fps /*= .01f*/)
 {
 	DropEffect* de = new DropEffect();
-	if (de && de->init(floorPosY, fps))
+	if (de && de->init(pszFileName, floorPosY, fps))
 	{
 		de->autorelease();
 		return de;
@@ -61,10 +62,19 @@ DropEffect* DropEffect::create(float floorPosY /*= 0*/, float fps /*= .01f*/)
 	return NULL;
 }
 
-bool DropEffect::init(float floorPosY, float fps)
+bool DropEffect::init(const char* pszFileName, float floorPosY, float fps)
 {
 	this->fps = fps;
 	this->floorPosY = floorPosY;
+	if (!this->batchNode)
+	{
+		this->batchNode = CCSpriteBatchNode::create(pszFileName);
+		this->addChild(this->batchNode);
+	}
+	else
+	{
+		this->batchNode->initWithFile(pszFileName, kDefaultSpriteBatchCapacity);
+	}
 	return CCNode::init();
 }
 
@@ -97,7 +107,7 @@ void DropItem::update()
 	if (abs(this->vx) < .1f) this->vx = 0;
 }
 
-DropItem* DropItem::create(const char* pszFileName, 
+DropItem* DropItem::create(CCTexture2D* texture, 
 							float gravity, 
 							float elasticity, 
 							float minDropHeight, 
@@ -106,7 +116,7 @@ DropItem* DropItem::create(const char* pszFileName,
 	DropItem* dVo = new DropItem();
 	if (dVo && dVo->init(gravity, elasticity, minDropHeight, maxDropHeight))
 	{
-		dVo->initWithFile(pszFileName);
+		dVo->initWithTexture(texture);
 		dVo->autorelease();
 		return dVo;
 	}

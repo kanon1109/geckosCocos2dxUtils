@@ -11,17 +11,17 @@ public:
 
 	//************************************
 	// Description:创建
-	// Parameter: float floorPosY	底板位置
-	// Parameter: float fps			帧频
+	// Parameter: const char* pszFileName	资源地址
+	// Parameter: float floorPosY			底板位置
+	// Parameter: float fps					帧频
 	// Returns:   DropEffect*		
 	//************************************
-	static DropEffect* create(float floorPosY = 0, float fps = .01f);
+	static DropEffect* create(const char* pszFileName, float floorPosY = 0, float fps = .01f);
 
 	//初始化
-	bool init(float floorPosY, float fps);
+	bool init(const char* pszFileName, float floorPosY, float fps);
 	//************************************
 	// Description:显示掉落效果
-	// Parameter: const char*			资源地址
 	// Parameter: int count				掉落物品的数量
 	// Parameter: float x				x坐标
 	// Parameter: float y				y坐标
@@ -35,8 +35,7 @@ public:
 	// Parameter: float maxVy			最大横向速度
 	// Returns:   void
 	//************************************
-	void drop(const char* pszFileName, 
-			int count = 5,
+	void drop(int count = 5,
 			float x = 0,
 			float y = 0,
 			float gravity = .9,
@@ -48,6 +47,8 @@ public:
 	//循环
 	void loop(float dt);
 private:
+	//批量加载纹理的节点
+	CCSpriteBatchNode* batchNode;
 	//掉落物品列表
 	CCArray* itemList;
 	//帧频
@@ -65,7 +66,7 @@ public:
 
 	//************************************
 	// Description:创建掉落物品
-	// Parameter: const char * pszFileName		掉落物品的资源
+	// Parameter: CCTexture2D* texture			掉落物品的纹理
 	// Parameter: float gravity					重力
 	// Parameter: float elasticity				弹性
 	// Parameter: float floorPosY				底板位置
@@ -73,7 +74,7 @@ public:
 	// Parameter: float maxDropHeight			最大下落高度
 	// Returns:   DropItem*
 	//************************************
-	static DropItem* create(const char* pszFileName, 
+	static DropItem* create(CCTexture2D* texture,
 							float gravity, 
 							float elasticity, 
 							float minDropHeight, 
@@ -108,5 +109,7 @@ private:
 	float minDropHeight;
 	//最大下落高度
 	float maxDropHeight;
+
+	CCLabelTTF* text;
 };
 #endif

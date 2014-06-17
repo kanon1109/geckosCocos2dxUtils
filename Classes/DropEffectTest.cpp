@@ -3,7 +3,7 @@
 #include "utils/ScreenUtil.h"
 DropEffectTest::DropEffectTest()
 {
-	DropEffect* de = DropEffect::create(ScreenUtil::getBottom(), .01f);
+	DropEffect* de = DropEffect::create("effect/coin.png", ScreenUtil::getBottom(), .01f);
 	de->setTag(1);
 	this->addChild(de);
 	CCLOG("DropEffectTest");
@@ -30,5 +30,5 @@ void DropEffectTest::ccTouchEnded(CCTouch* touch, CCEvent* event)
 {
 	CCLOG("ccTouchEnded");
 	DropEffect* de = (DropEffect* )this->getChildByTag(1);
-	de->drop("effect/coin.png", 5, touch->getLocation().x, touch->getLocation().y, .9f, .4f, 50, 200);
+	de->drop(5, touch->getLocation().x, touch->getLocation().y, .9f, .4f, 50, 200);
 }

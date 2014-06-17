@@ -3,21 +3,16 @@
 #define _FLOAT_TIPS_
 #include "cocos2d.h"
 USING_NS_CC;
-class FloatTip:public CCNodeRGBA
+class FloatTip:public CCSprite
 {
 public:
 	FloatTip();
 	~FloatTip();
-	static FloatTip* create();
 	//设置文字内容
 	void setText(const char* str);
-	//根据文件名称路径创建图片
-	void createWithImage(const char *pszFileName);
-	//根据纹理创建图片
-	void createWithTexture(CCTexture2D *pTexture);
+	//根据纹理创建FloatTip
+	static FloatTip* createWithTexture(CCTexture2D *pTexture);
 private:
-	//背景图片
-	CCSprite* bg;
 	//文本框
 	CCLabelTTF* contentTf;
 	//创建文本框
