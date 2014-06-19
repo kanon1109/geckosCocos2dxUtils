@@ -9,6 +9,13 @@ static CCPoint center;		//中心点屏幕坐标
 //屏幕参考大小
 static float screenReferenceWidth;
 static float screenReferenceHeight;
+
+//根据参考传入的高考，将游戏舞台保持高宽比拉伸
+//但是kResolutionNoBorder会将游戏舞台一部分显示到设备屏幕外部，
+//所以此工具是为了保证 舞台高度或宽度2者之一和设备的高度和宽度相同，并且舞台尺寸等比缩放。
+//例如 设备高宽：1280×720，参考高宽为960×640，如果在固定高度（isFixHeight=true）的情况下
+//（1280 / 960） > (720 / 640) 求出scale = （1280 / 960） / (720 / 640);
+//根据计算出来的vSize.width * scale和vSize.height * scale 去设置kResolutionNoBorder（无黑遮罩拉伸）
 ScreenUtil::ScreenUtil()
 {
 }
@@ -23,11 +30,10 @@ void ScreenUtil::setScreenSize(float width /*= 960*/, float height /*= 640*/, bo
 	CCSize frameSize = pEGLView->getFrameSize();
 	screenReferenceWidth = width;
 	screenReferenceHeight = height;
-	CCLOG("frameSize %f; %f", frameSize.width, frameSize.height);
 	CCSize vSize = CCSizeMake(width, height);
 	float scaleX = (float)frameSize.width / vSize.width;
 	float scaleY = (float)frameSize.height / vSize.height;
-	float scale = MAX(scaleX, scaleY);
+	float scale;
 	if (isFixHeight)
 	{
 		// 固定高度
@@ -40,8 +46,10 @@ void ScreenUtil::setScreenSize(float width /*= 960*/, float height /*= 640*/, bo
 		if (scaleX > scaleY) scale = scaleY / (frameSize.height / (float)vSize.height);
 		else scale = scaleY / (frameSize.width / (float)vSize.width);
 	}
-	CCLOG("scaleX, scaleY %f;%f", scaleX, scaleY);
-	CCLOG("scale%f", scale);
+	/*CCLOG("scale %f", scale);
+	CCLOG("vSize.width %f", vSize.width);
+	CCLOG("vSize.height %f", vSize.height);*/
+	//无黑边保持高宽比拉伸方案
 	CCEGLView::sharedOpenGLView()->setDesignResolutionSize(vSize.width * scale, vSize.height * scale, kResolutionNoBorder);
 
 	CCDirector* pDirector = CCDirector::sharedDirector();

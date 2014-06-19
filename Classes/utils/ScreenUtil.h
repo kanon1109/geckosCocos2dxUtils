@@ -3,7 +3,6 @@
 #define _SCREEN_UTIL_
 #include "cocos2d.h"
 USING_NS_CC;
-
 #define sc() ScreenUtil::getCenter()
 #define sl() ScreenUtil::getLeft()
 #define sr() ScreenUtil::getRight()
@@ -23,8 +22,8 @@ public:
 	~ScreenUtil();
 	/**
 	* 设置屏幕大小
-	* @width	屏幕宽度
-	* @height	屏幕高度
+	* @width	屏幕参考宽度
+	* @height	屏幕参考高度
 	*/
 	static void setScreenSize(float width = 960, float height = 640, bool isFixHeight = true);
 
