@@ -17,6 +17,7 @@ void DropEffect::drop(int count /*= 5*/,
 					float y /*= 0*/, 
 					float gravity /*= .9*/, 
 					float elasticity /*= .4*/, 
+					float friction /*= 1*/, 
 					float minDropHeight /*= 0*/,
 					float maxDropHeight /*= 0*/,
 					float minVx /*= -5*/, float maxVx /*= 5*/, 
@@ -26,7 +27,8 @@ void DropEffect::drop(int count /*= 5*/,
 	if (!this->batchNode) return;
 	for (int i = 0; i < count; ++i)
 	{
-		DropItem* dVo = DropItem::create(this->batchNode->getTexture(), gravity, elasticity,
+		DropItem* dVo = DropItem::create(this->batchNode->getTexture(), gravity, 
+										 elasticity, friction,
 										 minDropHeight, maxDropHeight);
 		dVo->vx = Random::randomFloat(minVx, maxVx);
 		dVo->vy = Random::randomFloat(minVy, maxVy);
@@ -102,6 +104,8 @@ void DropItem::update()
 	else
 	{
 		this->vy -= this->gravity;
+		this->vx*= this->friction;
+		this->vy*= this->friction;
 	}
 	if (abs(this->vy) < .1f) this->vy = 0;
 	if (abs(this->vx) < .1f) this->vx = 0;
@@ -110,11 +114,14 @@ void DropItem::update()
 DropItem* DropItem::create(CCTexture2D* texture, 
 							float gravity, 
 							float elasticity, 
+							float friction,
 							float minDropHeight, 
 							float maxDropHeight)
 {
 	DropItem* dVo = new DropItem();
-	if (dVo && dVo->init(gravity, elasticity, minDropHeight, maxDropHeight))
+	if (dVo && dVo->init(gravity, elasticity, 
+						friction, minDropHeight, 
+						maxDropHeight))
 	{
 		dVo->initWithTexture(texture);
 		dVo->autorelease();
@@ -124,12 +131,15 @@ DropItem* DropItem::create(CCTexture2D* texture,
 	return NULL;
 }
 
-bool DropItem::init(float gravity, float elasticity, 
+bool DropItem::init(float gravity, 
+					float elasticity,
+					float friction,
 					float minDropHeight, 
 					float maxDropHeight)
 {
 	this->gravity = gravity;
 	this->elasticity = elasticity;
+	this->friction = friction;
 	this->minDropHeight = minDropHeight;
 	this->maxDropHeight = maxDropHeight;
 	return true;

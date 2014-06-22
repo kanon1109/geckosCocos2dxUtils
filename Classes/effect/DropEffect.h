@@ -27,6 +27,7 @@ public:
 	// Parameter: float y				y坐标
 	// Parameter: float gravity			重力
 	// Parameter: float elasticity		弹性
+	// Parameter: float friction		摩擦系数（0-1）系数越大摩擦力越小
 	// Parameter: float minDropHeight	最小下落高度
 	// Parameter: float maxDropHeight	最大下落高度
 	// Parameter: float minVx			最小横向速度
@@ -40,6 +41,7 @@ public:
 			float y = 0,
 			float gravity = .9,
 			float elasticity = .4,
+			float friction = 1,
 			float minDropHeight = 0,
 			float maxDropHeight = 0,
 			float minVx = -5, float maxVx = 5,
@@ -69,6 +71,7 @@ public:
 	// Parameter: CCTexture2D* texture			掉落物品的纹理
 	// Parameter: float gravity					重力
 	// Parameter: float elasticity				弹性
+	// Parameter: float friction				摩擦力
 	// Parameter: float floorPosY				底板位置
 	// Parameter: float minDropHeight			最小下落高度
 	// Parameter: float maxDropHeight			最大下落高度
@@ -77,6 +80,7 @@ public:
 	static DropItem* create(CCTexture2D* texture,
 							float gravity, 
 							float elasticity, 
+							float friction,
 							float minDropHeight, 
 							float maxDropHeight);
 
@@ -84,12 +88,13 @@ public:
 	// Description:初始化
 	// Parameter: int gravity				重力
 	// Parameter: int elasticity			弹性
+	// Parameter: float friction			摩擦力
 	// Parameter: float floorPosY			底板位置
 	// Parameter: float minDropHeight		最小下落高度
 	// Parameter: float maxDropHeight		最大下落高度
 	// Returns:   bool	
 	//************************************
-	bool init(float gravity, float elasticity, float minDropHeight, float maxDropHeight);
+	bool init(float gravity, float elasticity, float friction, float minDropHeight, float maxDropHeight);
 	//更新方法
 	void update();
 	//设置底板位置
@@ -103,6 +108,8 @@ private:
 	float gravity;
 	//弹性
 	float elasticity;
+	//摩擦力
+	float friction;
 	//地面高度
 	float floorPosY;
 	//最小下落高度
