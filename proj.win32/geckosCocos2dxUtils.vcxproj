@@ -149,10 +149,12 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\effect\DropEffect.cpp" />
     <ClCompile Include="..\Classes\effect\SlotEffect.cpp" />
     <ClCompile Include="..\Classes\GetMoveSpeedTest.cpp" />
+    <ClCompile Include="..\Classes\MathUtilTest.cpp" />
     <ClCompile Include="..\Classes\ScreenSizeTest.cpp" />
     <ClCompile Include="..\Classes\SlotEffectTest.cpp" />
     <ClCompile Include="..\Classes\Test.cpp" />
     <ClCompile Include="..\Classes\TestChildScene.cpp" />
+    <ClCompile Include="..\Classes\utils\ColorUtil.cpp" />
     <ClCompile Include="..\Classes\utils\Cookie.cpp" />
     <ClCompile Include="..\Classes\utils\EnterFrame.cpp" />
     <ClCompile Include="..\Classes\utils\GetMoveSpeed.cpp" />
@@ -186,10 +188,12 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\effect\DropEffect.h" />
     <ClInclude Include="..\Classes\effect\SlotEffect.h" />
     <ClInclude Include="..\Classes\GetMoveSpeedTest.h" />
+    <ClInclude Include="..\Classes\MathUtilTest.h" />
     <ClInclude Include="..\Classes\ScreenSizeTest.h" />
     <ClInclude Include="..\Classes\SlotEffectTest.h" />
     <ClInclude Include="..\Classes\Test.h" />
     <ClInclude Include="..\Classes\TestChildScene.h" />
+    <ClInclude Include="..\Classes\utils\ColorUtil.h" />
     <ClInclude Include="..\Classes\utils\Cookie.h" />
     <ClInclude Include="..\Classes\utils\EnterFrame.h" />
     <ClInclude Include="..\Classes\utils\GetMoveSpeed.h" />

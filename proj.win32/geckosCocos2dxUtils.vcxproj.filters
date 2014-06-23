@@ -147,6 +147,12 @@
     <ClCompile Include="..\Classes\cocosBaseComponet\CBFloatTips.cpp">
       <Filter>Classes\cocosBaseComponet</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\MathUtilTest.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\utils\ColorUtil.cpp">
+      <Filter>Classes\utils</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -253,6 +259,12 @@
     </ClInclude>
     <ClInclude Include="..\Classes\cocosBaseComponet\CBFloatTips.h">
       <Filter>Classes\cocosBaseComponet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\MathUtilTest.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\utils\ColorUtil.h">
+      <Filter>Classes\utils</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
