@@ -158,6 +158,21 @@ int MathUtil::sign( float n )
 	return abs(n) / n;
 }
 
+float MathUtil::triangleArea( CCPoint a, CCPoint b, CCPoint c )
+{
+	return (c.x * b.y - b.x * c.y) - (c.x * a.y - a.x * c.y) + (b.x * a.y - a.x * b.y);
+}
+
+bool MathUtil::isInsideSquare( CCPoint a, CCPoint b, CCPoint c, CCPoint d, CCPoint p )
+{
+	if (MathUtil::triangleArea(a, b, p) > 0 || 
+		MathUtil::triangleArea(b, c, p) > 0 || 
+		MathUtil::triangleArea(c, d, p) > 0 || 
+		MathUtil::triangleArea(d, a, p) > 0) 
+		return false;
+	return true;
+}
+
 
 
 

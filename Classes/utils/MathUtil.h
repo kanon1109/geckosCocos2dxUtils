@@ -175,6 +175,26 @@ public:
 	//************************************
 	static bool isInsideTriangle(CCPoint a, CCPoint b, CCPoint c, CCPoint p);
 
+	//************************************
+	// Method:    triangleArea	求三角形面积
+	// Parameter: CCPoint a		点a
+	// Parameter: CCPoint b		点b
+	// Parameter: CCPoint c		点c
+	// Returns:   float			面积
+	//************************************
+	static float triangleArea(CCPoint a, CCPoint b, CCPoint c);
+
+	//************************************
+	// Method:    isInsideSquare	判断点是否在一个矩形范围内（矩形可旋转）点必须是顺时针
+	// Parameter: CCPoint a			点a
+	// Parameter: CCPoint b			点b
+	// Parameter: CCPoint c			点c
+	// Parameter: CCPoint d			点d
+	// Parameter: CCPoint p			点坐标
+	// Returns:   bool				是否在一个矩形范围内
+	//************************************
+	static bool isInsideSquare(CCPoint a, CCPoint b, CCPoint c, CCPoint d, CCPoint p);
+
 private:
 	static int sign(float n);
 };
