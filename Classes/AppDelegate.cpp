@@ -6,6 +6,7 @@
 #include "GetMoveSpeedTest.h"
 #include "DropEffectTest.h"
 #include "CocosBaseComponetTest.h"
+#include "MathUtilTest.h"
 USING_NS_CC;
 
 AppDelegate::AppDelegate() {
@@ -29,16 +30,13 @@ bool AppDelegate::applicationDidFinishLaunching() {
     // set FPS. the default value is 1.0/60 if you don't call this
     pDirector->setAnimationInterval(1.0 / 60);
 
-	ScreenUtil::setScreenSize(960, 640);
+	ScreenUtil::setScreenSize(960, 540);
 
     // create a scene. it's an autorelease object
-	//CCScene *pScene = DropEffectTest::create();
+	CCScene *pScene = MathUtilTest::create();
 	//CCScene *pScene = CocosBaseComponetTest::create();
-	CCScene *pScene = ScreenSizeTest::create();
-	pDirector->runWithScene(pScene);
-
-	/*CCScene *pScene = DropEffectTest::create();
-	pDirector->runWithScene(pScene);*/
+    // run
+    pDirector->runWithScene(pScene);
 
 	//REGISTER_SCENE_FUNC(CocosBaseComponetTest);
 

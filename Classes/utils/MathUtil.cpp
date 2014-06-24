@@ -145,6 +145,21 @@ unsigned int MathUtil::getIntLength( unsigned int num )
 	return log10(num) + 1;
 }
 
+bool MathUtil::isInsideTriangle( CCPoint a, CCPoint b, CCPoint c, CCPoint p )
+{
+	float planeAB = (a.x - p.x) * (b.y - p.y) - (b.x - p.x) * (a.y - p.y);
+	float planeBC = (b.x - p.x) * (c.y - p.y) - (c.x - p.x) * (b.y - p.y);
+	float planeCA = (c.x - p.x) * (a.y - p.y) - (a.x - p.x) * (c.y - p.y);
+	return sign(planeAB) == sign(planeBC) && sign(planeBC) == sign(planeCA);
+}
+
+int MathUtil::sign( float n )
+{
+	return abs(n) / n;
+}
+
+
+
 
 
 

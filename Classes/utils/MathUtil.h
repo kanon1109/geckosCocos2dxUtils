@@ -163,5 +163,19 @@ public:
 	 * @return	位数
 	 */
 	static unsigned int getIntLength(unsigned int num);
+
+	
+	//************************************
+	// Method:    isInsideTriangle	判断点是否在任意三角形内部
+	// Parameter: CCPoint a			三角形点a
+	// Parameter: CCPoint b			三角形点b
+	// Parameter: CCPoint c			三角形点c
+	// Parameter: CCPoint p			三角形点p
+	// Returns:   bool				是否在三角形内部
+	//************************************
+	static bool isInsideTriangle(CCPoint a, CCPoint b, CCPoint c, CCPoint p);
+
+private:
+	static int sign(float n);
 };
 #endif
