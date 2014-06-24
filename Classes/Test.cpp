@@ -115,7 +115,7 @@ bool Test::init()
 
 	CCTexture2D *texture = CCTextureCache::sharedTextureCache()->addImage("ftips_bg.png");  
 
-	FloatTips::init(this, ccp(320, 760), texture);
+	FloatTips::init(this, ccp(960 / 2, 300), texture);
 	
 	//vector<float> vect;
 	MathUtil::threeSidesMathAngle(vect, 3, 4, 5);
@@ -208,8 +208,10 @@ void Test::btnClickHandler(CCNode* node)
 	v.push_back("5");
 	FloatTips::show(Language::get("test", &v));*/
 
-	ProgressLabel* plabel = (ProgressLabel*)this->getChildByTag(100);
-	plabel->togglePause();
+	FloatTips::show("test");
+
+//	ProgressLabel* plabel = (ProgressLabel*)this->getChildByTag(100);
+	//plabel->togglePause();
 	//plabel->setDelay(0);
 	
 	//CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 0, true);

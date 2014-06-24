@@ -11,16 +11,16 @@ ScreenSizeTest::ScreenSizeTest(void)
 	CCLOG("2randomFloat=%f", Random::randomFloat(-2.4f, 6.6f));
 	//ÎÄ±¾	
 	CCSprite* bg = CCSprite::create("bg.jpg");
+	bg->setAnchorPoint(ccp(.5f, .5f));
 	this->addChild(bg);
-	bg->setPosition(gsp(960/2, 640/2));
-	CCPoint p = gsp(960/2, 640/2);
-	CCLOG("gsp %f %f", p.x, p.y);
-	CCLOG("sc() %f %f", sc().x, sc().y);
-	//bg->setPosition(sc());
+	bg->setPosition(ScreenUtil::getCenter());
+
+	CCLOG("getScreenWidth%f", ScreenUtil::getScreenWidth());
+	CCLOG("getScreenHeight%f", ScreenUtil::getScreenHeight());
 
 	CCLabelTTF* label = CCLabelTTF::create("hello world", "Á¥Êé", 30);
 	this->addChild(label);
-	label->setPosition(ccp(gsx(50), gsy(640) - label->getContentSize().height / 2));
+	label->setPosition(ccp(ScreenUtil::getLeft() + label->getContentSize().width / 2, ScreenUtil::getTop() - label->getContentSize().height / 2));
 
 	CCLOG("isSymbolWord %i", StringUtil::isSymbolWord("\n"));
 	CCLOG("isAlphabetWord %i", StringUtil::isAlphabetWord("aaa"));

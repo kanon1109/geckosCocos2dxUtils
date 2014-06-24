@@ -29,17 +29,20 @@ bool AppDelegate::applicationDidFinishLaunching() {
     // set FPS. the default value is 1.0/60 if you don't call this
     pDirector->setAnimationInterval(1.0 / 60);
 
-	ScreenUtil::setScreenSize(960, 540);
+	ScreenUtil::setScreenSize(960, 640);
 
     // create a scene. it's an autorelease object
+	//CCScene *pScene = DropEffectTest::create();
 	//CCScene *pScene = CocosBaseComponetTest::create();
-	//CCScene *pScene = CocosBaseComponetTest::create();
-    // run
-    //pDirector->runWithScene(pScene);
+	CCScene *pScene = ScreenSizeTest::create();
+	pDirector->runWithScene(pScene);
 
-	REGISTER_SCENE_FUNC(CocosBaseComponetTest);
+	/*CCScene *pScene = DropEffectTest::create();
+	pDirector->runWithScene(pScene);*/
 
-	CCSceneManager::sharedManager()->runWithScene(LoadScene("CocosBaseComponetTest"));
+	//REGISTER_SCENE_FUNC(CocosBaseComponetTest);
+
+	//CCSceneManager::sharedManager()->runWithScene(LoadScene("CocosBaseComponetTest"));
 
     return true;
 }
