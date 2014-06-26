@@ -113,7 +113,7 @@ public:
 	* @param	b 边
 	* @param	c 边
 	*/
-	static void MathUtil::threeSidesMathAngle(vector<float>&vect, float a, float b, float c);
+	static void threeSidesMathAngle(vector<float>&vect, float a, float b, float c);
 
 	/**
 	* 坐标旋转公式
@@ -126,7 +126,7 @@ public:
 	* @param	cos			cos(旋转角度);
 	* @param	reverse		是否逆时针旋转
 	*/
-	static void MathUtil::rotate(vector<float>&vect, float cx, float cy,
+	static void rotate(vector<float>&vect, float cx, float cy,
 									float tx, float ty,
 									float angle, bool reverse);
 
@@ -159,12 +159,11 @@ public:
 	/**
 	 * 获取整数的位数	
 	 * MathUtil::getIntLength(1000)  4;
-	 * @param	num	整数
+	 * @param	num	需要获取位数的整数
 	 * @return	位数
 	 */
-	static unsigned int getIntLength(unsigned int num);
+	static double getIntLength(double num);
 
-	
 	//************************************
 	// Method:    isInsideTriangle	判断点是否在任意三角形内部
 	// Parameter: CCPoint a			三角形点a

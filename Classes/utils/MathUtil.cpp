@@ -12,7 +12,7 @@ MathUtil::~MathUtil()
 
 float MathUtil::fixNumber(float num, float min, float range)
 {
-	(float)num = (int)num % (int)range;
+	num = (int)num % (int)range;
 	if (num < min)
 		return num + range;
 	return num;
@@ -140,7 +140,7 @@ float MathUtil::distance( float x1, float y1, float x2, float y2 )
 	return sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
 }
 
-unsigned int MathUtil::getIntLength( unsigned int num )
+double MathUtil::getIntLength(double num)
 {
 	return log10(num) + 1;
 }
