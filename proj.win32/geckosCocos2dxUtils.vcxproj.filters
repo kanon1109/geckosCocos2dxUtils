@@ -153,6 +153,7 @@
     <ClCompile Include="..\Classes\utils\ColorUtil.cpp">
       <Filter>Classes\utils</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\component\MovieClip.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -266,6 +267,7 @@
     <ClInclude Include="..\Classes\utils\ColorUtil.h">
       <Filter>Classes\utils</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\component\MovieClip.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\Resources\images\button\common_btn_1.png">

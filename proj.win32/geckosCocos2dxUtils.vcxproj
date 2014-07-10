@@ -142,6 +142,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\cocosBaseComponet\CBFloatTips.cpp" />
     <ClCompile Include="..\Classes\component\Alert.cpp" />
     <ClCompile Include="..\Classes\component\FloatTips.cpp" />
+    <ClCompile Include="..\Classes\component\MovieClip.cpp" />
     <ClCompile Include="..\Classes\component\ProgressLabel.cpp" />
     <ClCompile Include="..\Classes\component\TabBar.cpp" />
     <ClCompile Include="..\Classes\component\TextButton.cpp" />
@@ -181,6 +182,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\cocosBaseComponet\CBFloatTips.h" />
     <ClInclude Include="..\Classes\component\Alert.h" />
     <ClInclude Include="..\Classes\component\FloatTips.h" />
+    <ClInclude Include="..\Classes\component\MovieClip.h" />
     <ClInclude Include="..\Classes\component\ProgressLabel.h" />
     <ClInclude Include="..\Classes\component\TabBar.h" />
     <ClInclude Include="..\Classes\component\TextButton.h" />
