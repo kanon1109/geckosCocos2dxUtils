@@ -13,17 +13,58 @@ public:
 	
 	//************************************
 	// Method:    create	创建影片剪辑
-	// Parameter: const char * xmlFileName	xml文件 规格要求和starling中的配置相同
+	// Parameter: const char * name	plist文件或者纹理名称前缀（去除后缀）
 	// Returns:   MovieClip*
 	//************************************
-	static MovieClip* create(const char* xmlFileName);
+	static MovieClip* create(const char* name);
 
 	//初始化
-	bool init(const char* xmlFileName);
+	bool init(const char* name);
+
+	//跳帧
+	void gotoAndStop(int frame);
+
+	//************************************
+	// Description:从第几帧开始播放到第几帧
+	// Parameter: int start		起始帧数
+	// Parameter: int end		结尾帧数（默认0 为播放到最后一帧）
+	// Parameter: float fps		帧频
+	// Parameter: bool isLoop	是否循环播放
+	// Returns:   void
+	//************************************
+	void gotoAndPlay(int start, int end = 0, float fps = .033f, bool isLoop = true);
+
+	//暂停
+	void stop();
+
+	//播放
+	void play(float fps = .033f, bool isLoop = true);
+
+	//当前帧频
+	float fps;
+
+	//是否循环
+	bool isLoop;
 private:
 	//存放帧数据的列表
 	CCArray* frameList;
 	//xml工具
 	tinyxml2::XMLDocument doc;
+	//plist文件或者纹理名称前缀（去除后缀）
+	const char* mcName;
+	//当前帧
+	int currentFrame;
+	//起始帧
+	int startFrame;
+	//结束帧
+	int endFrame;
+	//总帧数
+	int totalFrames;
+	//初始化所有帧
+	void initFrame();
+	//更新帧
+	void updateFrame();
+	//循环
+	void loop(float dt);
 };
 #endif // !_MOVIE_CLIP_

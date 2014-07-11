@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{76A39BB2-9B84-4C65-98A5-654D86B86F2A}</ProjectGuid>
+    <ProjectGuid>{C276440B-36E0-4755-936C-C2DF45CD7655}</ProjectGuid>
     <RootNamespace>test_win32</RootNamespace>
     <Keyword>Win32Proj</Keyword>
   </PropertyGroup>
@@ -151,6 +151,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\effect\SlotEffect.cpp" />
     <ClCompile Include="..\Classes\GetMoveSpeedTest.cpp" />
     <ClCompile Include="..\Classes\MathUtilTest.cpp" />
+    <ClCompile Include="..\Classes\MovieClipTest.cpp" />
     <ClCompile Include="..\Classes\ScreenSizeTest.cpp" />
     <ClCompile Include="..\Classes\SlotEffectTest.cpp" />
     <ClCompile Include="..\Classes\Test.cpp" />
@@ -191,6 +192,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\effect\SlotEffect.h" />
     <ClInclude Include="..\Classes\GetMoveSpeedTest.h" />
     <ClInclude Include="..\Classes\MathUtilTest.h" />
+    <ClInclude Include="..\Classes\MovieClipTest.h" />
     <ClInclude Include="..\Classes\ScreenSizeTest.h" />
     <ClInclude Include="..\Classes\SlotEffectTest.h" />
     <ClInclude Include="..\Classes\Test.h" />

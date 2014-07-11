@@ -7,6 +7,7 @@
 #include "DropEffectTest.h"
 #include "CocosBaseComponetTest.h"
 #include "MathUtilTest.h"
+#include "MovieClipTest.h"
 USING_NS_CC;
 
 AppDelegate::AppDelegate() {
@@ -33,7 +34,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	ScreenUtil::setScreenSize(960, 540);
 
     // create a scene. it's an autorelease object
-	CCScene *pScene = MathUtilTest::create();
+	CCScene *pScene = MovieClipTest::create();
 	//CCScene *pScene = CocosBaseComponetTest::create();
     // run
     pDirector->runWithScene(pScene);
