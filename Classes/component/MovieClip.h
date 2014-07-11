@@ -13,13 +13,14 @@ public:
 	
 	//************************************
 	// Method:    create	创建影片剪辑
-	// Parameter: const char * name	plist文件或者纹理名称前缀（去除后缀）
+	// Parameter: const char * name		plist文件或者纹理名称前缀（去除后缀）
+	// Parameter: const char * fileType	纹理文件类型（1为.png, 2为.pvr, 3为.pvr.cc, 4为jpg）
 	// Returns:   MovieClip*
 	//************************************
-	static MovieClip* create(const char* name);
+	static MovieClip* create(const char* name, const char* fileType = ".png");
 
 	//初始化
-	bool init(const char* name);
+	bool init(const char* name, const char* fileType);
 
 	//跳帧
 	void gotoAndStop(int frame);

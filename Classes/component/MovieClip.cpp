@@ -18,10 +18,10 @@ MovieClip::~MovieClip(void)
 	CC_SAFE_RELEASE_NULL(this->frameList);
 }
 
-MovieClip* MovieClip::create(const char* name)
+MovieClip* MovieClip::create(const char* name, const char* fileType /*= ".png"*/)
 {
 	MovieClip* mc = new MovieClip();
-	if (mc && mc->init(name))
+	if (mc && mc->init(name, fileType))
 	{
 		mc->autorelease();
 		return mc;
@@ -30,18 +30,19 @@ MovieClip* MovieClip::create(const char* name)
 	return mc;
 }
 
-bool MovieClip::init(const char* name)
+bool MovieClip::init(const char* name, const char* fileType)
 {
 	string plistName = name;
 	plistName += ".plist";
 	string textureName = name;
-	textureName += ".png";
+	textureName += fileType;
 	this->mcName = name;
 	CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile(plistName.c_str(), textureName.c_str());
 	this->initFrame();
 	this->gotoAndStop(this->currentFrame);
 	return true;
 }
+
 
 void MovieClip::initFrame()
 {

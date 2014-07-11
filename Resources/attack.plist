@@ -75,13 +75,13 @@
             <key>format</key>
             <integer>2</integer>
             <key>realTextureFileName</key>
-            <string>attack.jpg</string>
+            <string>attack.pvr</string>
             <key>size</key>
             <string>{460,629}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:7b372bfa6961ead6769bf74fe86e15a3$</string>
+            <string>$TexturePacker:SmartUpdate:3abbd8c5b9fcf18e85c90babed0ddc32$</string>
             <key>textureFileName</key>
-            <string>attack.jpg</string>
+            <string>attack.pvr</string>
         </dict>
     </dict>
 </plist>
