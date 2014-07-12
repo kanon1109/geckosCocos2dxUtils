@@ -8,8 +8,10 @@ MovieClipTest::MovieClipTest()
 	MovieClip* mc = MovieClip::create("attack", ".pvr.ccz");
 	mc->setTag(0);
 	mc->setPosition(ScreenUtil::getCenter());
-	mc->gotoAndStop(3);
-	mc->gotoAndPlay(3, 5, .12f);
+	mc->addEventListener(this, complete_selector(MovieClipTest::playComplete));
+	/*mc->gotoAndStop(3);
+	mc->gotoAndPlay(3, 5, .12f);*/
+	mc->playOnce();
 	this->addChild(mc);
 }
 
@@ -31,4 +33,9 @@ void MovieClipTest::ccTouchEnded(CCTouch* touch, CCEvent* event)
 	if (!mc) return;
 	mc->play(mc->fps);
 	mc->removeFromParent();
+}
+
+void MovieClipTest::playComplete( CCObject* obj )
+{
+	CCLOG("playComplete");
 }

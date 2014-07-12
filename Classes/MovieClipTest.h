@@ -11,5 +11,7 @@ public:
 	CREATE_FUNC(MovieClipTest);
 	virtual bool ccTouchBegan(CCTouch* touch, CCEvent* event);
 	virtual void ccTouchEnded(CCTouch* touch, CCEvent* event);
+private:
+	void playComplete(CCObject* obj);
 };
 #endif

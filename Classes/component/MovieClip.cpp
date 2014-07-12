@@ -11,6 +11,9 @@ MovieClip::MovieClip(void)
 	this->endFrame = 1;
 	this->fps = 0.0333f;
 	this->isLoop = true;
+	this->distroy = false;
+	this->target = NULL;
+	this->completeFun = NULL;
 }
 
 MovieClip::~MovieClip(void)
@@ -88,6 +91,7 @@ void MovieClip::play(float fps /*= .033f*/, bool isLoop /*= true*/)
 	this->schedule(schedule_selector(MovieClip::loop), fps);
 	this->fps = fps;
 	this->isLoop = isLoop;
+	this->distroy = false;
 }
 
 
@@ -110,6 +114,16 @@ void MovieClip::loop(float dt)
 		{
 			this->currentFrame = this->endFrame;
 			this->stop();
+			//调用回调函数
+			if (this->target && this->completeFun)
+			{
+				(this->target->*completeFun)(this);
+			}
+			//销毁
+			if(this->distroy)
+			{
+				this->removeFromParent();
+			}
 		}
 	}
 	this->updateFrame();
@@ -124,4 +138,16 @@ void MovieClip::gotoAndPlay(int start, int end /*= 0*/, float fps /*= .033f*/, b
 	this->startFrame = start;
 	this->endFrame = end;
 	this->play(fps, isLoop);
+}
+
+void MovieClip::playOnce(float fps /*= .033f*/, bool distroy /*= true*/ )
+{
+	this->gotoAndPlay(1, this->totalFrames, fps, false);
+	this->distroy = distroy;
+}
+
+void MovieClip::addEventListener( CCObject* target, SEL_COMPLETE_SELECTOR completeFun )
+{
+	this->target = target;
+	this->completeFun = completeFun;
 }

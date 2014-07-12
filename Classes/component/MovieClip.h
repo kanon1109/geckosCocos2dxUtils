@@ -2,8 +2,10 @@
 #ifndef _MOVIE_CLIP_
 #define _MOVIE_CLIP_
 #include "cocos2d.h"
-using namespace tinyxml2;
 USING_NS_CC;
+//播放结束回调
+typedef void (CCObject::*SEL_COMPLETE_SELECTOR)(CCObject*);
+#define complete_selector(_SELECTOR) (SEL_COMPLETE_SELECTOR)(&_SELECTOR)
 //影片剪辑序列帧代替cocos的动画
 class MovieClip:public CCSprite
 {
@@ -41,16 +43,30 @@ public:
 	//播放
 	void play(float fps = .033f, bool isLoop = true);
 
+	
+	//************************************
+	// Method:    playOnce		播放一次
+	// Parameter: float fps		帧频
+	// Parameter: bool distroy	是否销毁
+	// Returns:   void
+	//************************************
+	void playOnce(float fps = .033f, bool distroy = true);
+
 	//当前帧频
 	float fps;
 
 	//是否循环
 	bool isLoop;
+
+	//添加监听
+	void addEventListener(CCObject* target, SEL_COMPLETE_SELECTOR completeFun);
 private:
 	//存放帧数据的列表
 	CCArray* frameList;
-	//xml工具
-	tinyxml2::XMLDocument doc;
+	//回调方法的目标
+	CCObject* target;
+	//回调方法
+	SEL_COMPLETE_SELECTOR completeFun;
 	//plist文件或者纹理名称前缀（去除后缀）
 	const char* mcName;
 	//当前帧
@@ -61,6 +77,8 @@ private:
 	int endFrame;
 	//总帧数
 	int totalFrames;
+	//是否播放一次后销毁
+	bool distroy;
 	//初始化所有帧
 	void initFrame();
 	//更新帧
