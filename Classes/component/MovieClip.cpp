@@ -21,10 +21,10 @@ MovieClip::~MovieClip(void)
 	CC_SAFE_RELEASE_NULL(this->frameList);
 }
 
-MovieClip* MovieClip::create(const char* name, const char* fileType /*= ".png"*/)
+MovieClip* MovieClip::create(const char* name, const char* fileType, const char* prefix, int prefixLength)
 {
 	MovieClip* mc = new MovieClip();
-	if (mc && mc->init(name, fileType))
+	if (mc && mc->init(name, fileType, prefix, prefixLength))
 	{
 		mc->autorelease();
 		return mc;
@@ -33,19 +33,21 @@ MovieClip* MovieClip::create(const char* name, const char* fileType /*= ".png"*/
 	return mc;
 }
 
-bool MovieClip::init(const char* name, const char* fileType)
+bool MovieClip::init(const char* name, const char* fileType, const char* prefix, int prefixLength)
 {
 	string plistName = name;
 	plistName += ".plist";
 	string textureName = name;
 	textureName += fileType;
 	this->mcName = name;
+	this->prefix = prefix;
+	this->prefixLength = prefixLength;
+	if (this->prefixLength < 0) this->prefixLength = 0;
 	CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile(plistName.c_str(), textureName.c_str());
 	this->initFrame();
 	this->gotoAndStop(this->currentFrame);
 	return true;
 }
-
 
 void MovieClip::initFrame()
 {
@@ -65,7 +67,19 @@ void MovieClip::initFrame()
 	{
 		CCDictionary* frameDict = (CCDictionary*)pElement->getObject();
 		string spriteFrameName = pElement->getStrKey();
-		this->frameList->addObject(CCString::create(spriteFrameName.c_str()));
+		string prefixStr = this->prefix;
+		if (this->prefixLength > 0 && !prefixStr.empty())
+		{
+			//提取key的子字符串
+			string subStr = spriteFrameName.substr(0, this->prefixLength);
+			//比较子字符串的参数 如果相同则放入帧数组
+			if (subStr.compare(prefixStr) == 0)
+				this->frameList->addObject(CCString::create(spriteFrameName.c_str()));
+		}
+		else
+		{
+			this->frameList->addObject(CCString::create(spriteFrameName.c_str()));
+		}
 	}
 	dictionary->release();
 }

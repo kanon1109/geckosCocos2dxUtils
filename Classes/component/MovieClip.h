@@ -14,15 +14,17 @@ public:
 	~MovieClip(void);
 	
 	//************************************
-	// Method:    create	创建影片剪辑
+	// Description: 创建影片剪辑 
 	// Parameter: const char * name		plist文件或者纹理名称前缀（去除后缀）
-	// Parameter: const char * fileType	纹理文件类型（1为.png, 2为.pvr, 3为.pvr.cc, 4为jpg）
+	// Parameter: const char * fileType 纹理文件类型（1为.png, 2为.pvr, 3为.pvr.cc, 4为jpg）
+	// Parameter: const char * prefix	前缀名称字符串
+	// Parameter: int prefixLength		前缀字符串长度
 	// Returns:   MovieClip*
 	//************************************
-	static MovieClip* create(const char* name, const char* fileType = ".png");
-
+	static MovieClip* create(const char* name, const char* fileType = ".png", const char* prefix = "", int prefixLength = 0);
+	
 	//初始化
-	bool init(const char* name, const char* fileType);
+	bool init(const char* name, const char* fileType, const char* prefix, int prefixLength);
 
 	//跳帧
 	void gotoAndStop(int frame);
@@ -79,6 +81,10 @@ private:
 	int totalFrames;
 	//是否播放一次后销毁
 	bool distroy;
+	//前缀名称
+	const char* prefix;
+	//前缀长度
+	int prefixLength;
 	//初始化所有帧
 	void initFrame();
 	//更新帧
