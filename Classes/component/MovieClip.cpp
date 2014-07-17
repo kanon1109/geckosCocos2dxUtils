@@ -21,10 +21,10 @@ MovieClip::~MovieClip(void)
 	CC_SAFE_RELEASE_NULL(this->frameList);
 }
 
-MovieClip* MovieClip::create(const char* name, const char* fileType, const char* prefix, int prefixLength)
+MovieClip* MovieClip::create(const char* name, const char* fileType, const char* prefix)
 {
 	MovieClip* mc = new MovieClip();
-	if (mc && mc->init(name, fileType, prefix, prefixLength))
+	if (mc && mc->init(name, fileType, prefix))
 	{
 		mc->autorelease();
 		return mc;
@@ -33,7 +33,7 @@ MovieClip* MovieClip::create(const char* name, const char* fileType, const char*
 	return mc;
 }
 
-bool MovieClip::init(const char* name, const char* fileType, const char* prefix, int prefixLength)
+bool MovieClip::init(const char* name, const char* fileType, const char* prefix)
 {
 	string plistName = name;
 	plistName += ".plist";
@@ -41,8 +41,6 @@ bool MovieClip::init(const char* name, const char* fileType, const char* prefix,
 	textureName += fileType;
 	this->mcName = name;
 	this->prefix = prefix;
-	this->prefixLength = prefixLength;
-	if (this->prefixLength < 0) this->prefixLength = 0;
 	CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile(plistName.c_str(), textureName.c_str());
 	this->initFrame();
 	this->gotoAndStop(this->currentFrame);
@@ -57,10 +55,6 @@ void MovieClip::initFrame()
 	string fullPath = CCFileUtils::sharedFileUtils()->fullPathForFilename(plistName.c_str());
 	CCDictionary* dictionary = CCDictionary::createWithContentsOfFileThreadSafe(fullPath.c_str());
 	CCDictionary* framesDict = (CCDictionary*)dictionary->objectForKey("frames");
-	this->totalFrames = framesDict->count();
-	this->startFrame = 1;
-	this->endFrame = this->totalFrames;
-	this->currentFrame = this->startFrame;
 	//将帧的key存入数组
 	CCDictElement* pElement = NULL;
 	CCDICT_FOREACH(framesDict, pElement)
@@ -68,10 +62,11 @@ void MovieClip::initFrame()
 		CCDictionary* frameDict = (CCDictionary*)pElement->getObject();
 		string spriteFrameName = pElement->getStrKey();
 		string prefixStr = this->prefix;
-		if (this->prefixLength > 0 && !prefixStr.empty())
+		if (!prefixStr.empty())
 		{
 			//提取key的子字符串
-			string subStr = spriteFrameName.substr(0, this->prefixLength);
+			string subStr = spriteFrameName.substr(0, prefixStr.length());
+			CCLOG("subStr%s", subStr.c_str());
 			//比较子字符串的参数 如果相同则放入帧数组
 			if (subStr.compare(prefixStr) == 0)
 				this->frameList->addObject(CCString::create(spriteFrameName.c_str()));
@@ -81,6 +76,10 @@ void MovieClip::initFrame()
 			this->frameList->addObject(CCString::create(spriteFrameName.c_str()));
 		}
 	}
+	this->totalFrames = this->frameList->count();
+	this->startFrame = 1;
+	this->endFrame = this->totalFrames;
+	this->currentFrame = this->startFrame;
 	dictionary->release();
 }
 
