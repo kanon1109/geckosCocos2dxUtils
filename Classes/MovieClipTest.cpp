@@ -5,13 +5,14 @@
 MovieClipTest::MovieClipTest()
 {
 	CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
-	MovieClip* mc = MovieClip::create("attack", ".pvr.ccz");
+	MovieClip* mc = MovieClip::create("explode", ".png", "image");
 	mc->setTag(0);
 	mc->setPosition(ScreenUtil::getCenter());
 	mc->addEventListener(this, complete_selector(MovieClipTest::playComplete));
 	/*mc->gotoAndStop(3);
-	mc->gotoAndPlay(3, 5, .12f);*/
-	mc->playOnce();
+	mc->gotoAndPlay(3, 5, .12f);
+	mc->playOnce(.12f);*/
+	mc->play(.12f);
 	this->addChild(mc);
 }
 

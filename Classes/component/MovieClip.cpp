@@ -59,14 +59,12 @@ void MovieClip::initFrame()
 	CCDictElement* pElement = NULL;
 	CCDICT_FOREACH(framesDict, pElement)
 	{
-		CCDictionary* frameDict = (CCDictionary*)pElement->getObject();
 		string spriteFrameName = pElement->getStrKey();
 		string prefixStr = this->prefix;
 		if (!prefixStr.empty())
 		{
 			//提取key的子字符串
 			string subStr = spriteFrameName.substr(0, prefixStr.length());
-			CCLOG("subStr%s", subStr.c_str());
 			//比较子字符串的参数 如果相同则放入帧数组
 			if (subStr.compare(prefixStr) == 0)
 				this->frameList->addObject(CCString::create(spriteFrameName.c_str()));
@@ -110,8 +108,18 @@ void MovieClip::play(float fps /*= .033f*/, bool isLoop /*= true*/)
 
 void MovieClip::updateFrame()
 {
-	CCString* str = (CCString* )this->frameList->objectAtIndex(this->currentFrame - 1);
-	this->initWithSpriteFrameName(str->getCString());
+	CCString* str = (CCString*)this->frameList->objectAtIndex(this->currentFrame - 1);
+	if (this->getTexture())
+	{
+		CCSpriteFrame* frame = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(str->getCString());
+		CCRect rect = frame->getRect();
+		this->setTextureRect(rect, frame->isRotated(), frame->getOriginalSize());
+		this->setContentSize(frame->getRect().size);
+	}
+	else
+	{
+		this->initWithSpriteFrameName(str->getCString());
+	}
 }
 
 void MovieClip::loop(float dt)
@@ -133,7 +141,7 @@ void MovieClip::loop(float dt)
 				(this->target->*completeFun)(this);
 			}
 			//销毁
-			if(this->distroy)
+			if (this->distroy)
 			{
 				this->removeFromParent();
 			}
@@ -153,13 +161,13 @@ void MovieClip::gotoAndPlay(int start, int end /*= 0*/, float fps /*= .033f*/, b
 	this->play(fps, isLoop);
 }
 
-void MovieClip::playOnce(float fps /*= .033f*/, bool distroy /*= true*/ )
+void MovieClip::playOnce(float fps /*= .033f*/, bool distroy /*= true*/)
 {
 	this->gotoAndPlay(1, this->totalFrames, fps, false);
 	this->distroy = distroy;
 }
 
-void MovieClip::addEventListener( CCObject* target, SEL_COMPLETE_SELECTOR completeFun )
+void MovieClip::addEventListener(CCObject* target, SEL_COMPLETE_SELECTOR completeFun)
 {
 	this->target = target;
 	this->completeFun = completeFun;
