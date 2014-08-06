@@ -194,6 +194,16 @@ public:
 	//************************************
 	static bool isInsideSquare(CCPoint a, CCPoint b, CCPoint c, CCPoint d, CCPoint p);
 
+	//************************************
+	// Description: 求线段交点	参考（http://fins.iteye.com/blog/1522259）
+	// Parameter: CCPoint a		线段A的顶点1
+	// Parameter: CCPoint b		线段A的顶点2
+	// Parameter: CCPoint c		线段B的顶点1
+	// Parameter: CCPoint d		线段B的顶点2
+	// Parameter: vector<float> & vect 存放交点的vect
+	// Returns:   void
+	//************************************
+	static void segmentsIntr(CCPoint a, CCPoint b, CCPoint c, CCPoint d, vector<float> &vect);
 private:
 	static int sign(float n);
 };
