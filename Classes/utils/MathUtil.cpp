@@ -155,7 +155,7 @@ bool MathUtil::isInsideTriangle( CCPoint a, CCPoint b, CCPoint c, CCPoint p )
 
 int MathUtil::sign( float n )
 {
-	return abs(n) / n;
+	return (int)(abs(n) / n);
 }
 
 float MathUtil::triangleArea( CCPoint a, CCPoint b, CCPoint c )
