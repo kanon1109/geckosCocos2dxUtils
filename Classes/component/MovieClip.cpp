@@ -113,6 +113,7 @@ void MovieClip::updateFrame()
 	{
 		CCSpriteFrame* frame = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(str->getCString());
 		CCRect rect = frame->getRect();
+		this->m_obUnflippedOffsetPositionFromCenter = frame->getOffset();
 		this->setTextureRect(rect, frame->isRotated(), frame->getOriginalSize());
 	}
 	else
