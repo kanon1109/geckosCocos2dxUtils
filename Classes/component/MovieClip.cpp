@@ -12,6 +12,7 @@ MovieClip::MovieClip(void)
 	this->fps = 0.0333f;
 	this->isLoop = true;
 	this->distroy = false;
+	this->isReverse = false;
 	this->target = NULL;
 	this->completeFun = NULL;
 }
@@ -96,25 +97,26 @@ void MovieClip::stop()
 	this->unschedule(schedule_selector(MovieClip::loop));
 }
 
-void MovieClip::play(float fps /*= .033f*/, bool isLoop /*= true*/)
+void MovieClip::play(float fps /*= .033f*/, bool isLoop /*= true*/, bool isReverse /*= false*/)
 {
 	this->stop();
 	this->schedule(schedule_selector(MovieClip::loop), fps);
 	this->fps = fps;
 	this->isLoop = isLoop;
 	this->distroy = false;
+	this->isReverse = isReverse;
 }
 
 
 void MovieClip::updateFrame()
 {
-	CCString* str = (CCString*)this->frameList->objectAtIndex(this->currentFrame - 1);
+	CCString* str = (CCString* )this->frameList->objectAtIndex(this->currentFrame - 1);
 	if (this->getTexture())
 	{
 		CCSpriteFrame* frame = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(str->getCString());
-		CCRect rect = frame->getRect();
+		//设置位置修正
 		this->m_obUnflippedOffsetPositionFromCenter = frame->getOffset();
-		this->setTextureRect(rect, frame->isRotated(), frame->getOriginalSize());
+		this->setTextureRect(frame->getRect(), frame->isRotated(), frame->getOriginalSize());
 	}
 	else
 	{
@@ -124,33 +126,66 @@ void MovieClip::updateFrame()
 
 void MovieClip::loop(float dt)
 {
-	this->currentFrame++;
-	if (this->isLoop)
+	//是否逆序播放
+	if (!this->isReverse)
 	{
-		if (this->currentFrame > this->endFrame) this->currentFrame = this->startFrame;
+		//顺序
+		this->currentFrame++;
+		if (this->isLoop)
+		{
+			if (this->currentFrame > this->endFrame) this->currentFrame = this->startFrame;
+		}
+		else
+		{
+			if (this->currentFrame > this->endFrame)
+			{
+				this->currentFrame = this->endFrame;
+				this->stop();
+				//调用回调函数
+				if (this->target && this->completeFun)
+				{
+					(this->target->*completeFun)(this);
+				}
+				//销毁
+				if (this->distroy)
+				{
+					this->removeFromParent();
+				}
+			}
+		}
 	}
 	else
 	{
-		if (this->currentFrame > this->endFrame)
+		//逆序
+		this->currentFrame--;
+		if (this->isLoop)
 		{
-			this->currentFrame = this->endFrame;
-			this->stop();
-			//调用回调函数
-			if (this->target && this->completeFun)
+			if (this->currentFrame < this->startFrame) this->currentFrame = this->endFrame;
+		}
+		else
+		{
+			if (this->currentFrame < this->startFrame)
 			{
-				(this->target->*completeFun)(this);
-			}
-			//销毁
-			if (this->distroy)
-			{
-				this->removeFromParent();
+				this->currentFrame = this->startFrame;
+				this->stop();
+				//调用回调函数
+				if (this->target && this->completeFun)
+				{
+					(this->target->*completeFun)(this);
+				}
+				//销毁
+				if (this->distroy)
+				{
+					this->removeFromParent();
+				}
 			}
 		}
+
 	}
 	this->updateFrame();
 }
 
-void MovieClip::gotoAndPlay(int start, int end /*= 0*/, float fps /*= .033f*/, bool isLoop /*= true*/)
+void MovieClip::gotoAndPlay(int start, int end /*= 0*/, float fps /*= .033f*/, bool isLoop /*= true*/, bool isReverse /*= false*/)
 {
 	if (start < 1) start = 1;
 	if (start > this->totalFrames) start = this->totalFrames;
@@ -158,16 +193,16 @@ void MovieClip::gotoAndPlay(int start, int end /*= 0*/, float fps /*= .033f*/, b
 	if (end > this->totalFrames) end = this->totalFrames;
 	this->startFrame = start;
 	this->endFrame = end;
-	this->play(fps, isLoop);
+	this->play(fps, isLoop, isReverse);
 }
 
-void MovieClip::playOnce(float fps /*= .033f*/, bool distroy /*= true*/)
+void MovieClip::playOnce(float fps /*= .033f*/, bool distroy /*= true*/, bool isReverse /*= false*/)
 {
-	this->gotoAndPlay(1, this->totalFrames, fps, false);
+	this->gotoAndPlay(1, this->totalFrames, fps, false, isReverse);
 	this->distroy = distroy;
 }
 
-void MovieClip::addEventListener(CCObject* target, SEL_COMPLETE_SELECTOR completeFun)
+void MovieClip::addEventListener( CCObject* target, SEL_COMPLETE_SELECTOR completeFun )
 {
 	this->target = target;
 	this->completeFun = completeFun;

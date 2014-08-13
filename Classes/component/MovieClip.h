@@ -30,19 +30,20 @@ public:
 
 	//************************************
 	// Description:从第几帧开始播放到第几帧
-	// Parameter: int start		起始帧数
-	// Parameter: int end		结尾帧数（默认0 为播放到最后一帧）
-	// Parameter: float fps		帧频
-	// Parameter: bool isLoop	是否循环播放
+	// Parameter: int start			起始帧数
+	// Parameter: int end			结尾帧数（默认0 为播放到最后一帧）
+	// Parameter: float fps			帧频
+	// Parameter: bool isLoop		是否循环播放
+	// Parameter: bool isReverse	是否逆序播放
 	// Returns:   void
 	//************************************
-	void gotoAndPlay(int start, int end = 0, float fps = .033f, bool isLoop = true);
+	void gotoAndPlay(int start, int end = 0, float fps = .033f, bool isLoop = true, bool isReverse = false);
 
 	//暂停
 	void stop();
 
 	//播放
-	void play(float fps = .033f, bool isLoop = true);
+	void play(float fps = .033f, bool isLoop = true, bool isReverse = false);
 
 	
 	//************************************
@@ -51,7 +52,7 @@ public:
 	// Parameter: bool distroy	是否销毁
 	// Returns:   void
 	//************************************
-	void playOnce(float fps = .033f, bool distroy = true);
+	void playOnce(float fps = .033f, bool distroy = true, bool isReverse = false);
 
 	//当前帧频
 	float fps;
@@ -61,6 +62,12 @@ public:
 
 	//添加监听
 	void addEventListener(CCObject* target, SEL_COMPLETE_SELECTOR completeFun);
+
+	//当前帧
+	int currentFrame;
+
+	//总帧数
+	int totalFrames;
 private:
 	//存放帧数据的列表
 	CCArray* frameList;
@@ -70,14 +77,15 @@ private:
 	SEL_COMPLETE_SELECTOR completeFun;
 	//plist文件或者纹理名称前缀（去除后缀）
 	const char* mcName;
-	//当前帧
-	int currentFrame;
+	
+	//是否逆序播放
+	bool isReverse;
+
 	//起始帧
 	int startFrame;
 	//结束帧
 	int endFrame;
-	//总帧数
-	int totalFrames;
+	
 	//是否播放一次后销毁
 	bool distroy;
 	//前缀名称
