@@ -159,6 +159,9 @@
     <ClCompile Include="..\Classes\MovieClipTest.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\component\CCStrokeLabelTTF.cpp">
+      <Filter>Classes\component</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -277,6 +280,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\MovieClipTest.h">
       <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\component\CCStrokeLabelTTF.h">
+      <Filter>Classes\component</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
