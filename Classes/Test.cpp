@@ -17,6 +17,7 @@
 #include "utils/MathUtil.h"
 #include "utils/Timer.h"
 #include "component/ProgressLabel.h"
+#include "component/CCStrokeLabelTTF.h"
 using namespace extension;
 using namespace std;
 using std::vector;
@@ -188,6 +189,11 @@ bool Test::init()
 	plabel->setPosition(ccp(300, 300));
 	plabel->setHorizontalAlignment(kCCTextAlignmentLeft);
 	this->addChild(plabel);
+
+	CCStrokeLabelTTF* expTf = CCStrokeLabelTTF::create("Kanon test Stroke", "Arial", 16, ccc3(0xFF, 0xFF, 0xFF), ccRED, 2);
+	expTf->setAnchorPoint(ccp(1, 1));
+	expTf->setPosition(ccp(300, 142));
+	this->addChild(expTf);
 	return true;
 }
 
