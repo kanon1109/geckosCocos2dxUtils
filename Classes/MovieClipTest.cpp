@@ -6,7 +6,14 @@
 MovieClipTest::MovieClipTest()
 {
 	CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
-	MovieClip* mc = MovieClip::create("attack", ".png");
+	clock_t	time;
+	time = clock();
+	MovieClip* mc;
+	for (int i = 0; i < 10; ++i)
+	{
+		 mc = MovieClip::create("spider", ".pvr.ccz");
+	}
+	CCLOG("view time : %d ms", clock() - time);
 	mc->setTag(0);
 	mc->setPosition(ScreenUtil::getCenter());
 	mc->addEventListener(this, complete_selector(MovieClipTest::playComplete));

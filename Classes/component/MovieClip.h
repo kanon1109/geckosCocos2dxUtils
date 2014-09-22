@@ -22,8 +22,14 @@ public:
 	//************************************
 	static MovieClip* create(const char* name, const char* fileType = ".png", const char* prefix = "");
 	
+	//根据帧数据列表创建mc
+	static MovieClip* create(CCArray* frameList);
+
 	//初始化
 	bool init(const char* name, const char* fileType, const char* prefix);
+
+	//根据帧数据列表初始化
+	bool initWithFrameList(CCArray* frameList);
 
 	//跳帧
 	void gotoAndStop(int frame);

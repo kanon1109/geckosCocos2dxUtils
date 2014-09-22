@@ -120,6 +120,7 @@ void MovieClip::updateFrame()
 	}
 	else
 	{
+		//如果在第一次没有创建纹理的情况下 初始化当前纹理
 		this->initWithSpriteFrameName(str->getCString());
 	}
 }
@@ -206,4 +207,21 @@ void MovieClip::addEventListener( CCObject* target, SEL_COMPLETE_SELECTOR comple
 {
 	this->target = target;
 	this->completeFun = completeFun;
+}
+
+MovieClip* MovieClip::create(CCArray* frameList)
+{
+	MovieClip* mc = new MovieClip();
+	if (mc && mc->initWithFrameList(frameList))
+	{
+		mc->autorelease();
+		return mc;
+	}
+	CC_SAFE_DELETE(mc);
+	return mc;
+}
+
+bool MovieClip::initWithFrameList(CCArray* frameList)
+{
+	this->frameList = frameList;
 }
