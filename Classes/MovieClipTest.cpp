@@ -8,21 +8,28 @@ MovieClipTest::MovieClipTest()
 	CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
 	clock_t	time;
 	time = clock();
-	MovieClip* mc;
+	MovieClip* mc = NULL;
+	CCArray* frameList = NULL;
+	this->curTag = 0;
 	for (int i = 0; i < 10; ++i)
 	{
-		 mc = MovieClip::create("spider", ".pvr.ccz");
+		if (!mc)
+		{
+			mc = MovieClip::create("spider", ".pvr.ccz");
+			//frameList = mc->getFrameList();
+			mc->addEventListener(this, complete_selector(MovieClipTest::playComplete));
+		}
+		else
+		{
+			//mc = MovieClip::create("spider", ".pvr.ccz");
+			mc = MovieClip::create(frameList);
+		}
+		mc->setPosition(ccp(ScreenUtil::getLeft() + 20 + (i * 120), ScreenUtil::getCenter().y));
+		mc->play(.03f, true, true);
+		this->addChild(mc);
+		mc->setTag(i);
 	}
 	CCLOG("view time : %d ms", clock() - time);
-	mc->setTag(0);
-	mc->setPosition(ScreenUtil::getCenter());
-	mc->addEventListener(this, complete_selector(MovieClipTest::playComplete));
-	/*mc->gotoAndStop(3);
-	mc->gotoAndPlay(3, 5, .12f);
-	mc->playOnce(.12f);*/
-	mc->play(.12f, true, true);
-	this->addChild(mc);
-
 	CCSprite* sp = CCSprite::create("node.png");
 	this->addChild(sp);
 
@@ -61,17 +68,18 @@ MovieClipTest::~MovieClipTest()
 
 bool MovieClipTest::ccTouchBegan(CCTouch* touch, CCEvent* event)
 {
-	MovieClip* mc = (MovieClip*) this->getChildByTag(0);
+	MovieClip* mc = (MovieClip*) this->getChildByTag(this->curTag);
 	if (mc) mc->stop();
 	return true;
 }
 
 void MovieClipTest::ccTouchEnded(CCTouch* touch, CCEvent* event)
 {
-	MovieClip* mc = (MovieClip*) this->getChildByTag(0);
+	MovieClip* mc = (MovieClip*) this->getChildByTag(this->curTag);
 	if (!mc) return;
 	mc->play(mc->fps);
 	mc->removeFromParent();
+	this->curTag++;
 }
 
 void MovieClipTest::playComplete( CCObject* obj )

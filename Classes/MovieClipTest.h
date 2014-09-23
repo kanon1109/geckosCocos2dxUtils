@@ -13,5 +13,7 @@ public:
 	virtual void ccTouchEnded(CCTouch* touch, CCEvent* event);
 private:
 	void playComplete(CCObject* obj);
+	//µ±Ç°tag
+	int curTag;
 };
 #endif

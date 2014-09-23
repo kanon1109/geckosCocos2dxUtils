@@ -31,7 +31,7 @@ MovieClip* MovieClip::create(const char* name, const char* fileType, const char*
 		return mc;
 	}
 	CC_SAFE_DELETE(mc);
-	return mc;
+	return NULL;
 }
 
 bool MovieClip::init(const char* name, const char* fileType, const char* prefix)
@@ -218,10 +218,28 @@ MovieClip* MovieClip::create(CCArray* frameList)
 		return mc;
 	}
 	CC_SAFE_DELETE(mc);
-	return mc;
+	return NULL;
 }
 
 bool MovieClip::initWithFrameList(CCArray* frameList)
 {
-	this->frameList = frameList;
+	if (frameList)
+	{
+		this->totalFrames = frameList->count();
+		for (int i = 0; i < this->totalFrames; ++i)
+		{
+			CCString* str = (CCString* )frameList->objectAtIndex(i);
+			this->frameList->addObject(str);
+		}
+		this->startFrame = 1;
+		this->endFrame = this->totalFrames;
+		this->currentFrame = this->startFrame;
+		this->gotoAndStop(this->currentFrame);
+	}
+	return true;
+}
+
+CCArray* MovieClip::getFrameList()
+{
+	return this->frameList;
 }

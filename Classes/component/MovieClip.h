@@ -12,7 +12,6 @@ class MovieClip:public CCSprite
 public:
 	MovieClip(void);
 	~MovieClip(void);
-	
 	//************************************
 	// Description: 创建影片剪辑 
 	// Parameter: const char * name		plist文件或者纹理名称前缀（去除后缀）
@@ -21,19 +20,14 @@ public:
 	// Returns:   MovieClip*
 	//************************************
 	static MovieClip* create(const char* name, const char* fileType = ".png", const char* prefix = "");
-	
 	//根据帧数据列表创建mc
 	static MovieClip* create(CCArray* frameList);
-
 	//初始化
 	bool init(const char* name, const char* fileType, const char* prefix);
-
 	//根据帧数据列表初始化
 	bool initWithFrameList(CCArray* frameList);
-
 	//跳帧
 	void gotoAndStop(int frame);
-
 	//************************************
 	// Description:从第几帧开始播放到第几帧
 	// Parameter: int start			起始帧数
@@ -44,14 +38,10 @@ public:
 	// Returns:   void
 	//************************************
 	void gotoAndPlay(int start, int end = 0, float fps = .033f, bool isLoop = true, bool isReverse = false);
-
 	//暂停
 	void stop();
-
 	//播放
 	void play(float fps = .033f, bool isLoop = true, bool isReverse = false);
-
-	
 	//************************************
 	// Method:    playOnce		播放一次
 	// Parameter: float fps		帧频
@@ -59,21 +49,18 @@ public:
 	// Returns:   void
 	//************************************
 	void playOnce(float fps = .033f, bool distroy = true, bool isReverse = false);
-
 	//当前帧频
 	float fps;
-
 	//是否循环
 	bool isLoop;
-
 	//添加监听
 	void addEventListener(CCObject* target, SEL_COMPLETE_SELECTOR completeFun);
-
 	//当前帧
 	int currentFrame;
-
 	//总帧数
 	int totalFrames;
+	//获取帧数据的列表
+	CCArray* getFrameList();
 private:
 	//存放帧数据的列表
 	CCArray* frameList;
@@ -83,15 +70,12 @@ private:
 	SEL_COMPLETE_SELECTOR completeFun;
 	//plist文件或者纹理名称前缀（去除后缀）
 	const char* mcName;
-	
 	//是否逆序播放
 	bool isReverse;
-
 	//起始帧
 	int startFrame;
 	//结束帧
 	int endFrame;
-	
 	//是否播放一次后销毁
 	bool distroy;
 	//前缀名称
