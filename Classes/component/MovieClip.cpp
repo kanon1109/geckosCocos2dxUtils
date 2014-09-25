@@ -1,4 +1,4 @@
-#include "MovieClip.h"
+ï»¿#include "MovieClip.h"
 using namespace std;
 
 MovieClip::MovieClip(void)
@@ -52,21 +52,51 @@ void MovieClip::initFrame()
 {
 	string plistName = this->mcName;
 	plistName += ".plist";
-	//»ñÈ¡×ÜÖ¡Êı
+	//è·å–æ€»å¸§æ•°
 	string fullPath = CCFileUtils::sharedFileUtils()->fullPathForFilename(plistName.c_str());
 	CCDictionary* dictionary = CCDictionary::createWithContentsOfFileThreadSafe(fullPath.c_str());
 	CCDictionary* framesDict = (CCDictionary*)dictionary->objectForKey("frames");
-	//½«Ö¡µÄkey´æÈëÊı×é
 	CCDictElement* pElement = NULL;
+	//ioså¹³å°ä¸‹ç”±äºframesDictæ— æ³•é¡ºåºè¯»å–ï¼Œä¼šé€ æˆåŠ¨ç”»é”™ä¹±bugã€‚å¢åŠ å¹³å°åˆ¤æ–­æ’åºkeyListã€‚
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS) 
+	{
+		list<string> keyList;
+		CCDICT_FOREACH(framesDict, pElement)
+		{
+			string spriteFrameName = pElement->getStrKey();
+			keyList.push_back(spriteFrameName);
+		}
+
+		keyList.sort();
+		for (list<string>::iterator it = keyList.begin(); it != keyList.end(); ++it)
+		{
+			string spriteFrameName = *it;
+			string prefixStr = this->prefix;
+			if (!prefixStr.empty())
+			{
+				//æå–keyçš„å­å­—ç¬¦ä¸²
+				string subStr = spriteFrameName.substr(0, prefixStr.length());
+				//æ¯”è¾ƒå­å­—ç¬¦ä¸²çš„å‚æ•° å¦‚æœç›¸åŒåˆ™æ”¾å…¥å¸§æ•°ç»„
+				if (subStr.compare(prefixStr) == 0)
+					this->frameList->addObject(CCString::create(spriteFrameName.c_str()));
+			}
+			else
+			{
+				this->frameList->addObject(CCString::create(spriteFrameName.c_str()));
+			}
+		}
+	}
+#else
+	//å°†å¸§çš„keyå­˜å…¥æ•°ç»„
 	CCDICT_FOREACH(framesDict, pElement)
 	{
 		string spriteFrameName = pElement->getStrKey();
 		string prefixStr = this->prefix;
 		if (!prefixStr.empty())
 		{
-			//ÌáÈ¡keyµÄ×Ó×Ö·û´®
+			//æå–keyçš„å­å­—ç¬¦ä¸²
 			string subStr = spriteFrameName.substr(0, prefixStr.length());
-			//±È½Ï×Ó×Ö·û´®µÄ²ÎÊı Èç¹ûÏàÍ¬Ôò·ÅÈëÖ¡Êı×é
+			//æ¯”è¾ƒå­å­—ç¬¦ä¸²çš„å‚æ•° å¦‚æœç›¸åŒåˆ™æ”¾å…¥å¸§æ•°ç»„
 			if (subStr.compare(prefixStr) == 0)
 				this->frameList->addObject(CCString::create(spriteFrameName.c_str()));
 		}
@@ -75,6 +105,7 @@ void MovieClip::initFrame()
 			this->frameList->addObject(CCString::create(spriteFrameName.c_str()));
 		}
 	}
+#endif
 	this->totalFrames = this->frameList->count();
 	this->startFrame = 1;
 	this->endFrame = this->totalFrames;
@@ -114,23 +145,23 @@ void MovieClip::updateFrame()
 	if (this->getTexture())
 	{
 		CCSpriteFrame* frame = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(str->getCString());
-		//ÉèÖÃÎ»ÖÃĞŞÕı
+		//è®¾ç½®ä½ç½®ä¿®æ­£
 		this->m_obUnflippedOffsetPositionFromCenter = frame->getOffset();
 		this->setTextureRect(frame->getRect(), frame->isRotated(), frame->getOriginalSize());
 	}
 	else
 	{
-		//Èç¹ûÔÚµÚÒ»´ÎÃ»ÓĞ´´½¨ÎÆÀíµÄÇé¿öÏÂ ³õÊ¼»¯µ±Ç°ÎÆÀí
+		//å¦‚æœåœ¨ç¬¬ä¸€æ¬¡æ²¡æœ‰åˆ›å»ºçº¹ç†çš„æƒ…å†µä¸‹ åˆå§‹åŒ–å½“å‰çº¹ç†
 		this->initWithSpriteFrameName(str->getCString());
 	}
 }
 
 void MovieClip::loop(float dt)
 {
-	//ÊÇ·ñÄæĞò²¥·Å
+	//æ˜¯å¦é€†åºæ’­æ”¾
 	if (!this->isReverse)
 	{
-		//Ë³Ğò
+		//é¡ºåº
 		this->currentFrame++;
 		if (this->isLoop)
 		{
@@ -142,12 +173,12 @@ void MovieClip::loop(float dt)
 			{
 				this->currentFrame = this->endFrame;
 				this->stop();
-				//µ÷ÓÃ»Øµ÷º¯Êı
+				//è°ƒç”¨å›è°ƒå‡½æ•°
 				if (this->target && this->completeFun)
 				{
 					(this->target->*completeFun)(this);
 				}
-				//Ïú»Ù
+				//é”€æ¯
 				if (this->distroy)
 				{
 					this->removeFromParent();
@@ -157,7 +188,7 @@ void MovieClip::loop(float dt)
 	}
 	else
 	{
-		//ÄæĞò
+		//é€†åº
 		this->currentFrame--;
 		if (this->isLoop)
 		{
@@ -169,19 +200,18 @@ void MovieClip::loop(float dt)
 			{
 				this->currentFrame = this->startFrame;
 				this->stop();
-				//µ÷ÓÃ»Øµ÷º¯Êı
+				//è°ƒç”¨å›è°ƒå‡½æ•°
 				if (this->target && this->completeFun)
 				{
 					(this->target->*completeFun)(this);
 				}
-				//Ïú»Ù
+				//é”€æ¯
 				if (this->distroy)
 				{
 					this->removeFromParent();
 				}
 			}
 		}
-
 	}
 	this->updateFrame();
 }

@@ -1,90 +1,90 @@
-#pragma once
+ï»¿#pragma once
 #ifndef _MOVIE_CLIP_
 #define _MOVIE_CLIP_
 #include "cocos2d.h"
 USING_NS_CC;
-//²¥·Å½áÊø»Øµ÷
+//æ’­æ”¾ç»“æŸå›è°ƒ
 typedef void (CCObject::*SEL_COMPLETE_SELECTOR)(CCObject*);
 #define complete_selector(_SELECTOR) (SEL_COMPLETE_SELECTOR)(&_SELECTOR)
-//Ó°Æ¬¼ô¼­ĞòÁĞÖ¡´úÌæcocosµÄ¶¯»­
+//å½±ç‰‡å‰ªè¾‘åºåˆ—å¸§ä»£æ›¿cocosçš„åŠ¨ç”»
 class MovieClip:public CCSprite
 {
 public:
 	MovieClip(void);
 	~MovieClip(void);
 	//************************************
-	// Description: ´´½¨Ó°Æ¬¼ô¼­ 
-	// Parameter: const char * name		plistÎÄ¼ş»òÕßÎÆÀíÃû³ÆÇ°×º£¨È¥³ıºó×º£©
-	// Parameter: const char * fileType ÎÆÀíÎÄ¼şÀàĞÍ£¨1Îª.png, 2Îª.pvr, 3Îª.pvr.cc, 4Îªjpg£©
-	// Parameter: const char * prefix	Ç°×ºÃû³Æ×Ö·û´®
+	// Description: åˆ›å»ºå½±ç‰‡å‰ªè¾‘ 
+	// Parameter: const char * name		plistæ–‡ä»¶æˆ–è€…çº¹ç†åç§°å‰ç¼€ï¼ˆå»é™¤åç¼€ï¼‰
+	// Parameter: const char * fileType çº¹ç†æ–‡ä»¶ç±»å‹ï¼ˆ1ä¸º.png, 2ä¸º.pvr, 3ä¸º.pvr.cc, 4ä¸ºjpgï¼‰
+	// Parameter: const char * prefix	å‰ç¼€åç§°å­—ç¬¦ä¸²
 	// Returns:   MovieClip*
 	//************************************
 	static MovieClip* create(const char* name, const char* fileType = ".png", const char* prefix = "");
-	//¸ù¾İÖ¡Êı¾İÁĞ±í´´½¨mc
+	//æ ¹æ®å¸§æ•°æ®åˆ—è¡¨åˆ›å»ºmc
 	static MovieClip* create(CCArray* frameList);
-	//³õÊ¼»¯
+	//åˆå§‹åŒ–
 	bool init(const char* name, const char* fileType, const char* prefix);
-	//¸ù¾İÖ¡Êı¾İÁĞ±í³õÊ¼»¯
+	//æ ¹æ®å¸§æ•°æ®åˆ—è¡¨åˆå§‹åŒ–
 	bool initWithFrameList(CCArray* frameList);
-	//ÌøÖ¡
+	//è·³å¸§
 	void gotoAndStop(int frame);
 	//************************************
-	// Description:´ÓµÚ¼¸Ö¡¿ªÊ¼²¥·Åµ½µÚ¼¸Ö¡
-	// Parameter: int start			ÆğÊ¼Ö¡Êı
-	// Parameter: int end			½áÎ²Ö¡Êı£¨Ä¬ÈÏ0 Îª²¥·Åµ½×îºóÒ»Ö¡£©
-	// Parameter: float fps			Ö¡Æµ
-	// Parameter: bool isLoop		ÊÇ·ñÑ­»·²¥·Å
-	// Parameter: bool isReverse	ÊÇ·ñÄæĞò²¥·Å
+	// Description:ä»ç¬¬å‡ å¸§å¼€å§‹æ’­æ”¾åˆ°ç¬¬å‡ å¸§
+	// Parameter: int start			èµ·å§‹å¸§æ•°
+	// Parameter: int end			ç»“å°¾å¸§æ•°ï¼ˆé»˜è®¤0 ä¸ºæ’­æ”¾åˆ°æœ€åä¸€å¸§ï¼‰
+	// Parameter: float fps			å¸§é¢‘
+	// Parameter: bool isLoop		æ˜¯å¦å¾ªç¯æ’­æ”¾
+	// Parameter: bool isReverse	æ˜¯å¦é€†åºæ’­æ”¾
 	// Returns:   void
 	//************************************
 	void gotoAndPlay(int start, int end = 0, float fps = .033f, bool isLoop = true, bool isReverse = false);
-	//ÔİÍ£
+	//æš‚åœ
 	void stop();
-	//²¥·Å
+	//æ’­æ”¾
 	void play(float fps = .033f, bool isLoop = true, bool isReverse = false);
 	//************************************
-	// Method:    playOnce		²¥·ÅÒ»´Î
-	// Parameter: float fps		Ö¡Æµ
-	// Parameter: bool distroy	ÊÇ·ñÏú»Ù
+	// Method:    playOnce		æ’­æ”¾ä¸€æ¬¡
+	// Parameter: float fps		å¸§é¢‘
+	// Parameter: bool distroy	æ˜¯å¦é”€æ¯
 	// Returns:   void
 	//************************************
 	void playOnce(float fps = .033f, bool distroy = true, bool isReverse = false);
-	//µ±Ç°Ö¡Æµ
+	//å½“å‰å¸§é¢‘
 	float fps;
-	//ÊÇ·ñÑ­»·
+	//æ˜¯å¦å¾ªç¯
 	bool isLoop;
-	//Ìí¼Ó¼àÌı
+	//æ·»åŠ ç›‘å¬
 	void addEventListener(CCObject* target, SEL_COMPLETE_SELECTOR completeFun);
-	//µ±Ç°Ö¡
+	//å½“å‰å¸§
 	int currentFrame;
-	//×ÜÖ¡Êı
+	//æ€»å¸§æ•°
 	int totalFrames;
-	//»ñÈ¡Ö¡Êı¾İµÄÁĞ±í
+	//è·å–å¸§æ•°æ®çš„åˆ—è¡¨
 	CCArray* getFrameList();
 private:
-	//´æ·ÅÖ¡Êı¾İµÄÁĞ±í
+	//å­˜æ”¾å¸§æ•°æ®çš„åˆ—è¡¨
 	CCArray* frameList;
-	//»Øµ÷·½·¨µÄÄ¿±ê
+	//å›è°ƒæ–¹æ³•çš„ç›®æ ‡
 	CCObject* target;
-	//»Øµ÷·½·¨
+	//å›è°ƒæ–¹æ³•
 	SEL_COMPLETE_SELECTOR completeFun;
-	//plistÎÄ¼ş»òÕßÎÆÀíÃû³ÆÇ°×º£¨È¥³ıºó×º£©
+	//plistæ–‡ä»¶æˆ–è€…çº¹ç†åç§°å‰ç¼€ï¼ˆå»é™¤åç¼€ï¼‰
 	const char* mcName;
-	//ÊÇ·ñÄæĞò²¥·Å
+	//æ˜¯å¦é€†åºæ’­æ”¾
 	bool isReverse;
-	//ÆğÊ¼Ö¡
+	//èµ·å§‹å¸§
 	int startFrame;
-	//½áÊøÖ¡
+	//ç»“æŸå¸§
 	int endFrame;
-	//ÊÇ·ñ²¥·ÅÒ»´ÎºóÏú»Ù
+	//æ˜¯å¦æ’­æ”¾ä¸€æ¬¡åé”€æ¯
 	bool distroy;
-	//Ç°×ºÃû³Æ
+	//å‰ç¼€åç§°
 	const char* prefix;
-	//³õÊ¼»¯ËùÓĞÖ¡
+	//åˆå§‹åŒ–æ‰€æœ‰å¸§
 	void initFrame();
-	//¸üĞÂÖ¡
+	//æ›´æ–°å¸§
 	void updateFrame();
-	//Ñ­»·
+	//å¾ªç¯
 	void loop(float dt);
 };
 #endif // !_MOVIE_CLIP_
