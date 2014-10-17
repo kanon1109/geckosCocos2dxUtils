@@ -8,6 +8,7 @@
 #include "CocosBaseComponetTest.h"
 #include "MathUtilTest.h"
 #include "MovieClipTest.h"
+#include "MaskTest.h"
 USING_NS_CC;
 
 AppDelegate::AppDelegate() {
@@ -34,7 +35,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	ScreenUtil::setScreenSize(960, 540);
 
     // create a scene. it's an autorelease object
-	CCScene *pScene = MovieClipTest::create();
+	CCScene *pScene = MaskTest::create();
 	//CCScene *pScene = CocosBaseComponetTest::create();
     // run
     pDirector->runWithScene(pScene);

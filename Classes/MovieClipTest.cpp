@@ -2,7 +2,6 @@
 #include "component/MovieClip.h"
 #include "utils/ScreenUtil.h"
 #include "utils/MathUtil.h"
-
 MovieClipTest::MovieClipTest()
 {
 	CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
@@ -16,7 +15,7 @@ MovieClipTest::MovieClipTest()
 		if (!mc)
 		{
 			mc = MovieClip::create("spider", ".pvr.ccz");
-			//frameList = mc->getFrameList();
+			frameList = mc->getFrameList();
 			mc->addEventListener(this, complete_selector(MovieClipTest::playComplete));
 		}
 		else
