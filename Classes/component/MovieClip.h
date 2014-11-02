@@ -61,6 +61,8 @@ public:
 	int totalFrames;
 	//获取帧数据的列表
 	CCArray* getFrameList();
+	//是否在播放
+	bool isPlaying;
 private:
 	//存放帧数据的列表
 	CCArray* frameList;
