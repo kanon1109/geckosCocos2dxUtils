@@ -15,6 +15,7 @@ MovieClip::MovieClip(void)
 	this->isReverse = false;
 	this->target = NULL;
 	this->completeFun = NULL;
+	this->isPlaying = false;
 }
 
 MovieClip::~MovieClip(void)
@@ -125,6 +126,7 @@ void MovieClip::gotoAndStop(int frame)
 
 void MovieClip::stop()
 {
+	this->isPlaying = false;
 	this->unschedule(schedule_selector(MovieClip::loop));
 }
 
@@ -136,6 +138,7 @@ void MovieClip::play(float fps /*= .033f*/, bool isLoop /*= true*/, bool isRever
 	this->isLoop = isLoop;
 	this->distroy = false;
 	this->isReverse = isReverse;
+	this->isPlaying = true;
 }
 
 
