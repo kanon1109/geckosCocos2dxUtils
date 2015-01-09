@@ -1,10 +1,10 @@
-#pragma once
+ï»¿#pragma once
 #ifndef	_SLOT_EFFECT_
 #define _SLOT_EFFECT_
 #include "cocos2d.h"
 USING_NS_CC;
 using namespace std;
-//ÀÏ»¢»úĞ§¹û£¨´¿Êı¾İ£©
+//è€è™æœºæ•ˆæœï¼ˆçº¯æ•°æ®ï¼‰
 class SlotEffect :public CCNode
 {
 public:
@@ -12,70 +12,70 @@ public:
 	~SlotEffect();
 
 	//************************************
-	// Description:³õÊ¼»¯ÀÏ»¢»úĞ§¹û
-	// Parameter: int curIndex	³õÊ¼»¯µÄÎ»ÖÃË÷Òı¡£
-	// Parameter: int maxIndex	×ÜµÄË÷ÒıÊıÁ¿¡£
-	// Parameter: int loop		¿ìËÙÄ£Ê½µÄ¹ö¶¯´ÎÊı¡£ÔÚ¿ìËÙ¹ö¶¯´ÎÊı´ïµ½ºó»áÓĞÒ»´ÎÂıËÙ¹ö¶¯¡£ËùÒÔ×Ü¹ö¶¯´ÎÊıÊÇloop + 1
-	// Parameter: float delay	ÔËĞĞ¼ä¸ô ºÁÃë
-	// Parameter: int gapIndex	´¥·¢ÂıËÙ¹ö¶¯Ö®Ç°µÄË÷Òı
-	// Parameter: int addDelay	¼ä¸ôÔöÁ¿
-	// Returns:   ÊÇ·ñ³õÊ¼»¯
+	// Description:åˆå§‹åŒ–è€è™æœºæ•ˆæœ
+	// Parameter: int curIndex	åˆå§‹åŒ–çš„ä½ç½®ç´¢å¼•ã€‚
+	// Parameter: int maxIndex	æ€»çš„ç´¢å¼•æ•°é‡ã€‚
+	// Parameter: int loop		å¿«é€Ÿæ¨¡å¼çš„æ»šåŠ¨æ¬¡æ•°ã€‚åœ¨å¿«é€Ÿæ»šåŠ¨æ¬¡æ•°è¾¾åˆ°åä¼šæœ‰ä¸€æ¬¡æ…¢é€Ÿæ»šåŠ¨ã€‚æ‰€ä»¥æ€»æ»šåŠ¨æ¬¡æ•°æ˜¯loop + 1
+	// Parameter: float delay	è¿è¡Œé—´éš” æ¯«ç§’
+	// Parameter: int gapIndex	è§¦å‘æ…¢é€Ÿæ»šåŠ¨ä¹‹å‰çš„ç´¢å¼•
+	// Parameter: int addDelay	é—´éš”å¢é‡
+	// Returns:   æ˜¯å¦åˆå§‹åŒ–
 	//************************************
 	virtual bool init(int curIndex, int maxIndex, int loop = 1, float delay = 50, int gapIndex = 5, int addDelay = 200);
-	//´´½¨
+	//åˆ›å»º
 	static SlotEffect* create(int curIndex, int maxIndex, int loop = 1, float delay = 50, int gapIndex = 5, int addDelay = 200);
-	//¿ªÊ¼
+	//å¼€å§‹
 	void start(int targetIndex, bool reverse = false);
-	//ÔİÍ£
+	//æš‚åœ
 	void pause();
-	//»ñÈ¡µ±Ç°Ë÷Òı
+	//è·å–å½“å‰ç´¢å¼•
 	int getCurIndex();
-	//»ñÈ¡µ±Ç°Ëæ»úË÷Òı
+	//è·å–å½“å‰éšæœºç´¢å¼•
 	int getRandomIndex();
 	//************************************
-	// Description:Ìí¼Ó¼àÌı
-	// Parameter: CCObject* target	Ö¸Õëµ÷ÓÃ»Øµ÷º¯ÊıµÄÖ¸Õë
-	// Parameter: SEL_CallFunc func	»Øµ÷·½·¨
+	// Description:æ·»åŠ ç›‘å¬
+	// Parameter: CCObject* target	æŒ‡é’ˆè°ƒç”¨å›è°ƒå‡½æ•°çš„æŒ‡é’ˆ
+	// Parameter: SEL_CallFunc func	å›è°ƒæ–¹æ³•
 	// Returns:   void
 	//************************************
 	void addEventListener(CCObject* target, SEL_CallFunc func);
 private:
-	//³õÊ¼»¯µÄÎ»ÖÃË÷Òı
+	//åˆå§‹åŒ–çš„ä½ç½®ç´¢å¼•
 	int m_curIndex;
-	//×ÜµÄË÷ÒıÊıÁ¿
+	//æ€»çš„ç´¢å¼•æ•°é‡
 	int m_maxIndex;
-	//¿ìËÙÄ£Ê½µÄ¹ö¶¯´ÎÊı
+	//å¿«é€Ÿæ¨¡å¼çš„æ»šåŠ¨æ¬¡æ•°
 	int m_loop;
-	//ÔËĞĞ¼ä¸ô
+	//è¿è¡Œé—´éš”
 	float m_delay;
-	//´¥·¢ÂıËÙ¹ö¶¯Ö®Ç°µÄË÷Òı
+	//è§¦å‘æ…¢é€Ÿæ»šåŠ¨ä¹‹å‰çš„ç´¢å¼•
 	int m_gapIndex;
-	//ÊÇ·ñ½øÈëÂıËÙ×´Ì¬
+	//æ˜¯å¦è¿›å…¥æ…¢é€ŸçŠ¶æ€
 	bool isSlowing;
-	//Ä¿±êË÷Òı
+	//ç›®æ ‡ç´¢å¼•
 	int m_targetIndex;
-	//ÂıËÙ¹ö¶¯µÄ¿ªÊ¼Ë÷Òı
+	//æ…¢é€Ÿæ»šåŠ¨çš„å¼€å§‹ç´¢å¼•
 	int m_slowIndex;
-	//ÊÇ·ñÄæÊ±Õë
+	//æ˜¯å¦é€†æ—¶é’ˆ
 	bool m_reverse;
-	//Ëæ»úË÷Òı
+	//éšæœºç´¢å¼•
 	int m_randomIndex;
-	//µ±Ç°¼ÆÊ±Æ÷µÄ¼ÆÊıÆ÷
+	//å½“å‰è®¡æ—¶å™¨çš„è®¡æ•°å™¨
 	int currentCount;
-	//Ôö¼ÓµÄ¼ä¸ô
+	//å¢åŠ çš„é—´éš”
 	int addDelay;
-	//ÊÂ¼şÄ¿±ê
+	//äº‹ä»¶ç›®æ ‡
 	CCObject* m_target;
-	//·½·¨»Øµ÷
+	//æ–¹æ³•å›è°ƒ
 	SEL_CallFunc func;
-	//¸üĞÂ·½·¨
+	//æ›´æ–°æ–¹æ³•
 	void update(float dt);
 	//************************************
-	// Description: ĞŞÕıÊı×Ö ÔÚÒ»¸ö·¶Î§ÄÚ
-	// Parameter: float num		ĞèÒªĞŞÕıµÄÊı×Ö
-	// Parameter: float min		×îĞ¡µÄ·¶Î§
-	// Parameter: float range	×î´ó·¶Î§
-	// Returns:   float			ĞŞÕıºóµÄÊı×Ö
+	// Description: ä¿®æ­£æ•°å­— åœ¨ä¸€ä¸ªèŒƒå›´å†…
+	// Parameter: float num		éœ€è¦ä¿®æ­£çš„æ•°å­—
+	// Parameter: float min		æœ€å°çš„èŒƒå›´
+	// Parameter: float range	æœ€å¤§èŒƒå›´
+	// Returns:   float			ä¿®æ­£åçš„æ•°å­—
 	//************************************
 	float fixNumber(float num, float min, float range);
 };
