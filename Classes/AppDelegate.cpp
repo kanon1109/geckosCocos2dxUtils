@@ -35,7 +35,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	ScreenUtil::setScreenSize(960, 540);
 
     // create a scene. it's an autorelease object
-	CCScene *pScene = MaskTest::create();
+	CCScene *pScene = SlotEffectTest::create();
 	//CCScene *pScene = CocosBaseComponetTest::create();
     // run
     pDirector->runWithScene(pScene);

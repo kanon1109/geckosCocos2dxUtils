@@ -2,6 +2,7 @@
 #include "component/MovieClip.h"
 #include "utils/ScreenUtil.h"
 #include "utils/MathUtil.h"
+#include "utils/MaskUtil.h"
 MovieClipTest::MovieClipTest()
 {
 	CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
@@ -10,7 +11,7 @@ MovieClipTest::MovieClipTest()
 	MovieClip* mc = NULL;
 	CCArray* frameList = NULL;
 	this->curTag = 0;
-	for (int i = 0; i < 10; ++i)
+	for (int i = 0; i < 1; ++i)
 	{
 		if (!mc)
 		{
@@ -58,6 +59,16 @@ MovieClipTest::MovieClipTest()
 		sp->setPositionX(vect.at(0));
 		sp->setPositionY(vect.at(1));
 	}
+
+	CCSprite* spt = CCSprite::create("effect/a1.png");
+	CCSprite* mask = CCSprite::create("normal_body.png");
+	CCSprite* maskMc;// = MaskUtil::createMaskedSprite(spt, mask, true);
+	//maskMc->setPosition(ccp(200, 200));
+	//this->addChild(maskMc);
+
+	maskMc = MaskUtil::createMaskedSprite(mc, mask);
+	maskMc->setPosition(ccp(500, 200));
+	this->addChild(maskMc);
 }
 
 
