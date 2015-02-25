@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{76A39BB2-9B84-4C65-98A5-654D86B86F2A}</ProjectGuid>
+    <ProjectGuid>{C276440B-36E0-4755-936C-C2DF45CD7655}</ProjectGuid>
     <RootNamespace>test_win32</RootNamespace>
     <Keyword>Win32Proj</Keyword>
   </PropertyGroup>
@@ -138,6 +138,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\..\..\CocosBase\CocosBase\CCSceneExTransition.cpp" />
     <ClCompile Include="..\..\..\CocosBase\CocosBase\CCSceneManager.cpp" />
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
+    <ClCompile Include="..\Classes\BlackHoleEffectTest.cpp" />
     <ClCompile Include="..\Classes\CocosBaseComponetTest.cpp" />
     <ClCompile Include="..\Classes\cocosBaseComponet\CBFloatTips.cpp" />
     <ClCompile Include="..\Classes\component\Alert.cpp" />
@@ -148,9 +149,11 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\component\TabBar.cpp" />
     <ClCompile Include="..\Classes\component\TextButton.cpp" />
     <ClCompile Include="..\Classes\DropEffectTest.cpp" />
+    <ClCompile Include="..\Classes\effect\BlackHoleEffect.cpp" />
     <ClCompile Include="..\Classes\effect\DropEffect.cpp" />
     <ClCompile Include="..\Classes\effect\SlotEffect.cpp" />
     <ClCompile Include="..\Classes\GetMoveSpeedTest.cpp" />
+    <ClCompile Include="..\Classes\MaskTest.cpp" />
     <ClCompile Include="..\Classes\MathUtilTest.cpp" />
     <ClCompile Include="..\Classes\MovieClipTest.cpp" />
     <ClCompile Include="..\Classes\ScreenSizeTest.cpp" />
@@ -162,6 +165,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\utils\EnterFrame.cpp" />
     <ClCompile Include="..\Classes\utils\GetMoveSpeed.cpp" />
     <ClCompile Include="..\Classes\utils\Language.cpp" />
+    <ClCompile Include="..\Classes\utils\MaskUtil.cpp" />
     <ClCompile Include="..\Classes\utils\MathUtil.cpp" />
     <ClCompile Include="..\Classes\utils\Random.cpp" />
     <ClCompile Include="..\Classes\utils\ScreenUtil.cpp" />
@@ -180,6 +184,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\..\..\CocosBase\CocosBase\CCSceneManager.h" />
     <ClInclude Include="..\..\..\CocosBase\CocosBase\cocos-base.h" />
     <ClInclude Include="..\Classes\AppDelegate.h" />
+    <ClInclude Include="..\Classes\BlackHoleEffectTest.h" />
     <ClInclude Include="..\Classes\CocosBaseComponetTest.h" />
     <ClInclude Include="..\Classes\cocosBaseComponet\CBFloatTips.h" />
     <ClInclude Include="..\Classes\component\Alert.h" />
@@ -190,9 +195,11 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\component\TabBar.h" />
     <ClInclude Include="..\Classes\component\TextButton.h" />
     <ClInclude Include="..\Classes\DropEffectTest.h" />
+    <ClInclude Include="..\Classes\effect\BlackHoleEffect.h" />
     <ClInclude Include="..\Classes\effect\DropEffect.h" />
     <ClInclude Include="..\Classes\effect\SlotEffect.h" />
     <ClInclude Include="..\Classes\GetMoveSpeedTest.h" />
+    <ClInclude Include="..\Classes\MaskTest.h" />
     <ClInclude Include="..\Classes\MathUtilTest.h" />
     <ClInclude Include="..\Classes\MovieClipTest.h" />
     <ClInclude Include="..\Classes\ScreenSizeTest.h" />
@@ -204,6 +211,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\utils\EnterFrame.h" />
     <ClInclude Include="..\Classes\utils\GetMoveSpeed.h" />
     <ClInclude Include="..\Classes\utils\Language.h" />
+    <ClInclude Include="..\Classes\utils\MaskUtil.h" />
     <ClInclude Include="..\Classes\utils\MathUtil.h" />
     <ClInclude Include="..\Classes\utils\Random.h" />
     <ClInclude Include="..\Classes\utils\ScreenUtil.h" />
