@@ -9,6 +9,7 @@
 #include "MathUtilTest.h"
 #include "MovieClipTest.h"
 #include "MaskTest.h"
+#include "BlackHoleEffectTest.h"
 USING_NS_CC;
 
 AppDelegate::AppDelegate() {
@@ -35,7 +36,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	ScreenUtil::setScreenSize(960, 540);
 
     // create a scene. it's an autorelease object
-	CCScene *pScene = SlotEffectTest::create();
+	CCScene *pScene = BlackHoleEffectTest::create();
 	//CCScene *pScene = CocosBaseComponetTest::create();
     // run
     pDirector->runWithScene(pScene);
