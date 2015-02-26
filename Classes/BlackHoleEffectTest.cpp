@@ -52,7 +52,19 @@ void BlackHoleEffectTest::update(float dt)
 void BlackHoleEffectTest::inHoleComplete(CCObject* obj)
 {
 	CCNode* node = (CCNode*)obj;
+	int count = this->objList->count();
+	for (int i = 0; i < count; ++i)
+	{
+		CCNode* obj = (CCNode* )this->objList->objectAtIndex(i);
+		if (obj == node)
+		{
+			this->objList->removeObjectAtIndex(i);
+			break;
+		}
+	}
 	node->removeFromParent();
+
+
 }
 
 void BlackHoleEffectTest::attenuationComplete(CCObject* obj)

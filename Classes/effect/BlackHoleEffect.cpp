@@ -2,8 +2,6 @@
 
 BlackHoleEffect::BlackHoleEffect()
 {
-	this->subList = CCArray::create();
-	this->subList->retain();
 	this->inHoleCompleteFun = NULL;
 	this->attenuationCompleteFun = NULL;
 	this->overCompleteFun = NULL;
@@ -11,7 +9,6 @@ BlackHoleEffect::BlackHoleEffect()
 
 BlackHoleEffect::~BlackHoleEffect()
 {
-	CC_SAFE_RELEASE_NULL(this->subList);
 }
 
 BlackHoleEffect* BlackHoleEffect::create(float g /*= 10.0f*/, float range /*= 400.0f*/, float angleSpeed /*= 5.0f*/, int time /*= 2000*/, int fps /*= 60*/)
@@ -56,14 +53,12 @@ float BlackHoleEffect::mathDistance(float x1, float y1, float x2, float y2)
 
 void BlackHoleEffect::addSubstanceList(CCArray* ary)
 {
-	if (!ary) return;
-	this->subList->addObjectsFromArray(ary);
+	this->subList = ary;
 }
 
 void BlackHoleEffect::update()
 {
 	if (!this->isStart) return;
-	if (!this->subList) return;
 	int length = this->subList->count();
 	CCNode* obj;
 	float dis;
@@ -80,7 +75,8 @@ void BlackHoleEffect::update()
 				{
 					//小于最短距离
 					if (this->target && this->inHoleCompleteFun) (this->target->*inHoleCompleteFun)(obj);
-					this->subList->removeObjectAtIndex(i);
+					//这里外部可能将物体销毁，所以循环下面不做处理。
+					continue;
 				}
 				if (speed > dis) speed = dis;
 			}
