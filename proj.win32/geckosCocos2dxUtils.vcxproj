@@ -146,6 +146,8 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\component\FloatTips.cpp" />
     <ClCompile Include="..\Classes\component\MovieClip.cpp" />
     <ClCompile Include="..\Classes\component\ProgressLabel.cpp" />
+    <ClCompile Include="..\Classes\component\ShadowLabel.cpp" />
+    <ClCompile Include="..\Classes\component\SpriteBlur.cpp" />
     <ClCompile Include="..\Classes\component\TabBar.cpp" />
     <ClCompile Include="..\Classes\component\TextButton.cpp" />
     <ClCompile Include="..\Classes\DropEffectTest.cpp" />
@@ -157,6 +159,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\MathUtilTest.cpp" />
     <ClCompile Include="..\Classes\MovieClipTest.cpp" />
     <ClCompile Include="..\Classes\ScreenSizeTest.cpp" />
+    <ClCompile Include="..\Classes\ShadowLabelTest.cpp" />
     <ClCompile Include="..\Classes\SlotEffectTest.cpp" />
     <ClCompile Include="..\Classes\Test.cpp" />
     <ClCompile Include="..\Classes\TestChildScene.cpp" />
@@ -192,6 +195,8 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\component\FloatTips.h" />
     <ClInclude Include="..\Classes\component\MovieClip.h" />
     <ClInclude Include="..\Classes\component\ProgressLabel.h" />
+    <ClInclude Include="..\Classes\component\ShadowLabel.h" />
+    <ClInclude Include="..\Classes\component\SpriteBlur.h" />
     <ClInclude Include="..\Classes\component\TabBar.h" />
     <ClInclude Include="..\Classes\component\TextButton.h" />
     <ClInclude Include="..\Classes\DropEffectTest.h" />
@@ -203,6 +208,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\MathUtilTest.h" />
     <ClInclude Include="..\Classes\MovieClipTest.h" />
     <ClInclude Include="..\Classes\ScreenSizeTest.h" />
+    <ClInclude Include="..\Classes\ShadowLabelTest.h" />
     <ClInclude Include="..\Classes\SlotEffectTest.h" />
     <ClInclude Include="..\Classes\Test.h" />
     <ClInclude Include="..\Classes\TestChildScene.h" />

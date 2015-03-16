@@ -174,6 +174,15 @@
     <ClCompile Include="..\Classes\BlackHoleEffectTest.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\component\ShadowLabel.cpp">
+      <Filter>Classes\component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ShadowLabelTest.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\component\SpriteBlur.cpp">
+      <Filter>Classes\component</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -307,6 +316,15 @@
     </ClInclude>
     <ClInclude Include="..\Classes\BlackHoleEffectTest.h">
       <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\component\ShadowLabel.h">
+      <Filter>Classes\component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ShadowLabelTest.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\component\SpriteBlur.h">
+      <Filter>Classes\component</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
