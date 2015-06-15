@@ -87,8 +87,8 @@ void MovieClipTest::ccTouchEnded(CCTouch* touch, CCEvent* event)
 {
 	MovieClip* mc = (MovieClip*) this->getChildByTag(this->curTag);
 	if (!mc) return;
-	mc->play(mc->fps);
-	mc->removeFromParent();
+	mc->playOnce();
+	//mc->removeFromParent();
 	this->curTag++;
 }
 

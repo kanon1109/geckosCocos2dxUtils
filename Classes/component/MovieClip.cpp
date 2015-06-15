@@ -185,6 +185,7 @@ void MovieClip::loop(float dt)
 				if (this->distroy)
 				{
 					this->removeFromParent();
+					return;
 				}
 			}
 		}
@@ -212,6 +213,7 @@ void MovieClip::loop(float dt)
 				if (this->distroy)
 				{
 					this->removeFromParent();
+					return;
 				}
 			}
 		}
