@@ -72,6 +72,11 @@ bool Test::init()
 	TimeFormat::timeToSecond(&time, "00:60:00");
 	CCLOG("timeToSecond= %s", time.c_str());
 
+	vector<int> vect2 = TimeFormat::timeDifference(86400, 86400 * 3);
+	CCLOG("day %d", vect2.at(0));
+	CCLOG("hours %d", vect2.at(1));
+	CCLOG("minutes %d", vect2.at(2));
+
 	Language::init("language.xml");
 
 	v.clear();

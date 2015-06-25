@@ -1,7 +1,6 @@
 #include "TimeFormat.h"
 #include <string>
 #include <stdio.h>
-#include <vector>
 #include <cstdlib>
 #include <algorithm>
 #include "utils/StringUtil.h"
@@ -59,4 +58,33 @@ void TimeFormat::timeToSecond( string* targetStr, string timeStr, string partiti
 		time += n * pow(60.0f, (int)(size - 1 - i));
 	}
 	sprintf((char* )targetStr->c_str(), "%d", time);
+}
+
+vector<int> TimeFormat::timeDifference(int startSeconds, int endSeconds)
+{
+	long different = endSeconds - startSeconds;
+
+	long minutesInMilli = 60;
+	long hoursInMilli = minutesInMilli * 60;
+	long daysInMilli = hoursInMilli * 24;
+
+	int elapsedDays = different / daysInMilli;
+	different = different % daysInMilli;
+
+	int elapsedHours = different / hoursInMilli;
+	different = different % hoursInMilli;
+
+	int elapsedMinutes = different / minutesInMilli;
+	different = different % minutesInMilli;
+
+	int elapsedSeconds = different;
+
+	vector<int> vect;
+
+	vect.push_back(elapsedDays);
+	vect.push_back(elapsedHours);
+	vect.push_back(elapsedMinutes);
+	vect.push_back(elapsedSeconds);
+
+	return vect;
 }

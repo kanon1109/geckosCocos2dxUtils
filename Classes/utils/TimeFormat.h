@@ -2,6 +2,7 @@
 #ifndef _TIME_FORMAT_
 #define _TIME_FORMAT_
 #include <iostream>
+#include <vector>
 using namespace std;
 class TimeFormat
 {
@@ -32,5 +33,13 @@ public:
      * 输出   3600000
      */
 	static void timeToSecond(string* targetStr, string time, string partition = ":");
+
+	//************************************
+	// Description: 计算某个时间间隔的 天，小时，分钟，秒
+	// Parameter: int startSeconds	开始秒数
+	// Parameter: int endSeconds	结束秒数
+	// Returns:   std::vector<int>	[day, hour, minutes, seconds]
+	//************************************
+	static vector<int> timeDifference(int startSeconds, int endSeconds);
 };
 #endif
